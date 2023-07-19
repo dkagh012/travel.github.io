@@ -102,10 +102,77 @@ for (let i = 0; i < tabSelect.length; i++) {
   });
 }
 
+// 메인 페이지 슬라이더 밑에 다른 취향 보기 이벤트
+function getRandomIndex(length) {
+  return Math.floor(Math.random() * length);
+}
+
+function changeCurrentClass() {
+  var selectElements = document.querySelectorAll(".main-sc .tab-select");
+
+  Array.from(selectElements).forEach(function (selectElement) {
+    var listItems = selectElement
+      .querySelector(".list")
+      .getElementsByTagName("li");
+
+    var randomIndex = getRandomIndex(listItems.length);
+
+    // 현재 클래스 변경
+    var currentElement = selectElement.querySelector(".current");
+    currentElement.textContent = listItems[randomIndex].textContent;
+
+    // bold 클래스 추가
+    Array.from(listItems).forEach(function (item) {
+      item.classList.remove("bold");
+    });
+    listItems[randomIndex].classList.add("bold");
+  });
+}
+
+var mainParent = document.querySelector(".main-sc");
+if (mainParent) {
+  var btnReload = mainParent.querySelector("#btn_reload");
+  if (btnReload) {
+    btnReload.addEventListener("click", changeCurrentClass);
+  }
+}
+// 검색 modal 에 초기화 버튼
+document.getElementById("btn_content").addEventListener("click", function () {
+  var modalBody = document.querySelector(".modal-body");
+
+  if (modalBody) {
+    var currentElements = modalBody.querySelectorAll(
+      ".tab-ContentTit .current"
+    );
+    var initialValues = ["누구와", "어디서", "무엇을"]; // 초기값으로 설정할 텍스트들
+
+    currentElements.forEach(function (currentElement, index) {
+      currentElement.textContent = initialValues[index];
+    });
+  }
+});
 // swiper
 var swiper = new Swiper(".mySwiper", {
   spaceBetween: 30,
   centeredSlides: true,
+  // autoplay: {
+  //   delay: 2500,
+  //   disableOnInteraction: false,
+  // },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
+var swiper = new Swiper(".main-sc2-swiper", {
+  spaceBetween: 30,
+  centeredSlides: true,
+  slidesPerView: 4, // 한 번에 5개의 슬라이드 보이기
+  slidesPerGroup: 1, // 5개의 슬라이드를 그룹으로 설정
   // autoplay: {
   //   delay: 2500,
   //   disableOnInteraction: false,
