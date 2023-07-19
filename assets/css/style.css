@@ -1,0 +1,729 @@
+/* root */
+:root {
+  --colorBorder: #e6e6e6;
+  --colorWhite: #fff;
+  --colorBlack: #333;
+  --colorGray: #666;
+  --colorDarkBlack: #101010;
+  --colorRed: #e5006b;
+  --colorBlue: #4876ef;
+  --colorLogo: #ea617b;
+  --colorHover: #f8faff;
+  --colorStar: rgb(253, 131, 9);
+  --colorMint: #00c3bd;
+
+  --colorBackgroundGray: #717171;
+  --colorBackgroundBeige: #f5f5f5;
+
+  --1: 1em;
+  --5: 0.5rem;
+  --10: 1rem;
+  --20: 2rem;
+  --30: 3rem;
+  --50: 5rem;
+  --80: 8rem;
+  --100: 10rem;
+}
+/* font */
+@font-face {
+  font-family: "Vitro";
+  src: url("/assets/css/fonts/Vitro_100.otf") format("truetype"); /* Replace 'path/to' with the actual path to your font file */
+  font-weight: 100;
+}
+@font-face {
+  font-family: "Vitro";
+  src: url("/assets/css/fonts/vitro.ttf") format("truetype"); /* Replace 'path/to' with the actual path to your font file */
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 100;
+  src: local("Noto Sans Light"), local("NotoSans-Light"), url();
+  src: local("Noto Sans Light"), local("NotoSans-Light"),
+    url(/assets/css/fonts/NotoSans-Light.eot);
+  src: url(/assets/css/fonts/NotoSans-Light.eot?#iefix)
+      format("embedded-opentype"),
+    url(/assets/css/fonts/NotoSans-Light.woff2) format("woff2"),
+    url(/assets/css/fonts/NotoSans-Light.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Noto Sans Regular"), local("NotoSans-Regular"),
+    url(/assets/css/fonts/NotoSans-Regular.eot);
+  src: url(/assets/css/fonts/NotoSans-Regular.eot?#iefix)
+      format("embedded-opentype"),
+    url(/assets/css/fonts/NotoSans-Regular.woff2) format("woff2"),
+    url(/assets/css/fonts/NotoSans-Regular.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Noto Sans Medium"), local("NotoSans-Medium"),
+    url(/assets/css/fonts/NotoSans-Medium.eot);
+  src: url(/assets/css/fonts/NotoSans-Medium.eot?#iefix)
+      format("embedded-opentype"),
+    url(/assets/css/fonts/NotoSans-Medium.woff2) format("woff2"),
+    url(/assets/css/fonts/NotoSans-Medium.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Noto Sans Bold"), local("NotoSans-Bold"),
+    url(/assets/css/fonts/NotoSans-Bold.eot);
+  src: url(/assets/css/fonts/NotoSans-Bold.eot?#iefix)
+      format("embedded-opentype"),
+    url(/assets/css/fonts/NotoSans-Bold.woff2) format("woff2"),
+    url(/assets/css/fonts/NotoSans-Bold.woff) format("woff");
+}
+@keyframes rightArrow {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+}
+@keyframes leftArrow {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+/* header */
+.header {
+  width: 100%;
+  height: 145px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  -webkit-transition: height 0.3s, background 0.3s, border 0.3s;
+  transition: height 0.3s, background 0.3s, border 0.3s;
+  z-index: 500;
+}
+.header_container_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  height: 0; /* 초기 높이 설정 */
+  transition: height 0.3s;
+}
+body.open_menu .header_container_bg {
+  opacity: 1;
+  background: #fff;
+  visibility: visible;
+  transition: height 0.3s;
+}
+
+.Logo {
+  left: 60px;
+  position: absolute;
+  top: 50px;
+  z-index: 2;
+}
+.header_inner {
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+.gnb_inner {
+  display: block;
+  width: 100%;
+  position: relative;
+  line-height: 1;
+  text-align: center;
+  z-index: 1;
+  height: 100px;
+  -webkit-transition: padding 0.3s;
+  transition: padding 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gnb_List {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+}
+.gnb_List > .gnb_Item {
+  float: left;
+}
+.gnb_List > .gnb_Item > a {
+  padding: 11px 37px 4px;
+  position: relative;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 0.08em;
+}
+.open_menu .gnb_List > .gnb_Item > a {
+  color: black;
+}
+.gnb_List > .gnb_Item > a:hover {
+  color: #ad7b61;
+}
+.gnb_List > .gnb_Item > a:hover span:after {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+.gnb_List > .gnb_Item > a > span {
+  position: relative;
+}
+.gnb_List > .gnb_Item > a > span:after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background-color: #ad7b61;
+  -webkit-transition: transform 0.3s, opacity 0.15s;
+  -webkit-transition: opacity 0.15s, -webkit-transform 0.3s;
+  transition: opacity 0.15s, -webkit-transform 0.3s;
+  transition: transform 0.3s, opacity 0.15s;
+  transition: transform 0.3s, opacity 0.15s, -webkit-transform 0.3s;
+  -webkit-transform: translateY(-10rem);
+  -ms-transform: translateY(-10rem);
+  transform: translateY(-10rem);
+  opacity: 0;
+}
+.sub_menu {
+  width: auto;
+  min-width: 100%;
+  position: absolute;
+  left: 0;
+  margin-left: 37px;
+  top: 100%;
+  text-align: left;
+  white-space: nowrap;
+  padding-top: 47px;
+  padding-bottom: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s;
+}
+
+.sub_menu > li > ul > a {
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: black;
+  padding: 6px 0;
+}
+
+.sub_menu .menu_Item {
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: #888;
+  padding: 6px 0;
+}
+
+.sub_menu > li {
+  display: inline-block;
+  vertical-align: top;
+  padding-right: 20px;
+  margin-right: 80px;
+}
+.aside {
+  position: absolute;
+  top: 0;
+  right: 3%;
+  z-index: 1;
+  -webkit-transition: top 0.3s;
+  transition: top 0.3s;
+}
+.header .aside {
+  display: flex;
+}
+.header .util {
+  display: flex;
+  padding-top: 42px;
+}
+.header .util a {
+  font-size: 14px;
+  letter-spacing: -0.56px;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 5px 7px;
+  display: block;
+  line-height: 25px;
+  font-weight: 400;
+}
+.header .util a:hover {
+  color: rgba(255, 255, 255, 1);
+  text-decoration: underline;
+}
+.header .btn_search {
+  width: 35px;
+  height: 35px;
+  margin: 42px 0 0 20px;
+  border: 0;
+  font-size: 22px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  display: block;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  display: none;
+}
+.modal * {
+  line-height: 1.5;
+}
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #000;
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+  height: 100vh;
+}
+.modal-SearchBox {
+  position: relative;
+  width: auto;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.modal-content {
+  width: 100%;
+  max-width: 1250px;
+  position: relative;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: 0;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100% - 20px);
+  overflow: hidden;
+}
+.modal-header {
+  padding: 0 15px 0 50px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  flex-direction: column;
+  min-height: 90px;
+}
+.modalSearch {
+  padding-top: 65px;
+  position: relative;
+  width: 100%;
+}
+.search-tit {
+  font-family: "Vitro";
+  font-size: 40px;
+
+  text-align: center;
+  margin: 0 auto;
+}
+.search-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+.inp-search {
+  position: relative;
+  width: 450px;
+  display: flex;
+}
+.inp-base {
+  width: 100%;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  outline: none;
+  border: 1px solid #e5e5e5;
+  border-radius: 2px;
+  padding: 12px 20px;
+  min-height: 50px;
+  height: 56px;
+  background: #f7f7f7;
+  border: 0;
+  font-size: 18px;
+  padding-right: 50px;
+  flex: 1;
+}
+.inp-base::placeholder {
+  color: #cccccc;
+}
+.commonSearch {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  /* padding: 15px; */
+  height: 100%;
+  cursor: pointer;
+  border: 0;
+  width: 50px;
+  background: transparent;
+}
+.tab-btns-wrap {
+  padding-top: 25px;
+}
+.tab-btns-wrap ul {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+.tab-btns-wrap .tab-btn {
+  flex-shrink: 0;
+  position: relative;
+  padding: 10px 0 15px;
+  border: none;
+  outline: none;
+  transition: 200ms linear;
+  cursor: pointer;
+}
+.tab-btns-wrap .tab-btn button {
+  flex-shrink: 0;
+  position: relative;
+  padding: 10px 0 15px;
+  border: none;
+  outline: none;
+  color: #cccccc;
+  font-size: 36.5px;
+  font-weight: 700;
+  letter-spacing: -2.19px;
+  transition: 200ms linear;
+  cursor: pointer;
+  background: transparent;
+}
+.tab-btns-wrap .active button {
+  color: #1c1c1c;
+  transition: color 0.8s ease-out;
+}
+.tab-btns-wrap .active button::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  background: #e53e30;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: calc(50% - 4px);
+}
+
+.btn-md-close {
+  flex: none;
+  width: 50px;
+  height: 50px;
+  margin-top: 15px;
+  margin-left: auto;
+  overflow: hidden;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 30px;
+}
+.tab-ContentTit {
+  padding: 108px 0 135px;
+}
+.tab-ContentTit > div {
+  display: block;
+  font-size: 34px;
+  color: #111;
+  letter-spacing: -1.7px;
+  line-height: 75px;
+  display: flex;
+  gap: 7px;
+  justify-content: center;
+}
+.tab-select {
+  font-family: "Vitro";
+  font-size: 34px;
+  border: solid 2px transparent;
+  border-bottom: solid 2px #111;
+  padding: 12px 5px;
+  width: auto;
+  height: auto;
+  position: relative;
+}
+.tab-select > div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.current {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  gap: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.list {
+  top: 55px;
+  margin-top: 0;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 3px 7.4px 60.8px 18.2px rgba(189, 189, 189, 0.43);
+  background-color: #fff;
+  position: absolute;
+  display: none;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  max-height: 206px;
+  overflow: auto;
+  text-align: center;
+}
+.list li {
+  padding: 0;
+  cursor: pointer;
+  height: 41px;
+  font-size: 18px;
+  line-height: 41px;
+  letter-spacing: -0.072em;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 0 10px 0 18px;
+  line-height: 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.list li:hover {
+  background-color: #f7f7f7;
+}
+.tab-Desc {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.tab_ContentBtn {
+  margin: 40px auto 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto 60px;
+  gap: 10px;
+}
+.ContentBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px 30px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1.2;
+  border-radius: 2px;
+  text-decoration: none;
+  box-sizing: border-box;
+  letter-spacing: -0.6px;
+  min-height: 50px;
+  background: #fff;
+  flex: unset;
+  width: 270px;
+  font-size: 16px;
+  border: solid 1px #ccc;
+  min-height: 55px;
+}
+.ContentBtn:hover {
+  border-color: #666;
+}
+.ContentBtnBlack {
+  background: #1c1c1c !important;
+  border: 0 !important;
+  color: #fff !important;
+}
+.ContentBtnBlack:hover {
+  background: #2c2c2c !important;
+}
+.bold {
+  font-weight: bold !important;
+}
+/* 메인 스와이퍼 첫번쨰 */
+
+.main_sw1 {
+  height: 100vh;
+  position: relative;
+  width: 100%;
+}
+.slick-slider {
+  height: 100%;
+}
+.slick-slider img {
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide {
+  position: relative;
+}
+.swiper-slide > a {
+  width: 100%;
+  height: 100%;
+}
+.main_sw1 .slogan {
+  position: absolute;
+  left: 130px;
+  bottom: 62px;
+}
+.slick-list {
+  height: 100%;
+}
+.slick-list .lg-txt {
+  word-spacing: -6px;
+  display: block;
+  width: 590px;
+  font-family: "Vitro";
+  font-size: 60px;
+  color: #fff;
+  font-weight: bold;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  transform: translateX(-100%);
+  clip-path: polygon(0 0, 0% 0, 0% 100%, 0 100%);
+  transition: transform 0.75s ease-in-out, clip-path 1s ease-in-out;
+  white-space: nowrap;
+  padding-bottom: 7px;
+}
+.slick-list .sm-txt {
+  display: block;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  color: #fff;
+  font-weight: 100;
+  padding-left: 5px;
+  padding-top: 10px;
+  letter-spacing: -0.06em;
+  opacity: 0;
+  transition: opacity 0.75s 0.75s ease-out;
+}
+.main_sw1 .swiper-button-next:after,
+.main_sw1 .swiper-button-prev:after {
+  font-size: 0 !important;
+}
+.slick-btn {
+  display: flex;
+  flex-direction: column;
+}
+.slick-btn i {
+  font-size: 31px;
+  color: var(--colorWhite);
+}
+.slick-btn span {
+  font-family: "Vitro";
+  position: absolute;
+  top: 50%;
+  letter-spacing: 2px;
+  z-index: 10;
+  padding-bottom: 62px;
+  font-size: 18px;
+  color: #fff;
+  font-weight: bold;
+  background: transparent;
+  transform: translateY(-50%);
+}
+.slick-next {
+  right: 50px !important;
+}
+.slick-next:hover i {
+  animation: leftArrow 1s infinite alternate ease-in-out;
+}
+.slick-prev {
+  left: 50px !important;
+}
+
+.slick-prev:hover i {
+  animation: rightArrow 1s infinite alternate ease-in-out;
+}
+.swiper-slide-active .sm-txt {
+  opacity: 1;
+}
+.swiper-slide-active .lg-txt {
+  transform: translateX(0);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.main-sc-aside {
+  position: absolute;
+  left: 0px;
+  right: 130px;
+  bottom: 48px;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1;
+  line-height: 34px;
+  gap: 40px;
+}
+
+.main-sc-aside a {
+  flex: 1;
+  position: relative;
+  min-width: 260px;
+  max-width: 344px;
+  font-family: "Noto Sans KR";
+  font-size: 25px;
+  border-bottom-color: rgba(255, 255, 255, 1);
+  transition-duration: 0.6s;
+  color: #fff;
+  letter-spacing: -1.88px;
+  padding-bottom: 10px;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.4);
+  transition: border-color 0.25s ease-in-out;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 9px 10px 9px;
+  align-items: center;
+}
