@@ -2,6 +2,7 @@ const header_bg = document.querySelector(".header_container_bg");
 const MenuItem = document.querySelectorAll(".gnb_Item");
 const subMenu = document.querySelectorAll(".sub_menu");
 const body = document.querySelector("body");
+const header = document.querySelector(".header");
 const SearchTab = document.querySelectorAll(".current");
 const list = document.querySelectorAll(".list");
 const modalSearchBox = document.querySelector(".modal-SearchBox");
@@ -9,6 +10,38 @@ const modalSearch = document.querySelector(".modal");
 const SearchOpen = document.querySelector(".btn_search");
 const SearchClose = document.querySelector(".btn-md-close");
 const tabBtn = document.querySelectorAll(".tab-btn ");
+const magazineItem = document.querySelectorAll(".magazine-Item ");
+const magazine = document.querySelector(".magazine-banner");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY >= 66) {
+    header.classList.add("ScrollHeader");
+  } else if (window.scrollY >= 0) {
+    header.classList.remove("ScrollHeader");
+  }
+});
+
+// 메인 맨 밑 이미지 변경
+for (let i = 0; i < magazineItem.length; i++) {
+  magazineItem[i].addEventListener("mouseover", () => {
+    magazineItem[i].classList.add("over");
+    changeImage(i);
+  });
+  magazineItem[i].addEventListener("mouseout", () => {
+    magazineItem[i].classList.remove("over");
+  });
+}
+
+// 이미지 변경을 위한 이벤트 핸들러
+function changeImage(item) {
+  if (item === 0) {
+    magazine.style.backgroundImage = "url(assets/images/maga1.jpg)";
+  } else if (item === 1) {
+    magazine.style.backgroundImage = "url(assets/images/maga2.jpg)";
+  } else if (item === 2) {
+    magazine.style.backgroundImage = "url(assets/images/maga3.jpg)";
+  }
+}
 
 for (let i = 0; i < tabBtn.length; i++) {
   tabBtn[i].addEventListener("click", () => {
@@ -79,6 +112,28 @@ document.addEventListener("click", (event) => {
   }
 });
 
+// Top 버튼
+if (document.querySelector("#js-scroll")) {
+  window.addEventListener("scroll", () => {
+    const jsScroll = document.querySelector("#js-scroll");
+    if (window.scrollY >= 200) {
+      jsScroll.style.display = "block";
+      jsScroll.style.position = "fixed";
+    } else {
+      jsScroll.style.display = "none";
+      jsScroll.style.position = "relative";
+    }
+  });
+
+  document.querySelector("#js-scroll").addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth", // Added smooth scrolling behavior
+    });
+  });
+}
 // 부모 요소에 클릭 이벤트 리스너 등록
 const tabSelect = document.querySelectorAll(".tab-select");
 
@@ -168,11 +223,20 @@ var swiper = new Swiper(".mySwiper", {
     prevEl: ".swiper-button-prev",
   },
 });
+var swiper = new Swiper(".tmSwiper", {
+  spaceBetween: 22,
+  centeredSlides: false, // 중앙 정렬 비활성화
+  slidesPerView: 3,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
+
 var swiper = new Swiper(".main-sc2-swiper", {
-  spaceBetween: 30,
-  centeredSlides: true,
-  slidesPerView: 4, // 한 번에 5개의 슬라이드 보이기
-  slidesPerGroup: 1, // 5개의 슬라이드를 그룹으로 설정
+  spaceBetween: 22,
+  centeredSlides: false, // 중앙 정렬 비활성화
+  slidesPerView: 3,
   // autoplay: {
   //   delay: 2500,
   //   disableOnInteraction: false,

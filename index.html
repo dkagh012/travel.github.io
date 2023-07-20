@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/assets/css/reset.css" />
     <link rel="stylesheet" href="/assets/css/xeicon.min.css" />
     <link rel="stylesheet" href="/assets/css/swiper.min.css" />
+    <link rel="stylesheet" href="/assets/css/slick.css" />
     <script src="assets/js/jquery.js"></script>
   </head>
   <body>
@@ -356,18 +357,26 @@
           </div>
         </div>
       </div>
+      <div class="top">
+        <div id="js-scroll">
+          <i class="xi-long-arrow-up"></i>
+        </div>
+      </div>
     </header>
     <section class="main_sw1">
-      <div class="swiper slick-slider mySwiper">
-        <div class="swiper-wrapper slick-list">
+      <div class="swiper main_slick-slider mySwiper">
+        <div class="swiper-wrapper main_slick-list">
           <div class="swiper-slide">
             <a href="#" class="">
               <div
-                class="slick-img"
+                class="main_slick-img"
                 style="
                   height: 100%;
-                  background: url(assets/images/main-sw.jpg) 50% / cover
-                    no-repeat;
+                  background: linear-gradient(
+                      rgba(0, 0, 0, 0.2),
+                      rgba(0, 0, 0, 0.2)
+                    ),
+                    url(assets/images/main-sw.jpg) 50% / cover no-repeat;
                 "
               >
                 <div class="slogan">
@@ -381,11 +390,14 @@
           <div class="swiper-slide">
             <a href="#" class="">
               <div
-                class="slick-img"
+                class="main_slick-img"
                 style="
                   height: 100%;
-                  background: url(assets/images/main-sw1.jpg) 50% / cover
-                    no-repeat;
+                  background: linear-gradient(
+                      rgba(0, 0, 0, 0.2),
+                      rgba(0, 0, 0, 0.2)
+                    ),
+                    url(assets/images/main-sw1.jpg) 50% / cover no-repeat;
                 "
               >
                 <div class="slogan">
@@ -399,11 +411,35 @@
           <div class="swiper-slide">
             <a href="#" class="">
               <div
-                class="slick-img"
+                class="main_slick-img"
                 style="
                   height: 100%;
-                  background: url(assets/images/main-sw2.jpg) 50% / cover
-                    no-repeat;
+                  background: linear-gradient(
+                      rgba(0, 0, 0, 0.2),
+                      rgba(0, 0, 0, 0.2)
+                    ),
+                    url(assets/images/main-sw2.jpg) 50% / cover no-repeat;
+                "
+              >
+                <div class="slogan">
+                  <div class="lg-txt">9~10월 황금연휴</div>
+                  <div class="lg-txt lg-txt2">사전 예약 오픈!</div>
+                  <div class="sm-txt">귀한 한정 좌석 빠르게 선점하세요.</div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="#" class="">
+              <div
+                class="main_slick-img"
+                style="
+                  height: 100%;
+                  background: linear-gradient(
+                      rgba(0, 0, 0, 0.2),
+                      rgba(0, 0, 0, 0.2)
+                    ),
+                    url(assets/images/main-sw3.jpg) 50% / cover no-repeat;
                 "
               >
                 <div class="slogan">
@@ -415,11 +451,11 @@
             </a>
           </div>
         </div>
-        <div class="swiper-button-next slick-btn slick-next">
+        <div class="swiper-button-next main_slick-btn main_slick-next">
           <span>Next</span>
           <i class="xi-arrow-right"></i>
         </div>
-        <div class="swiper-button-prev slick-btn slick-prev">
+        <div class="swiper-button-prev main_slick-btn main_slick-prev">
           <span>Prev</span>
           <i class="xi-arrow-left"></i>
         </div>
@@ -503,35 +539,750 @@
           내 취향 여행 보기<i class="xi-angle-down-min"></i>
         </button>
       </div>
-      <div class="wrapper">
+      <div class="wrapper main-sc2">
         <!-- Swiper -->
         <div class="swiper main-sc2-swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide swiperItem">
-              <a href="#"><img src="assets/images/imgItem1.jpg" alt="" /></a>
+              <a href="#">
+                <img src="assets/images/imgItem1.jpg" alt="" />
+                <div>
+                  <div class="item-info">
+                    <p class="tit">
+                      #그랜드바자르# [노팁/OZ직항/국내선2회] 튀르키예9일
+                      #4대옵션 #ALL특급호텔
+                    </p>
+                    <p class="cont">
+                      ■국적기 아시아나+국내선 항공2회+전일정특급호텔 ■노팁 &
+                      총200유로상당 4대옵션 + 터키 현지특식 제공 ■터키 이스탄불
+                      핫플 발랏지구 & 베벡지구 관광 포함 ■카파도키아 2박으로
+                      여유로운 일정진행 ■편안하게 즐기는 럭셔리 터키일주 여행 ♪♬
+                    </p>
+                    <div class="btn-detail">자세히 보기</div>
+                  </div>
+                </div>
+              </a>
             </div>
             <div class="swiper-slide swiperItem">
-              <a href="#"><img src="assets/images/imgItem2.jpg" alt="" /></a>
+              <a href="#"
+                ><img src="assets/images/imgItem2.jpg" alt="" />
+                <div>
+                  <div class="item-info">
+                    <p class="tit">
+                      #그랜드바자르# [노팁/OZ직항/국내선2회] 튀르키예9일
+                      #4대옵션 #ALL특급호텔
+                    </p>
+                    <p class="cont">
+                      ■국적기 아시아나+국내선 항공2회+전일정특급호텔 ■노팁 &
+                      총200유로상당 4대옵션 + 터키 현지특식 제공 ■터키 이스탄불
+                      핫플 발랏지구 & 베벡지구 관광 포함 ■카파도키아 2박으로
+                      여유로운 일정진행 ■편안하게 즐기는 럭셔리 터키일주 여행 ♪♬
+                    </p>
+                    <div class="btn-detail">자세히 보기</div>
+                  </div>
+                </div>
+              </a>
             </div>
             <div class="swiper-slide swiperItem">
-              <a href="#"><img src="assets/images/imgItem3.jpg" alt="" /></a>
+              <a href="#"
+                ><img src="assets/images/imgItem3.jpg" alt="" />
+                <div>
+                  <div class="item-info">
+                    <p class="tit">
+                      #그랜드바자르# [노팁/OZ직항/국내선2회] 튀르키예9일
+                      #4대옵션 #ALL특급호텔
+                    </p>
+                    <p class="cont">
+                      ■국적기 아시아나+국내선 항공2회+전일정특급호텔 ■노팁 &
+                      총200유로상당 4대옵션 + 터키 현지특식 제공 ■터키 이스탄불
+                      핫플 발랏지구 & 베벡지구 관광 포함 ■카파도키아 2박으로
+                      여유로운 일정진행 ■편안하게 즐기는 럭셔리 터키일주 여행 ♪♬
+                    </p>
+                    <div class="btn-detail">자세히 보기</div>
+                  </div>
+                </div>
+              </a>
             </div>
             <div class="swiper-slide swiperItem">
-              <a href="#"><img src="assets/images/imgItem4.jpg" alt="" /></a>
+              <a href="#"
+                ><img src="assets/images/imgItem4.jpg" alt="" />
+                <div>
+                  <div class="item-info">
+                    <p class="tit">
+                      #그랜드바자르# [노팁/OZ직항/국내선2회] 튀르키예9일
+                      #4대옵션 #ALL특급호텔
+                    </p>
+                    <p class="cont">
+                      ■국적기 아시아나+국내선 항공2회+전일정특급호텔 ■노팁 &
+                      총200유로상당 4대옵션 + 터키 현지특식 제공 ■터키 이스탄불
+                      핫플 발랏지구 & 베벡지구 관광 포함 ■카파도키아 2박으로
+                      여유로운 일정진행 ■편안하게 즐기는 럭셔리 터키일주 여행 ♪♬
+                    </p>
+                    <div class="btn-detail">자세히 보기</div>
+                  </div>
+                </div>
+              </a>
             </div>
             <div class="swiper-slide swiperItem">
-              <a href="#"><img src="assets/images/imgItem1.jpg" alt="" /></a>
+              <a href="#"
+                ><img src="assets/images/imgItem1.jpg" alt="" />
+                <div>
+                  <div class="item-info">
+                    <p class="tit">
+                      #그랜드바자르# [노팁/OZ직항/국내선2회] 튀르키예9일
+                      #4대옵션 #ALL특급호텔
+                    </p>
+                    <p class="cont">
+                      ■국적기 아시아나+국내선 항공2회+전일정특급호텔 ■노팁 &
+                      총200유로상당 4대옵션 + 터키 현지특식 제공 ■터키 이스탄불
+                      핫플 발랏지구 & 베벡지구 관광 포함 ■카파도키아 2박으로
+                      여유로운 일정진행 ■편안하게 즐기는 럭셔리 터키일주 여행 ♪♬
+                    </p>
+                    <div class="btn-detail">자세히 보기</div>
+                  </div>
+                </div>
+              </a>
             </div>
             <div class="swiper-slide swiperItem">
-              <a href="#"><img src="assets/images/imgItem1.jpg" alt="" /></a>
+              <a href="#"
+                ><img src="assets/images/imgItem1.jpg" alt="" />
+                <div>
+                  <div class="item-info">
+                    <p class="tit">
+                      #그랜드바자르# [노팁/OZ직항/국내선2회] 튀르키예9일
+                      #4대옵션 #ALL특급호텔
+                    </p>
+                    <p class="cont">
+                      ■국적기 아시아나+국내선 항공2회+전일정특급호텔 ■노팁 &
+                      총200유로상당 4대옵션 + 터키 현지특식 제공 ■터키 이스탄불
+                      핫플 발랏지구 & 베벡지구 관광 포함 ■카파도키아 2박으로
+                      여유로운 일정진행 ■편안하게 즐기는 럭셔리 터키일주 여행 ♪♬
+                    </p>
+                    <div class="btn-detail">자세히 보기</div>
+                  </div>
+                </div>
+              </a>
             </div>
           </div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"><i class="xi-arrow-right"></i></div>
+          <div class="swiper-button-prev"><i class="xi-arrow-left"></i></div>
         </div>
       </div>
     </section>
+    <section class="main-sl background">
+      <div class="main-sl-tit">
+        <h2>가장 사랑받는 월간 Best 여행이지!</h2>
+      </div>
+      <div class="main-sl-cont">
+        <div class="slider">
+          <div class="slick-slide">
+            <img src="assets/images/film1.jpg" alt="Slide 1" />
+            <div class="item-info">
+              <p class="tit">북유럽 5국 10일</p>
+              <div class="cont">
+                <p>#비지니스항공 #노옵션 #노쇼핑</p>
+              </div>
+              <p class="aside">Europe</p>
+            </div>
+            <div class="item-label">1위</div>
+          </div>
+          <div class="slick-slide">
+            <a href="">
+              <img src="assets/images/film2.jpg" alt="Slide 2" />
+              <div class="item-info">
+                <p class="tit">북유럽 5국 10일</p>
+                <div class="cont">
+                  <p>#비지니스항공 #노옵션 #노쇼핑</p>
+                </div>
+                <p class="aside">Europe</p>
+              </div>
+              <div class="item-label">2위</div>
+            </a>
+          </div>
+          <div class="slick-slide">
+            <img src="assets/images/film3.jpg" alt="Slide 3" />
+            <div class="item-info">
+              <p class="tit">북유럽 5국 10일</p>
+              <div class="cont">
+                <p>#비지니스항공 #노옵션 #노쇼핑</p>
+              </div>
+              <p class="aside">Europe</p>
+            </div>
+            <div class="item-label">3위</div>
+          </div>
+          <div class="slick-slide">
+            <img src="assets/images/film4.jpg" alt="Slide 4" />
+            <div class="item-info">
+              <p class="tit">북유럽 5국 10일</p>
+              <div class="cont">
+                <p>#비지니스항공 #노옵션 #노쇼핑</p>
+              </div>
+              <p class="aside">Europe</p>
+            </div>
+            <div class="item-label">4위</div>
+          </div>
+          <div class="slick-slide">
+            <img src="assets/images/film5.jpg" alt="Slide 5" />
+            <div class="item-info">
+              <p class="tit">북유럽 5국 10일</p>
+              <div class="cont">
+                <p>#비지니스항공 #노옵션 #노쇼핑</p>
+              </div>
+              <p class="aside">Europe</p>
+            </div>
+            <div class="item-label">5위</div>
+          </div>
+          <div class="slick-slide">
+            <img src="assets/images/film6.jpg" alt="Slide 6" />
+            <div class="item-info">
+              <p class="tit">북유럽 5국 10일</p>
+              <div class="cont">
+                <p>#비지니스항공 #노옵션 #노쇼핑</p>
+              </div>
+              <p class="aside">Europe</p>
+            </div>
+            <div class="item-label">6위</div>
+          </div>
+        </div>
+        <div class="slider-controls">
+          <button class="btn-prev"><i class="xi-arrow-left"></i></button>
+          <button class="btn-stop"><i class="xi-pause"></i></button>
+          <button class="btn-start"><i class="xi-play"></i></button>
+          <button class="btn-next"><i class="xi-arrow-right"></i></button>
+        </div>
+        <div class="slider-pagination"></div>
+        <div class="slider-progress">
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+    </section>
+    <section class="main-tm">
+      <div class="main-sl-tit">
+        <h2>테마가 있는 여행이지</h2>
+      </div>
+      <div class="tab-main">
+        <a class="selected" href="#">#황금연휴</a>
+        <a href="#">#틈새여행</a>
+        <a href="#">#자유여행</a>
+        <a href="#">#지금 뜨는 그곳</a>
+        <a href="#">#프리미엄</a>
+      </div>
+      <div class="main-tm-wrap">
+        <ul class="main-tm-lnb" id="main-thema-lnb">
+          <!-- Mobile -->
+
+          <li class="active">
+            <a href="#" data-label="#가까워도 이국적인_중국/대만/몽골로">
+              #가까워도 이국적인_중국/대만/몽골로
+            </a>
+          </li>
+
+          <!-- Mobile -->
+
+          <li>
+            <a href="#" data-label="#한 번쯤 꿈꿔봤던_유럽으로">
+              #한 번쯤 꿈꿔봤던_유럽으로
+            </a>
+          </li>
+
+          <!-- Mobile -->
+
+          <li>
+            <a href="#" data-label="#가까운 인기여행지_일본으로">
+              #가까운 인기여행지_일본으로
+            </a>
+          </li>
+
+          <!-- Mobile -->
+
+          <li>
+            <a href="#" data-label="#가도 가도 또 가고 싶은_동남아로">
+              #가도 가도 또 가고 싶은_동남아로
+            </a>
+          </li>
+
+          <!-- Mobile -->
+
+          <li>
+            <a href="#" data-label="#신비하고 청정한_남태평양으로">
+              #신비하고 청정한_남태평양으로
+            </a>
+          </li>
+
+          <!-- Mobile -->
+
+          <li>
+            <a href="javascript:void(0);" data-label="#평생 버킷리스트_미주로">
+              #평생 버킷리스트_미주로
+            </a>
+          </li>
+        </ul>
+        <div class="swiper tmSwiper">
+          <div class="swiper-wrapper theme-list">
+            <div class="swiper-slide theme-item">
+              <a href="#">
+                <img class="item-img" src="assets/images/tm1.jpg" alt="" />
+                <div class="item-info">
+                  <p class="tit">
+                    [자연스럽게] 동양의그랜드캐년
+                    태항산#대협곡#만선산#마사지#리무진 4일/5일
+                  </p>
+                  <p class="cont">
+                    ① 영화 '말할 수 없는 비밀'의 촬영지 단수이 ② 예류, 지우펀,
+                    스펀 천등날리기 포함 ③ 세계 4대박물관 중 하나인
+                    국립고궁박물관 포함 ④ 딘타이펑 딤섬, 타카오샤브샤브 등
+                    다채로운 식단 구성
+                  </p>
+                  <div class="price"><strong>299,000</strong>원~</div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide theme-item">
+              <a href="#">
+                <img class="item-img" src="assets/images/tm2.jpg" alt="" />
+                <div class="item-info">
+                  <p class="tit">
+                    [자연스럽게] 동양의그랜드캐년
+                    태항산#대협곡#만선산#마사지#리무진 4일/5일
+                  </p>
+                  <p class="cont">
+                    ① 영화 '말할 수 없는 비밀'의 촬영지 단수이 ② 예류, 지우펀,
+                    스펀 천등날리기 포함 ③ 세계 4대박물관 중 하나인
+                    국립고궁박물관 포함 ④ 딘타이펑 딤섬, 타카오샤브샤브 등
+                    다채로운 식단 구성
+                  </p>
+                  <div class="price"><strong>299,000</strong>원~</div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide theme-item">
+              <a href="#">
+                <img class="item-img" src="assets/images/tm3.jpg" alt="" />
+                <div class="item-info">
+                  <p class="tit">
+                    [자연스럽게] 동양의그랜드캐년
+                    태항산#대협곡#만선산#마사지#리무진 4일/5일
+                  </p>
+                  <p class="cont">
+                    ① 영화 '말할 수 없는 비밀'의 촬영지 단수이 ② 예류, 지우펀,
+                    스펀 천등날리기 포함 ③ 세계 4대박물관 중 하나인
+                    국립고궁박물관 포함 ④ 딘타이펑 딤섬, 타카오샤브샤브 등
+                    다채로운 식단 구성
+                  </p>
+                  <div class="price"><strong>299,000</strong>원~</div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide theme-item">
+              <a href="#">
+                <img class="item-img" src="assets/images/tm4.jpg" alt="" />
+                <div class="item-info">
+                  <p class="tit">
+                    [자연스럽게] 동양의그랜드캐년
+                    태항산#대협곡#만선산#마사지#리무진 4일/5일
+                  </p>
+                  <p class="cont">
+                    ① 영화 '말할 수 없는 비밀'의 촬영지 단수이 ② 예류, 지우펀,
+                    스펀 천등날리기 포함 ③ 세계 4대박물관 중 하나인
+                    국립고궁박물관 포함 ④ 딘타이펑 딤섬, 타카오샤브샤브 등
+                    다채로운 식단 구성
+                  </p>
+                  <div class="price"><strong>299,000</strong>원~</div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide theme-item">
+              <a href="#">
+                <img class="item-img" src="assets/images/tm5.jpg" alt="" />
+                <div class="item-info">
+                  <p class="tit">
+                    [자연스럽게] 동양의그랜드캐년
+                    태항산#대협곡#만선산#마사지#리무진 4일/5일
+                  </p>
+                  <p class="cont">
+                    ① 영화 '말할 수 없는 비밀'의 촬영지 단수이 ② 예류, 지우펀,
+                    스펀 천등날리기 포함 ③ 세계 4대박물관 중 하나인
+                    국립고궁박물관 포함 ④ 딘타이펑 딤섬, 타카오샤브샤브 등
+                    다채로운 식단 구성
+                  </p>
+                  <div class="price"><strong>299,000</strong>원~</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="swiper-button-prev"><i class="xi-arrow-left"></i></div>
+          <div class="swiper-button-next"><i class="xi-arrow-right"></i></div>
+        </div>
+      </div>
+    </section>
+    <section class="main-sc4">
+      <div class="main-sl-tit">
+        <h2>고객과 여행이지의 소중한 순간</h2>
+        <div class="wrap-stl-01">
+          <div class="right-area">
+            <a href="#">더보기<i class="xi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <ul class="review_list">
+          <li class="review_item">
+            <div class="review_img">
+              <img src="assets/images/review1.jpg" alt="" />
+            </div>
+            <div class="item-info">
+              <div class="user-char">
+                <img src="assets/images/use.svg" alt="" />
+              </div>
+              <div class="cont">[발리] 모든게 완벽했던 5박7일 모녀여행</div>
+              <div class="user-id">채*경</div>
+            </div>
+          </li>
+          <li class="review_item">
+            <div class="review_img">
+              <img src="assets/images/review2.jpg" alt="" />
+            </div>
+            <div class="item-info">
+              <div class="user-char">
+                <img src="assets/images/use.svg" alt="" />
+              </div>
+              <div class="cont">[발리] 모든게 완벽했던 5박7일 모녀여행</div>
+              <div class="user-id">채*경</div>
+            </div>
+          </li>
+          <li class="review_item">
+            <div class="review_img">
+              <img src="assets/images/review3.jpg" alt="" />
+            </div>
+            <div class="item-info">
+              <div class="user-char">
+                <img src="assets/images/use.svg" alt="" />
+              </div>
+              <div class="cont">[발리] 모든게 완벽했던 5박7일 모녀여행</div>
+              <div class="user-id">채*경</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="main-sc4 youtubeBox">
+      <div class="main-sl-tit">
+        <h2>Youtube 세상 모든 여행이지</h2>
+        <div class="wrap-stl-01">
+          <div class="right-area">
+            <a href="#">더보기<i class="xi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="review youtube">
+        <ul class="review_list">
+          <li class="review_item">
+            <div class="review_img">
+              <img src="assets/images/youtube1.png" alt="" />
+            </div>
+            <div class="item-info">
+              <p class="tit">
+                [1분 여행이지] EP.04 거의 손흥민 스타디움이라며? 🤣
+              </p>
+            </div>
+          </li>
+          <li class="review_item">
+            <div class="review_img">
+              <img src="assets/images/youtube2.png" alt="" />
+            </div>
+            <div class="item-info">
+              <p class="tit">
+                [1분 여행이지] EP.04 거의 손흥민 스타디움이라며? 🤣
+              </p>
+            </div>
+          </li>
+          <li class="review_item">
+            <div class="review_img">
+              <img src="assets/images/youtube3.png" alt="" />
+            </div>
+            <div class="item-info">
+              <p class="tit">
+                [1분 여행이지] EP.04 거의 손흥민 스타디움이라며? 🤣
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="main-sc5">
+      <div
+        class="magazine-banner"
+        style="background-image: url(assets/images/maga1.jpg)"
+      >
+        <div class="magazine-tit">
+          <a href="#">
+            <div class="tit">Magazine</div>
+            <div class="txt">
+              어디로 떠날지 고민하는 여행자에게 <br />유용한 여정 정보를
+              소개합니다.
+            </div>
+            <div class="btn">더보기<i class="xi-arrow-right"></i></div>
+          </a>
+        </div>
+        <div class="magazine-group">
+          <div class="magazine-List">
+            <div class="magazine-Item" id="magazinImg1">
+              <a href="#">
+                <div class="tit">#VOL. 25</div>
+                <div class="txt">
+                  다양한 문화를 만나는 곳, 싱가포르 스트리트
+                </div>
+              </a>
+            </div>
+            <div class="magazine-Item" id="magazinImg2">
+              <a href="#">
+                <div class="tit">#VOL. 25</div>
+                <div class="txt">
+                  다양한 문화를 만나는 곳, 싱가포르 스트리트
+                </div>
+              </a>
+            </div>
+            <div class="magazine-Item" id="magazinImg3">
+              <a href="#">
+                <div class="tit">#VOL. 25</div>
+                <div class="txt">
+                  다양한 문화를 만나는 곳, 싱가포르 스트리트
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="main-sc9">
+      <div class="main-sc9-notice">
+        <div class="main-sc9-tit">알려드립니다.</div>
+        <div class="main-notice-list">
+          <div class="notice-list-item">
+            <a href="#">
+              <dl>
+                <dt>
+                  [당첨자 발표] 공영홈쇼핑 무료여행 이벤트 당첨자 발표(7/16)
+                </dt>
+                <dd>2023-07-18</dd>
+              </dl>
+            </a>
+          </div>
+          <div class="notice-list-item">
+            <a href="#">
+              <dl>
+                <dt>
+                  [당첨자 발표] 공영홈쇼핑 무료여행 이벤트 당첨자 발표(7/16)
+                </dt>
+                <dd>2023-07-18</dd>
+              </dl>
+            </a>
+          </div>
+          <div class="notice-list-item">
+            <a href="#">
+              <dl>
+                <dt>
+                  [당첨자 발표] 공영홈쇼핑 무료여행 이벤트 당첨자 발표(7/16)
+                </dt>
+                <dd>2023-07-18</dd>
+              </dl>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="main-sc9-help">
+        <div class="main-sc9-tit">도와드릴까요?</div>
+        <div class="help-cont">
+          <div class="help-item1">
+            <div class="tit">
+              <img src="assets/images/viber.png" alt="" />여행이지 대표번호
+            </div>
+            <div class="phone">1588-0040</div>
+            <div class="txt">
+              부산지사 <span class="m-blind">대표번호</span>051-469-9415<br />
+              평일 09시~18시(토/일요일 및 공휴일 휴무)
+            </div>
+          </div>
+          <div class="help-item2">
+            <div class="lnk">
+              <a href="#" data-toggle="modal" data-target="#tel_01"
+                >문의별 번호 안내 <i class="xi-arrow-right"></i
+              ></a>
+              <a href="#">1:1문의하기 <i class="xi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer-sns">
+        <a href="#" class="facebook" target="_blank">facebook</a>
+        <a href="#" class="instagram" target="_blank">instagram</a>
+        <a href="#" class="youtube" target="_blank">youtube</a>
+        <a href="#" class="kakao" target="_blank">talk</a>
+        <a href="#" class="naver-blog" target="_blank">naver blog</a>
+      </div>
+      <div class="footer-menu">
+        <a href="#" rel="nosublink">여행정보</a>
+        <a href="#" rel="nosublink">홍보센터</a>
+        <a href="#" rel="nosublink">여행약관</a>
+        <a href="#" rel="nosublink">이용약관</a>
+        <a href="#" rel="nosublink">개인정보처리방침</a>
+        <a href="#" rel="nosublink">기업/단체문의</a>
+      </div>
+      <div class="footer-cont">
+        <dl>
+          <dt>Address &amp; Contact</dt>
+          <dd>
+            대표번호 : <a href="tel: 1588-0040">1588-0040</a><br />
+            서울특별시 종로구 청계천로 51-1, 교원투어 빌딩 8~14층<br />
+            부산지사 대표번호 : <a href="tel: 051-469-9415">051-469-9415</a
+            ><br />
+            부산광역시 동구 중앙대로 216 교원빌딩 3층
+          </dd>
+        </dl>
+        <dl>
+          <dt>여행이지 Information</dt>
+          <dd>
+            <ul>
+              <li>(주)교원투어 대표 : 장동하</li>
+              <li>서울특별시 종로구 청계천로 51-1, 교원투어 빌딩 8~14층</li>
+              <li>본사 사업자등록번호 : 104-81-48192</li>
+              <li>부산지사 사업자등록 번호 : 296-85-00568</li>
+              <li>관광사업자등록번호 : 제 1999-000007호</li>
+              <li>
+                통신판매업신고번호 : 중구 04250호
+                <!-- <a href="#">사업자정보확인</a> -->
+              </li>
+            </ul>
+          </dd>
+        </dl>
+        <dl>
+          <dt>Follow Us</dt>
+          <dd>
+            여행자 배상책임보험 15억원 가입<br />
+            일반여행업 보증금외 15억원 가입<br />
+            kyowontour@kyowon.co.kr
+            <span class="copyright"
+              >copyrights 2022. all rights reserved by (주)교원투어</span
+            >
+          </dd>
+        </dl>
+        <span class="copyright"
+          >copyrights 2022. all rights reserved by (주)교원투어</span
+        >
+      </div>
+    </footer>
   </body>
+  <script>
+    $(document).ready(function () {
+      var slider = $(".slider");
+      var progressBar = $(".progress-bar");
+      var autoplayInterval;
+      var isAutoplay = true;
+
+      slider.slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        centerMode: true,
+        variableWidth: true,
+        infinite: true,
+        speed: 3000,
+        autoplay: true,
+        autoplaySpeed: 0,
+        cssEase: "linear",
+        focusOnSelect: true,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+            },
+          },
+        ],
+      });
+
+      var totalSlides = slider.slick("getSlick").slideCount;
+      var currentSlide = slider.slick("slickCurrentSlide") + 1;
+
+      function updatePagination() {
+        $(".slider-pagination").html(
+          "<button class='page-btn current'>" +
+            currentSlide +
+            "</button> / " +
+            totalSlides
+        );
+      }
+
+      function updateProgress() {
+        var progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
+        progressBar.css("width", progress + "%");
+      }
+
+      function startAutoplay() {
+        slider.slick("slickPlay");
+        autoplayInterval = setInterval(function () {
+          slider.slick("slickNext");
+        }, 2000);
+        isAutoplay = true;
+        $(".btn-start").addClass("active");
+        $(".btn-stop").removeClass("active");
+      }
+
+      function stopAutoplay() {
+        slider.slick("slickPause");
+        clearInterval(autoplayInterval);
+        isAutoplay = false;
+        $(".btn-stop").addClass("active");
+        $(".btn-start").removeClass("active");
+      }
+
+      function toggleAutoplay() {
+        if (isAutoplay) {
+          stopAutoplay();
+        } else {
+          startAutoplay();
+        }
+      }
+
+      updatePagination();
+      updateProgress();
+
+      slider.on("beforeChange", function (event, slick, current, next) {
+        currentSlide = next + 1;
+        updatePagination();
+      });
+
+      slider.on("afterChange", function (event, slick, current) {
+        currentSlide = current + 1;
+        updateProgress();
+      });
+
+      $(".btn-prev").click(function () {
+        slider.slick("slickPrev");
+      });
+
+      $(".btn-next").click(function () {
+        slider.slick("slickNext");
+      });
+
+      $(".btn-stop").click(function () {
+        stopAutoplay();
+        $(".btn-stop").addClass("active");
+        $(".btn-start").removeClass("active");
+      });
+
+      $(".btn-start").click(function () {
+        startAutoplay();
+        $(".btn-start").addClass("active");
+        $(".btn-stop").removeClass("active");
+      });
+
+      startAutoplay();
+      $(".btn-start").addClass("active");
+    });
+  </script>
+  <script src="assets/js/slick.min.js"></script>
   <script src="assets/js/swiper.min.js"></script>
   <script src="assets/js/main.js"></script>
 </html>

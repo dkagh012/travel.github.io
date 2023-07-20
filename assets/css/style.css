@@ -99,10 +99,55 @@
     transform: translateX(10px);
   }
 }
+.background {
+  background-color: #f7f7f7;
+}
+/* 탑 버튼 */
+
+.top {
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+  z-index: 100;
+  width: 54px;
+  height: 54px;
+}
+
+#js-scroll {
+  border-radius: 50%;
+  text-align: center;
+  display: none;
+  width: 54px;
+  height: 54px;
+  box-shadow: 0 5px 12px 3px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s;
+  cursor: pointer;
+  font-size: 31px;
+  padding-top: 11px;
+}
+
+.topBtn {
+  font-size: 20px;
+  padding-top: 5px;
+  line-height: 1;
+  height: 20%;
+  color: var(--colorDarkBlack);
+  width: 100%;
+}
+
+#js-scroll p {
+  color: var(--colorDarkBlack);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#js-scroll p font {
+  color: var(--colorDarkBlack);
+}
 /* header */
 .header {
   width: 100%;
-  height: 145px;
+  height: 100px;
   position: fixed;
   top: 0;
   left: 0;
@@ -247,16 +292,14 @@ body.open_menu .header_container_bg {
   padding-right: 20px;
   margin-right: 80px;
 }
-.aside {
+.header .aside {
+  display: flex;
   position: absolute;
   top: 0;
   right: 3%;
   z-index: 1;
   -webkit-transition: top 0.3s;
   transition: top 0.3s;
-}
-.header .aside {
-  display: flex;
 }
 .header .util {
   display: flex;
@@ -593,8 +636,27 @@ body.open_menu .header_container_bg {
 .bold {
   font-weight: bold !important;
 }
+/* 스크롤 이벤트header  */
+.ScrollHeader {
+  background: var(--colorWhite);
+  box-shadow: 3px 7px 20px 10px rgba(189, 189, 189, 0.2);
+}
+.ScrollHeader .gnb_Item a {
+  color: var(--colorDarkBlack) !important;
+}
+.ScrollHeader .util a {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+.ScrollHeader .util a:hover {
+  color: rgba(0, 0, 0, 1) !important;
+}
+.ScrollHeader.header .btn_search {
+  color: var(--colorDarkBlack);
+}
 /* 메인 스와이퍼 첫번쨰 */
-
+.mySwiper {
+  height: 100% !important;
+}
 .main_sw1 {
   height: 100vh;
   position: relative;
@@ -619,10 +681,10 @@ body.open_menu .header_container_bg {
   left: 130px;
   bottom: 62px;
 }
-.slick-list {
-  height: 100%;
+.main_slick-list {
+  height: 100% !important;
 }
-.slick-list .lg-txt {
+.main_slick-list .lg-txt {
   word-spacing: -6px;
   display: block;
   opacity: 0;
@@ -640,10 +702,10 @@ body.open_menu .header_container_bg {
   white-space: nowrap;
   padding-bottom: 7px;
 }
-.slick-list .lg-txt2 {
+.main_slick-list .lg-txt2 {
   transition: transform 1s ease-in-out, clip-path 1.5s ease-in-out;
 }
-.slick-list .sm-txt {
+.main_slick-list .sm-txt {
   display: block;
   font-family: "Noto Sans KR";
   font-size: 20px;
@@ -659,15 +721,15 @@ body.open_menu .header_container_bg {
 .main_sw1 .swiper-button-prev:after {
   font-size: 0 !important;
 }
-.slick-btn {
+.main_slick-btn {
   display: flex;
   flex-direction: column;
 }
-.slick-btn i {
+.main_slick-btn i {
   font-size: 31px;
   color: var(--colorWhite);
 }
-.slick-btn span {
+.main_slick-btn span {
   font-family: "Vitro";
   position: absolute;
   top: 50%;
@@ -680,17 +742,17 @@ body.open_menu .header_container_bg {
   background: transparent;
   transform: translateY(-50%);
 }
-.slick-next {
+.main_slick-next {
   right: 50px !important;
 }
-.slick-next:hover i {
+.main_slick-next:hover i {
   animation: leftArrow 1s infinite alternate ease-in-out;
 }
-.slick-prev {
+.main_slick-prev {
   left: 50px !important;
 }
 
-.slick-prev:hover i {
+.main_slick-prev:hover i {
   animation: rightArrow 1s infinite alternate ease-in-out;
 }
 .swiper-slide-active .sm-txt {
@@ -769,7 +831,940 @@ body.open_menu .header_container_bg {
   background-color: #2c2c2c !important;
 }
 .swiperItem a img {
+  object-fit: cover;
+  width: 100%;
+  filter: brightness(90%);
+  height: 310px;
+}
+.swiperItem:hover {
+  box-shadow: 3px 7px 20px 10px rgba(189, 189, 189, 0.2);
+  border-color: transparent;
+}
+.swiperItem {
+  border-radius: 10px;
+  border: solid 1px #e5e5e5;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s;
+}
+.main-sc2 .swiper {
+  position: initial;
+  overflow: hidden !important;
+}
+.main-sc2 {
+  position: relative;
+  padding: 0 160px;
+}
+.main-sc2-swiper {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1480px;
+  overflow: hidden !important;
+}
+
+.main-sc2 .swiper-button-next:after,
+.main-sc2 .swiper-button-prev:after {
+  display: none;
+}
+.main-sc2 .swiper-button-next {
+  right: 50px;
+}
+.main-sc2 .swiper-button-prev {
+  left: 50px;
+}
+.main-sc2 .swiper-button-next,
+.main-sc2 .swiper-button-prev {
+  font-size: 40px;
+  border: 1px solid #ccc;
+  width: 80px;
+  border-radius: 100%;
+  border: 1px solid #1c1c1c;
+  height: 80px;
+  color: black;
+}
+.main-sc2 .swiper-button-next:hover i {
+  animation: leftArrow 1s infinite alternate ease-in-out;
+}
+
+.main-sc2 .swiper-button-prev:hover i {
+  animation: rightArrow 1s infinite alternate ease-in-out;
+}
+
+.main-sc2 .item-info {
+  padding: 30px 40px 45px;
+}
+
+.main-sc2 .item-info .tit {
+  /* margin-top: 38px; */
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -1.8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.3em;
+  max-height: 2.6em;
+  text-align: left;
+}
+
+.main-sc2 .item-info .cont {
+  margin-top: 15px;
+  color: #666;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 16px;
+  line-height: 26px;
+  max-height: 52px;
+}
+
+.main-sc2 .item-info .btn-detail {
+  margin-top: 20px;
+  font-size: 16px;
+  letter-spacing: -0.96px;
+  font-weight: 500;
+  text-align: left;
+}
+
+/* slick */
+.main-sl-tit h2 {
+  font-family: "Vitro";
+  font-weight: bold;
+  font-size: 50px;
+  letter-spacing: -3px;
+  color: #000;
+  text-align: center;
+  padding: 150px 0 90px;
+  line-height: 1em;
+}
+.main-sl .slider {
+  width: 100%;
+  margin: 0 auto;
+}
+.main-sl .slider img {
+  width: 100%;
+  height: auto;
+}
+.main-sl .slider-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.main-sl .slider-controls button {
+  margin: 0 5px;
+}
+.main-sl .slider-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  position: absolute;
+  left: 50%;
+  bottom: 110px;
+  margin-left: 380px;
+}
+.main-sl .slider-pagination button {
+  border: none;
+  background: transparent;
+  margin: 0 3px;
+  cursor: pointer;
+}
+.main-sl .slider-pagination button.current {
+  font-weight: bold;
+}
+.main-sl .slider-progress {
+  height: 4px;
+  background-color: #ddd;
+  margin-top: 10px;
+  position: absolute;
+  left: 50%;
+  margin-left: -320px;
+  bottom: 120px;
+  width: 640px;
+  display: flex;
+  align-items: center;
+}
+.main-sl .slider-progress .progress-bar {
+  height: 100%;
+  background-color: #000;
+  width: 0;
+  transition: width 1s linear;
+}
+.main-sl .slick-slide {
+  position: relative;
+  width: 350px !important;
+  height: 480px !important;
+  margin: 0 10px;
+}
+.main-sl .slick-slide > a {
   width: 100%;
   height: 100%;
+}
+.main-sl .item-info {
+  position: relative;
+  padding: 50px 30px;
+  height: 100%;
+  z-index: 10;
+}
+.main-sl {
+  position: relative;
+}
+.main-sl .slick-slide img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 100% !important;
+  filter: brightness(75%);
+  bottom: 0;
+  border-radius: 10px;
   object-fit: cover;
+}
+.main-sl .aside {
+  position: absolute;
+  left: 30px;
+  bottom: 20px;
+  font-family: "Vitro";
+  color: #fff;
+  font-size: 42px;
+  letter-spacing: -1.68px;
+  line-height: 45px;
+  font-weight: bold;
+}
+.main-sl .tit {
+  font-size: 22px;
+  letter-spacing: -0.88px;
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.4em;
+  max-height: 2.8em;
+}
+.main-sl .cont > p {
+  font-size: 15px;
+  letter-spacing: -0.45px;
+  color: #fff;
+  font-weight: 500;
+  margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.4em;
+  max-height: 2.8em;
+}
+.main-sl .item-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 70px;
+  height: 70px;
+  background-color: #e63c2c;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.2;
+  text-align: center;
+  z-index: 9;
+}
+.main-sl .slick-prev,
+.main-sl .slick-next {
+  display: none !important;
+}
+
+.main-sl .btn-prev,
+.main-sl .btn-next {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  margin-top: -40px;
+  width: 80px;
+  height: 80px;
+  font-size: 40px;
+  border-radius: 100%;
+  border: 1px solid #1c1c1c;
+  background-repeat: no-repeat;
+}
+.main-sl .btn-prev {
+  left: 40px;
+  cursor: pointer;
+}
+.main-sl .btn-next {
+  right: 40px;
+  cursor: pointer;
+}
+.main-sl .btn-prev:hover i {
+  animation: rightArrow 1s infinite alternate ease-in-out;
+}
+.main-sl .btn-next:hover i {
+  animation: leftArrow 1s infinite alternate ease-in-out;
+}
+.main-sl .slick-list {
+  overflow: initial;
+}
+.main-sl .main-sl-cont {
+  padding-bottom: 120px;
+  height: 700px;
+}
+.main-sl .active {
+  display: none !important;
+}
+
+.main-sl .btn-stop,
+.main-sl .btn-start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  position: absolute;
+  left: 50%;
+  bottom: 113px;
+  margin-left: 338px !important;
+  border: 0;
+  background: transparent;
+  font-size: 22px;
+}
+
+/* 고객과 여행이지의 소중한 순간 페이지 작업 */
+.wrap-stl-01 {
+  position: relative;
+}
+.wrap-stl-01 .right-area {
+  position: absolute;
+  right: 23px;
+  bottom: 19px;
+}
+.wrap-stl-01 a {
+  font-size: 19px;
+  line-height: 34px;
+  letter-spacing: -0.76px;
+  color: #1c1c1c;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.main-sc4 {
+  padding: 0 75px 150px;
+}
+.review .review_img img {
+  width: 100%;
+  border-radius: 10px;
+  background-size: cover;
+}
+
+.review .review_item {
+  flex: none;
+  width: calc(100% / 3) !important;
+  padding: 0 22px 0 23px;
+}
+.review .item-info {
+  margin-top: 20px;
+  padding-left: 80px;
+  position: relative;
+  min-height: 65px;
+}
+
+.review .user-char {
+  width: 60px;
+  height: 60px;
+  top: 5px;
+  position: absolute;
+  left: 0;
+}
+.review .item-info .cont {
+  font-size: 16px;
+  line-height: 22px;
+  padding-right: 15px;
+}
+.review .item-info .user-id {
+  font-size: 14px;
+  margin-top: 8px;
+}
+.review .review_list {
+  display: flex;
+}
+.review .review_img {
+  max-height: 300px;
+  height: 100%;
+}
+.review .review_img img {
+  height: 100%;
+}
+/* youtube 세상 모든 여행이지 */
+.youtube .item-info {
+  margin-top: 18px;
+  padding-left: 0;
+  min-height: 65px;
+}
+
+.youtube .item-info .tit {
+  font-size: 22px;
+  line-height: 24px;
+  letter-spacing: -1.1px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #1c1c1c;
+}
+.youtubeBox {
+  border-top: solid 1px #1c1c1c;
+  border-bottom: solid 1px #1c1c1c;
+}
+
+/* 메인 이미지 변경  */
+.main-sc5 {
+  margin-bottom: 130px;
+  margin-top: 100px;
+}
+.main-sc5 .magazine-banner {
+  position: relative;
+  display: flex;
+  height: 800px;
+  z-index: 1;
+  margin-top: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.magazine-tit a {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 10% 70px 75px;
+}
+.magazine-tit a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
+.magazine-tit {
+  flex: none;
+  width: 25%;
+}
+.magazine-tit .tit {
+  position: relative;
+  font-family: "Vitro";
+  font-size: 60px;
+  font-weight: bold;
+  color: #fff;
+  z-index: 3;
+  transition: font-size 0.35s ease-in-out;
+  line-height: 80px;
+}
+.magazine-tit .txt {
+  position: relative;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: -1.15px;
+  color: #fff;
+  z-index: 3;
+  transition: font-size 0.35s ease-in-out;
+}
+.magazine-tit .btn {
+  position: relative;
+  margin-top: 50px;
+  font-size: 19px;
+  letter-spacing: -0.76px;
+  color: #fff;
+  z-index: 3;
+  display: flex;
+  gap: 10px;
+}
+.magazine-banner .magazine-group {
+  flex: none;
+  width: 75%;
+  display: flex;
+}
+.magazine-tit .btn i {
+  animation: leftArrow 1s infinite alternate ease-in-out;
+}
+.magazine-banner .magazine-Item a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  border-left: solid 1px rgba(255, 255, 255, 0.3);
+  transition: all 0.3s;
+  z-index: 2;
+}
+.magazine-banner .over a {
+  padding-bottom: 100px !important;
+}
+.magazine-banner .over a::before {
+  content: initial;
+}
+.magazine-banner .magazine-Item .tit {
+  position: relative;
+  font-family: "Vitro";
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 34px;
+  color: #fff;
+  z-index: 3;
+}
+.magazine-banner .magazine-Item .txt {
+  position: relative;
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: -0.9px;
+  color: #fff;
+  z-index: 3;
+}
+.magazine-banner .magazine-List {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+}
+.magazine-banner .magazine-Item {
+  width: calc(100% / 3) !important;
+  margin-right: 0 !important;
+  height: 100%;
+  position: relative;
+}
+.magazine-banner .magazine-Item a {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 0 70px 30px;
+  transition: padding 0.3s;
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-image: none !important;
+}
+/* 알려드립니다 공지사항 */
+
+.main-sc9 {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 220px;
+  padding-bottom: 110px;
+  margin-top: 130px;
+}
+.main-sc9 .main-sc9-notice {
+  flex: 1;
+}
+.main-sc9 .main-sc9-help {
+  flex: 1.25;
+  margin-left: 170px;
+}
+.main-sc9-tit {
+  font-size: 50px;
+  font-weight: 500;
+  line-height: 60px;
+  letter-spacing: -3.75px;
+}
+.main-notice-list {
+  margin-top: 25px;
+}
+.main-notice-list .notice-list-item {
+  padding: 21px 0;
+  border-bottom: solid 1px #e5e5e5;
+}
+.main-notice-list .notice-list-item a {
+  width: 100%;
+}
+.main-notice-list .notice-list-item dl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-notice-list .notice-list-item dt {
+  font-size: 17px;
+  padding-right: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: auto;
+  max-width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-height: 1.6em;
+  max-height: 1.6em;
+}
+.main-notice-list .notice-list-item dd {
+  font-size: 17px;
+  color: #666;
+  min-width: 100px;
+}
+.main-sc9 .help-cont {
+  display: flex;
+  margin-top: 40px;
+}
+.main-sc9 .help-item1 {
+  width: 340px;
+}
+.main-sc9 .help-cont .tit {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.72px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.main-sc9 .help-cont .tit img {
+  width: 30px;
+  height: 30px;
+}
+
+.main-sc9 .help-item2 {
+  display: flex;
+  align-items: flex-end;
+}
+.main-sc9 .help-item2 .lnk a + a {
+  margin-top: 15px;
+}
+.main-sc9 .help-item2 .tit::before {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.main-sc9 .help-cont .phone {
+  font-size: 35px;
+  font-weight: bold;
+  line-height: 40px;
+  font-family: "Vitro";
+  margin-top: 15px;
+}
+.main-sc9 .help-cont .txt {
+  font-size: 16px;
+  line-height: 28px;
+  color: #666;
+  font-weight: 500;
+  margin-top: 20px;
+}
+.main-sc9 .help-cont .lnk {
+  margin-top: 45px;
+}
+.main-sc9 .help-cont .lnk a {
+  position: relative;
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  width: 240px;
+  display: flex;
+  justify-content: space-between;
+}
+.main-sc9 .help-cont .lnk a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 4px;
+  width: 23px;
+  height: 20px;
+}
+.main-sc9 .help-cont .lnk a:hover:after {
+  animation: leftArrow 1s infinite alternate ease-in-out;
+}
+
+/* footer SNS */
+.footer-sns {
+  margin-top: -74px;
+  font-size: 0;
+}
+.footer-sns a.facebook {
+  background-image: url("../images/icon_sns_facebook.svg");
+}
+.footer-sns a.instagram {
+  background-image: url("../images/icon_sns_instagram.svg");
+  background-position-y: 45%;
+}
+.footer-sns a.youtube {
+  background-image: url("../images/icon_sns_youtube.svg");
+}
+.footer-sns a.kakao {
+  background-image: url("../images/icon_sns_kakao.svg");
+}
+.footer-sns a.naver-blog {
+  background-image: url("../images/icon_sns_blog.svg");
+}
+.footer-sns a.naver-post {
+  background-image: url("../images/icon_sns_naverpost.svg");
+  background-position-y: 70%;
+}
+.footer-sns a {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  font-size: 0;
+  color: transparent;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: #1c1c1c;
+  border-radius: 17px;
+}
+.footer-sns a + a {
+  margin-left: 15px;
+}
+.footer {
+  width: auto;
+  margin-left: 220px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 300px;
+  margin-top: 74px;
+  border-top: 1px solid #1c1c1c;
+  position: relative;
+  display: flex;
+}
+
+.footer-menu {
+  margin-top: 80px;
+  font-size: 0;
+}
+.footer-menu a {
+  font-size: 15px;
+  color: #1c1c1c;
+}
+.footer-menu a.active {
+  color: #1c1c1c;
+  font-weight: 500;
+}
+.footer-menu a + a {
+  margin-left: 15px;
+}
+
+.footer-cont {
+  display: flex;
+  margin-top: 75px;
+  padding-bottom: 30px;
+}
+.footer-cont dl + dl {
+  margin-left: 200px;
+}
+.footer-cont dt {
+  font-family: "Vitro", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  white-space: nowrap;
+}
+.footer-cont dd {
+  font-size: 12px;
+  line-height: 20px;
+  color: #666;
+}
+.footer-cont dd .copyright {
+  display: block;
+}
+.footer-cont > .copyright {
+  display: none;
+}
+.footer-cont dd ul li {
+  font-size: 12px;
+  line-height: 20px;
+  color: #666;
+}
+.footer-cont dd ul li a {
+  font-size: 12px;
+  line-height: 20px;
+  color: #666;
+}
+/* 테마가 있는 여행이지 작업 */
+.main-tm {
+  padding-bottom: 150px;
+}
+.tab-main {
+  padding-bottom: 50px;
+  text-align: center;
+  line-height: 60px;
+}
+
+.tab-main > a {
+  display: inline-block;
+  font-size: 45px;
+  letter-spacing: -2.7px;
+  font-weight: 700;
+  color: #e5e5e5;
+  margin-right: 20px;
+  transition: color 0.25s ease-in-out;
+}
+.tab-main > a.selected {
+  color: #171717;
+}
+.tab-main > a:hover {
+  color: #1c1c1c;
+}
+.main-tm-wrap {
+  position: relative;
+  padding-left: 440px;
+}
+.main-tm-lnb {
+  width: 420px;
+  border-top: solid 1px #ccc;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 580px;
+}
+.main-tm-lnb li {
+  position: relative;
+}
+.main-tm-lnb a:hover:after {
+  transform: translateX(0);
+}
+.main-tm-lnb a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #1c1c1c;
+  transform: translateX(-100%);
+  transition: transform 0.35s ease-in-out;
+}
+.main-tm-lnb a {
+  position: relative;
+  display: block;
+  height: 96px;
+  line-height: 95px;
+  border-bottom: solid 1px #ccc;
+  font-size: 22px;
+  padding-left: 40px;
+  font-weight: 500;
+  overflow: hidden;
+}
+.main-tm-lnb .active a {
+  font-weight: bold;
+  border-color: #1c1c1c;
+}
+.main-tm-lnb a:before {
+  content: attr(data-label);
+  position: absolute;
+  z-index: 1;
+  color: #fff;
+  clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);
+  transition: clip-path 0.35s ease-in-out;
+}
+.main-tm-lnb a:hover:before {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+.tmSwiper {
+  min-height: 577px !important;
+  width: 100% !important;
+  overflow: hidden;
+}
+.theme-list {
+  position: relative;
+}
+.tmSwiper .swiper-button-prev::after,
+.tmSwiper .swiper-button-next::after {
+  content: initial;
+}
+.tmSwiper .swiper-button-prev,
+.tmSwiper .swiper-button-next {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  margin-top: -40px;
+  width: 80px;
+  height: 80px;
+  font-size: 40px;
+  border-radius: 100%;
+  border: 1px solid #1c1c1c;
+  background-repeat: no-repeat;
+  background: white;
+  color: black;
+}
+.theme-item {
+  position: relative;
+  height: 577px !important;
+  margin: 0 10px;
+}
+
+.theme-item img {
+  position: absolute;
+  left: 0 !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  object-fit: cover;
+  width: 100% !important;
+  filter: brightness(65%);
+  height: 100% !important;
+}
+.theme-item .item-info {
+  position: absolute;
+  top: 61%;
+  left: 30px;
+  right: 30px;
+  height: 34%;
+  z-index: 10;
+}
+.theme-item .item-info .tit {
+  font-size: 20px;
+  letter-spacing: 0.12px;
+  color: #fff;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-top: 42px;
+  line-height: 25px;
+}
+.theme-item .item-info .cont {
+  font-size: 15px;
+  letter-spacing: -0.45px;
+  color: #fff;
+  font-weight: 200;
+  margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.theme-item .item-info .price {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-top: 25px;
+  display: flex;
+  align-items: end;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+}
+.theme-item .item-info .price strong {
+  font-family: "Vitro";
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0;
 }
