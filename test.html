@@ -7,21 +7,17 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+      href="assets/css/daterangepicker.css"
     />
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-    ></script>
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+    /> -->
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/moment.min.js"></script>
     <!-- daterangepicker 한국어 locale 파일 포함 -->
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.ko.js"
-    ></script>
+    <link rel="stylesheet" href="assets/css/xeicon.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
@@ -42,12 +38,22 @@
               <p>출발일 선택</p>
               <span>(최대 14일까지 선택 가능합니다.)</span>
             </div>
-            <input type="text" id="dateRangePicker" />
-            <div class="calendar-table"></div>
-            <div>
-              <button type="button">날짜 초기화</button>
-              <button type="button">일정으로 검색</button>
-              <button type="button">지역과 함께 검색</button>
+            <input type="text" id="dateRangePicker" / style="display:none;">
+            <div class="calendar-tableBox"></div>
+            <div class="date-modal-btn">
+              <button
+                class="buttonStyle"
+                type="button"
+                onClick="fnResetSearchCalendar()"
+              >
+                날짜 초기화 <i class="xi-catched"></i>
+              </button>
+              <button class="buttonStyle datebtn_balck" type="button">
+                일정으로 검색
+              </button>
+              <button class="buttonStyle datebtn_balck" type="button">
+                지역과 함께 검색
+              </button>
             </div>
           </div>
         </div>
@@ -57,10 +63,49 @@
     <!-- Your other scripts and resources -->
     <script
       type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+      src="assets/js/daterangepicker.min.js"
     ></script>
 
     <script>
+      function fnResetSearchCalendar() {
+        $("#dateRangePicker").daterangepicker("destroy");
+        $("#dateRangePicker").val("");
+        fnSetSearchCalendar();
+      }
+      function fnSetSearchCalendar() {
+        // Assuming minDate is defined somewhere in your project
+        const minDate = moment().startOf("day");
+
+        $("#dateRangePicker").daterangepicker(
+          {
+            parentEl: "#inline-calendar",
+            alwaysShowCalendars: true,
+            autoApply: true,
+            inline: true,
+            minDate: minDate,
+            startDate: minDate,
+            endDate: minDate,
+            locale: {
+              separator: "~",
+            },
+          },
+          function (start, end, label, state) {
+            let startDate = moment(start.format("YYYY-MM-DD"));
+            let endDate = moment(end.format("YYYY-MM-DD"));
+
+            let diff = endDate.diff(startDate, "days");
+            if (diff > 14) {
+              let msg = "최대 14일까지 선택 가능합니다.";
+              _Popup.openDefaultPopup(msg);
+              $("#btnModalConfirm").on("click", function () {
+                fnResetSearchCalendar();
+              });
+            }
+
+            $("#searchModalCalendarSelectFlag").val("Y");
+          }
+        );
+      }
       // 웹 페이지 로드 후 실행되는 스크립트
       document.addEventListener("DOMContentLoaded", function () {
         // dateRangePicker 요소를 선택하고, daterangepicker를 초기화합니다.
@@ -70,10 +115,33 @@
           inline: true,
           singleDatePicker: "false" == "true" ? true : false,
           locale: {
-            // ... // Your locale settings here
+            format: "YYYY년 MM월 DD일",
+            separator: " - ",
+            applyLabel: "선택",
+            cancelLabel: "취소",
+            fromLabel: "부터",
+            toLabel: "까지",
+            customRangeLabel: "직접 선택",
+            weekLabel: "주",
+            daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
+            monthNames: [
+              "1.",
+              "2.",
+              "3.",
+              "4.",
+              "5.",
+              "6.",
+              "7.",
+              "8.",
+              "9.",
+              "10.",
+              "11.",
+              "12.",
+            ],
+            firstDay: 0,
           },
-          // Append the dateRangePicker calendar to the ".calendar-table" div
-          parentEl: ".calendar-table",
+          // Append the dateRangePicker calendar to the ".calendar-tableBox" div
+          parentEl: ".calendar-tableBox",
         });
 
         // "일정 선택" 버튼 클릭 시 date-modal 열기
