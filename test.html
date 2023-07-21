@@ -9,11 +9,6 @@
       type="text/css"
       href="assets/css/daterangepicker.css"
     />
-    <!-- <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
-    /> -->
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/moment.min.js"></script>
     <!-- daterangepicker 한국어 locale 파일 포함 -->
@@ -30,7 +25,7 @@
           <div class="date-modal-header">
             <button type="button" class="modal-date-Close">닫기</button>
           </div>
-          <div class="modal-date-body">
+          <div class="date-modal-body">
             <div class="date-modal-title">
               <h2>일정이 어떻게 되세요</h2>
             </div>
@@ -38,7 +33,7 @@
               <p>출발일 선택</p>
               <span>(최대 14일까지 선택 가능합니다.)</span>
             </div>
-            <input type="text" id="dateRangePicker" / style="display:none;">
+            <input type="text" id="dateRangePicker" style="display: none" />
             <div class="calendar-tableBox"></div>
             <div class="date-modal-btn">
               <button
@@ -67,82 +62,83 @@
     ></script>
 
     <script>
+      // Define minDate with the current date (start of the day)
+      const minDate = moment().startOf("day");
+
       function fnResetSearchCalendar() {
+        // Destroy the current date range picker instance
         $("#dateRangePicker").daterangepicker("destroy");
+        // Clear the value of the date range input field
         $("#dateRangePicker").val("");
+        // Reset the "calendar-tableBox" contents
+        resetCalendarTable();
+        // Re-initialize the date range picker
         fnSetSearchCalendar();
       }
-      function fnSetSearchCalendar() {
-        // Assuming minDate is defined somewhere in your project
-        const minDate = moment().startOf("day");
 
+      function resetCalendarTable() {
+        // Remove any existing content within the "calendar-tableBox" container
+        $(".calendar-tableBox").empty();
+        // Add the default message back to the "calendar-tableBox" container
+        $(".calendar-tableBox").append("<p>No date range selected.</p>");
+      }
+
+      function fnSetSearchCalendar() {
+        // Destroy any existing instance of the date range picker in the "calendar-tableBox" container
+        $(".calendar-tableBox").empty();
+
+        // Create the new date range picker within the "calendar-tableBox" container
         $("#dateRangePicker").daterangepicker(
           {
-            parentEl: "#inline-calendar",
             alwaysShowCalendars: true,
             autoApply: true,
             inline: true,
+            singleDatePicker: "false" == "true" ? true : false,
+            locale: {
+              format: "YYYY년 MM월 DD일",
+              separator: " - ",
+              applyLabel: "선택",
+              cancelLabel: "취소",
+              fromLabel: "부터",
+              toLabel: "까지",
+              customRangeLabel: "직접 선택",
+              weekLabel: "주",
+              daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
+              monthNames: [
+                "1.",
+                "2.",
+                "3.",
+                "4.",
+                "5.",
+                "6.",
+                "7.",
+                "8.",
+                "9.",
+                "10.",
+                "11.",
+                "12.",
+              ],
+              firstDay: 0,
+            },
+            // Append the dateRangePicker calendar to the ".calendar-tableBox" div
+            parentEl: ".calendar-tableBox",
             minDate: minDate,
             startDate: minDate,
             endDate: minDate,
-            locale: {
-              separator: "~",
-            },
+            separator: "~",
           },
           function (start, end, label, state) {
             let startDate = moment(start.format("YYYY-MM-DD"));
             let endDate = moment(end.format("YYYY-MM-DD"));
-
-            let diff = endDate.diff(startDate, "days");
-            if (diff > 14) {
-              let msg = "최대 14일까지 선택 가능합니다.";
-              _Popup.openDefaultPopup(msg);
-              $("#btnModalConfirm").on("click", function () {
-                fnResetSearchCalendar();
-              });
-            }
-
             $("#searchModalCalendarSelectFlag").val("Y");
           }
         );
+        $("#dateRangePicker").data("daterangepicker").show(); // dateRangePicker 캘린더도 보이도록 show() 메서드를 호출합니다.
       }
+
       // 웹 페이지 로드 후 실행되는 스크립트
       document.addEventListener("DOMContentLoaded", function () {
-        // dateRangePicker 요소를 선택하고, daterangepicker를 초기화합니다.
-        $("#dateRangePicker").daterangepicker({
-          alwaysShowCalendars: true,
-          autoApply: true,
-          inline: true,
-          singleDatePicker: "false" == "true" ? true : false,
-          locale: {
-            format: "YYYY년 MM월 DD일",
-            separator: " - ",
-            applyLabel: "선택",
-            cancelLabel: "취소",
-            fromLabel: "부터",
-            toLabel: "까지",
-            customRangeLabel: "직접 선택",
-            weekLabel: "주",
-            daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
-            monthNames: [
-              "1.",
-              "2.",
-              "3.",
-              "4.",
-              "5.",
-              "6.",
-              "7.",
-              "8.",
-              "9.",
-              "10.",
-              "11.",
-              "12.",
-            ],
-            firstDay: 0,
-          },
-          // Append the dateRangePicker calendar to the ".calendar-tableBox" div
-          parentEl: ".calendar-tableBox",
-        });
+        fnSetSearchCalendar();
 
         // "일정 선택" 버튼 클릭 시 date-modal 열기
         document

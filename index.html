@@ -15,6 +15,13 @@
     <link rel="stylesheet" href="/assets/css/xeicon.min.css" />
     <link rel="stylesheet" href="/assets/css/swiper.min.css" />
     <link rel="stylesheet" href="/assets/css/slick.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/css/daterangepicker.css"
+    />
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/moment.min.js"></script>
   </head>
   <body>
     <header class="header">
@@ -363,6 +370,44 @@
         </div>
       </div>
     </header>
+    <div class="date-modal" style="display: none">
+      <div class="date-modal-background"></div>
+      <div class="date-modal-main">
+        <div class="date-modal-Box">
+          <div class="date-modal-header">
+            <button type="button" class="modal-date-Close">
+              <i class="xi-close-thin"></i>
+            </button>
+          </div>
+          <div class="date-modal-body">
+            <div class="date-modal-title">
+              <h2>일정이 어떻게 되세요</h2>
+            </div>
+            <div class="date-modal-subtitle">
+              <p>출발일 선택</p>
+              <span>(최대 14일까지 선택 가능합니다.)</span>
+            </div>
+            <input type="text" id="dateRangePicker" style="display: none" />
+            <div class="calendar-tableBox"></div>
+            <div class="date-modal-btn">
+              <button
+                class="buttonStyle"
+                type="button"
+                onClick="fnResetSearchCalendar()"
+              >
+                날짜 초기화 <i class="xi-catched"></i>
+              </button>
+              <button class="buttonStyle datebtn_balck" type="button">
+                일정으로 검색
+              </button>
+              <button class="buttonStyle datebtn_balck" type="button">
+                지역과 함께 검색
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <section class="main_sw1">
       <div class="swiper main_slick-slider mySwiper">
         <div class="swiper-wrapper main_slick-list">
@@ -461,7 +506,7 @@
         </div>
         <div class="main-sc-aside">
           <a href="#">어디로 떠나세요<i class="xi-arrow-right"></i></a>
-          <a href="#">일정이 어떻게 되세요? <i class="xi-arrow-right"></i></a>
+          <button type="button" class="date-modal-Open">열기</button>
         </div>
       </div>
     </section>
@@ -1174,6 +1219,11 @@
       </div>
     </footer>
   </body>
+
+  <script
+    type="text/javascript"
+    src="assets/js/daterangepicker.min.js"
+  ></script>
   <script>
     $(document).ready(function () {
       var slider = $(".slider");
@@ -1280,6 +1330,101 @@
 
       startAutoplay();
       $(".btn-start").addClass("active");
+    });
+
+    // Define minDate with the current date (start of the day)
+    const minDate = moment().startOf("day");
+
+    function fnResetSearchCalendar() {
+      // Destroy the current date range picker instance
+      $("#dateRangePicker").daterangepicker("destroy");
+      // Clear the value of the date range input field
+      $("#dateRangePicker").val("");
+      // Reset the "calendar-tableBox" contents
+      resetCalendarTable();
+      // Re-initialize the date range picker
+      fnSetSearchCalendar();
+    }
+
+    function resetCalendarTable() {
+      // Remove any existing content within the "calendar-tableBox" container
+      $(".calendar-tableBox").empty();
+      // Add the default message back to the "calendar-tableBox" container
+      $(".calendar-tableBox").append("<p>No date range selected.</p>");
+    }
+
+    function fnSetSearchCalendar() {
+      // Destroy any existing instance of the date range picker in the "calendar-tableBox" container
+      $(".calendar-tableBox").empty();
+
+      // Create the new date range picker within the "calendar-tableBox" container
+      $("#dateRangePicker").daterangepicker(
+        {
+          alwaysShowCalendars: true,
+          autoApply: true,
+          inline: true,
+          singleDatePicker: "false" == "true" ? true : false,
+          locale: {
+            format: "YYYY년 MM월 DD일",
+            separator: " - ",
+            applyLabel: "선택",
+            cancelLabel: "취소",
+            fromLabel: "부터",
+            toLabel: "까지",
+            customRangeLabel: "직접 선택",
+            weekLabel: "주",
+            daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
+            monthNames: [
+              "1.",
+              "2.",
+              "3.",
+              "4.",
+              "5.",
+              "6.",
+              "7.",
+              "8.",
+              "9.",
+              "10.",
+              "11.",
+              "12.",
+            ],
+            firstDay: 0,
+          },
+          // Append the dateRangePicker calendar to the ".calendar-tableBox" div
+          parentEl: ".calendar-tableBox",
+          minDate: minDate,
+          startDate: minDate,
+          endDate: minDate,
+          separator: "~",
+        },
+        function (start, end, label, state) {
+          let startDate = moment(start.format("YYYY-MM-DD"));
+          let endDate = moment(end.format("YYYY-MM-DD"));
+          $("#searchModalCalendarSelectFlag").val("Y");
+        }
+      );
+      $("#dateRangePicker").data("daterangepicker").show(); // dateRangePicker 캘린더도 보이도록 show() 메서드를 호출합니다.
+    }
+
+    // 웹 페이지 로드 후 실행되는 스크립트
+    document.addEventListener("DOMContentLoaded", function () {
+      fnSetSearchCalendar();
+
+      // "일정 선택" 버튼 클릭 시 date-modal 열기
+      document
+        .querySelector(".date-modal-Open")
+        .addEventListener("click", function () {
+          $(".date-modal").show(); // date-modal 보이도록 show() 메서드를 호출합니다.
+          $("#dateRangePicker").data("daterangepicker").show(); // dateRangePicker 캘린더도 보이도록 show() 메서드를 호출합니다.
+        });
+
+      // "닫기" 버튼 클릭 시 date-modal 닫기
+      document
+        .querySelector(".modal-date-Close")
+        .addEventListener("click", function () {
+          $(".date-modal").hide(); // date-modal 감추도록 hide() 메서드를 호출합니다.
+          $("#dateRangePicker").data("daterangepicker").hide(); // dateRangePicker 캘린더도 감추도록 hide() 메서드를 호출합니다.
+        });
     });
   </script>
   <script src="assets/js/slick.min.js"></script>
