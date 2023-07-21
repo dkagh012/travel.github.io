@@ -1768,3 +1768,86 @@ body.open_menu .header_container_bg {
   line-height: 20px;
   letter-spacing: 0;
 }
+/* 일정이 어떻게 되세요 페이지 */
+
+.date-modal-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.5;
+  height: 100vh;
+}
+.date-modal-main {
+  position: relative;
+  width: auto;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  -webkit-transform: translate(0, 0) !important;
+  -ms-transform: translate(0, 0) !important;
+  -o-transform: translate(0, 0) !important;
+  transform: translate(0, 0) !important;
+}
+.date-modal-Box {
+  max-width: 1260px;
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: 0;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100% - 20px);
+  overflow: hidden;
+}
+.date-modal-header {
+  padding: 0 15px 0 50px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  min-height: 65px;
+}
+.date-modal-header button {
+  border: 0;
+  background: transparent;
+}
+.modal-date-body {
+  position: relative;
+  flex: 1 1 auto;
+  width: calc(100% - 50px);
+  height: calc(100% - 80px);
+  margin: 40px 0;
+  /* padding: 0 10px 0 50px; */
+  padding: 0 25px;
+  color: #1c1c1c;
+  overflow-y: auto;
+  word-break: keep-all;
+}
+.date-modal-title {
+  font-family: "Vitro";
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+}
+.date-modal-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 5px;
+  justify-content: center;
+  font-family: "Vitro";
+}
+.date-modal-subtitle span {
+  color: #999 !important;
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Your Web Page</title>
+    <!-- daterangepicker CSS 파일 포함 -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+    ></script>
+    <!-- daterangepicker 한국어 locale 파일 포함 -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.ko.js"
+    ></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- daterangepicker를 위한 input 요소 -->
+    <button type="button" class="date-modal-Open">열기</button>
+    <div class="date-modal">
+      <div class="date-modal-background"></div>
+      <div class="date-modal-main">
+        <div class="date-modal-Box">
+          <div class="date-modal-header">
+            <button type="button" class="modal-date-Close">닫기</button>
+          </div>
+          <div class="modal-date-body">
+            <div class="date-modal-title">
+              <h2>일정이 어떻게 되세요</h2>
+            </div>
+            <div class="date-modal-subtitle">
+              <p>출발일 선택</p>
+              <span>(최대 14일까지 선택 가능합니다.)</span>
+            </div>
+            <input type="text" id="dateRangePicker" />
+            <div class="calendar-table"></div>
+            <div>
+              <button type="button">날짜 초기화</button>
+              <button type="button">일정으로 검색</button>
+              <button type="button">지역과 함께 검색</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Your other scripts and resources -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+    ></script>
+
+    <script>
+      // 웹 페이지 로드 후 실행되는 스크립트
+      document.addEventListener("DOMContentLoaded", function () {
+        // dateRangePicker 요소를 선택하고, daterangepicker를 초기화합니다.
+        $("#dateRangePicker").daterangepicker({
+          alwaysShowCalendars: true,
+          autoApply: true,
+          inline: true,
+          singleDatePicker: "false" == "true" ? true : false,
+          locale: {
+            // ... // Your locale settings here
+          },
+          // Append the dateRangePicker calendar to the ".calendar-table" div
+          parentEl: ".calendar-table",
+        });
+
+        // "일정 선택" 버튼 클릭 시 date-modal 열기
+        document
+          .querySelector(".date-modal-Open")
+          .addEventListener("click", function () {
+            $(".date-modal").show(); // date-modal 보이도록 show() 메서드를 호출합니다.
+            $("#dateRangePicker").data("daterangepicker").show(); // dateRangePicker 캘린더도 보이도록 show() 메서드를 호출합니다.
+          });
+
+        // "닫기" 버튼 클릭 시 date-modal 닫기
+        document
+          .querySelector(".modal-date-Close")
+          .addEventListener("click", function () {
+            $(".date-modal").hide(); // date-modal 감추도록 hide() 메서드를 호출합니다.
+            $("#dateRangePicker").data("daterangepicker").hide(); // dateRangePicker 캘린더도 감추도록 hide() 메서드를 호출합니다.
+          });
+      });
+    </script>
+  </body>
+</html>
