@@ -1787,7 +1787,7 @@ body.open_menu .header_container_bg {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 999;
+  z-index: 99;
 }
 .date-modal-main {
   position: relative;
@@ -1943,4 +1943,94 @@ body.open_menu .header_container_bg {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+/* 길이가 14이상 일 시 나오는 팝업 */
+
+.modal-lengthBox {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  outline: 0;
+}
+
+.modal-length-content {
+  position: relative;
+  width: auto;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.modal-lengthCenter {
+  width: 100%;
+  max-width: 540px;
+  position: relative;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: 0;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100% - 20px);
+  overflow: hidden;
+}
+
+.modal-length-header {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 15px 0 65px;
+  min-height: 70px;
+}
+
+.modal-length-body {
+  width: 100%;
+  padding: 15px 30px 60px;
+  margin: 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.mCustomScrollBox {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  max-width: 100%;
+  outline: none;
+  direction: ltr;
+}
+
+.modal-footer {
+  flex-shrink: 0;
+  display: flex;
+}
+
+#btnModalConfirm {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  border-radius: 2px;
+  text-decoration: none;
+  box-sizing: border-box;
+  letter-spacing: -0.6px;
+  background: #1c1c1c !important;
+  border: 0 !important;
+  color: #fff !important;
+  font-size: 16px;
+  min-height: 55px;
 }

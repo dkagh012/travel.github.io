@@ -407,6 +407,80 @@
           </div>
         </div>
       </div>
+      <div class="modal-length" style="display: none">
+        <div class="date-modal-background"></div>
+        <div class="modal-lengthBox">
+          <div class="modal-length-content">
+            <div class="modal-lengthCenter">
+              <div class="modal-length-header">
+                <button
+                  type="button"
+                  class="btn-md-close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <i class="xi-close-thin"></i>
+                </button>
+              </div>
+              <div class="modal-length-body">
+                <div
+                  id="mCSB_8"
+                  class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+                  style="max-height: none"
+                  tabindex="0"
+                >
+                  <div
+                    id="mCSB_8_container"
+                    class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y"
+                    style="position: relative; left: 0px; top: 0px"
+                    dir="ltr"
+                  >
+                    <div class="body-content" id="_defaultLayerMsgDIV">
+                      최대 14일까지 선택 가능합니다.
+                    </div>
+                  </div>
+                  <div
+                    id="mCSB_8_scrollbar_vertical"
+                    class="mCSB_scrollTools mCSB_8_scrollbar mCS-light mCSB_scrollTools_vertical"
+                    style="display: none"
+                  >
+                    <a href="#" class="mCSB_buttonUp"></a>
+                    <div class="mCSB_draggerContainer">
+                      <div
+                        id="mCSB_8_dragger_vertical"
+                        class="mCSB_dragger"
+                        style="
+                          position: absolute;
+                          min-height: 30px;
+                          height: 0px;
+                          top: 0px;
+                        "
+                      >
+                        <div
+                          class="mCSB_dragger_bar"
+                          style="line-height: 30px"
+                        ></div>
+                      </div>
+                      <div class="mCSB_draggerRail"></div>
+                    </div>
+                    <a href="#" class="mCSB_buttonDown"></a>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn-type-1 color--black"
+                  data-dismiss="modal"
+                  id="btnModalConfirm"
+                >
+                  확인
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <section class="main_sw1">
       <div class="swiper main_slick-slider mySwiper">
@@ -1225,6 +1299,109 @@
     src="assets/js/daterangepicker.min.js"
   ></script>
   <script>
+    // Define minDate with the current date (start of the day)
+    const minDate = moment().startOf("day");
+
+    function fnResetSearchCalendar() {
+      // Destroy the current date range picker instance
+      $("#dateRangePicker").daterangepicker("destroy");
+      // Clear the value of the date range input field
+      $("#dateRangePicker").val("");
+      // Reset the "calendar-tableBox" contents
+      resetCalendarTable();
+      // Re-initialize the date range picker
+      fnSetSearchCalendar();
+    }
+
+    function resetCalendarTable() {
+      // Remove any existing content within the "calendar-tableBox" container
+      $(".calendar-tableBox").empty();
+      // Add the default message back to the "calendar-tableBox" container
+      $(".calendar-tableBox").append("<p>No date range selected.</p>");
+    }
+
+    function fnSetSearchCalendar() {
+      // Destroy any existing instance of the date range picker in the "calendar-tableBox" container
+      $(".calendar-tableBox").empty();
+
+      // Create the new date range picker within the "calendar-tableBox" container
+      $("#dateRangePicker").daterangepicker(
+        {
+          alwaysShowCalendars: true,
+          autoApply: true,
+          inline: true,
+          parentEl: ".calendar-tableBox",
+          minDate: minDate,
+          startDate: minDate,
+          endDate: minDate,
+          separator: "~",
+          singleDatePicker: "false" == "true" ? true : false,
+          locale: {
+            format: "YYYY년 MM월 DD일",
+            separator: " - ",
+            applyLabel: "선택",
+            cancelLabel: "취소",
+            fromLabel: "부터",
+            toLabel: "까지",
+            customRangeLabel: "직접 선택",
+            weekLabel: "주",
+            daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
+            monthNames: [
+              "1.",
+              "2.",
+              "3.",
+              "4.",
+              "5.",
+              "6.",
+              "7.",
+              "8.",
+              "9.",
+              "10.",
+              "11.",
+              "12.",
+            ],
+            firstDay: 0,
+          },
+        },
+        function (start, end, label, state) {
+          let startDate = moment(start.format("YYYY-MM-DD"));
+          let endDate = moment(end.format("YYYY-MM-DD"));
+          let diff = endDate.diff(startDate, "days");
+          if (diff > 14) {
+            document.querySelector(".modal-length").style.display = "block";
+            $("#btnModalConfirm").on("click", function () {
+              fnResetSearchCalendar();
+              document.querySelector(".modal-length").style.display = "none";
+            });
+          }
+          // $("#searchModalCalendarSelectFlag").val("Y");
+        }
+      );
+      $("#dateRangePicker").data("daterangepicker").show(); // dateRangePicker 캘린더도 보이도록 show() 메서드를 호출합니다.
+    }
+
+    // 웹 페이지 로드 후 실행되는 스크립트
+    document.addEventListener("DOMContentLoaded", function () {
+      fnSetSearchCalendar();
+
+      // "일정 선택" 버튼 클릭 시 date-modal 열기
+      document
+        .querySelector(".date-modal-Open")
+        .addEventListener("click", function () {
+          $(".date-modal").show(); // date-modal 보이도록 show() 메서드를 호출합니다.
+          $("#dateRangePicker").data("daterangepicker").show(); // dateRangePicker 캘린더도 보이도록 show() 메서드를 호출합니다.
+        });
+
+      // "닫기" 버튼 클릭 시 date-modal 닫기
+      document
+        .querySelector(".modal-date-Close")
+        .addEventListener("click", function () {
+          $(".date-modal").hide(); // date-modal 감추도록 hide() 메서드를 호출합니다.
+          $("#dateRangePicker").data("daterangepicker").hide(); // dateRangePicker 캘린더도 감추도록 hide() 메서드를 호출합니다.
+        });
+    });
+  </script>
+  <script>
     $(document).ready(function () {
       var slider = $(".slider");
       var progressBar = $(".progress-bar");
@@ -1254,7 +1431,6 @@
 
       var totalSlides = slider.slick("getSlick").slideCount;
       var currentSlide = slider.slick("slickCurrentSlide") + 1;
-
       function updatePagination() {
         $(".slider-pagination").html(
           "<button class='page-btn current'>" +
@@ -1330,101 +1506,6 @@
 
       startAutoplay();
       $(".btn-start").addClass("active");
-    });
-
-    // Define minDate with the current date (start of the day)
-    const minDate = moment().startOf("day");
-
-    function fnResetSearchCalendar() {
-      // Destroy the current date range picker instance
-      $("#dateRangePicker").daterangepicker("destroy");
-      // Clear the value of the date range input field
-      $("#dateRangePicker").val("");
-      // Reset the "calendar-tableBox" contents
-      resetCalendarTable();
-      // Re-initialize the date range picker
-      fnSetSearchCalendar();
-    }
-
-    function resetCalendarTable() {
-      // Remove any existing content within the "calendar-tableBox" container
-      $(".calendar-tableBox").empty();
-      // Add the default message back to the "calendar-tableBox" container
-      $(".calendar-tableBox").append("<p>No date range selected.</p>");
-    }
-
-    function fnSetSearchCalendar() {
-      // Destroy any existing instance of the date range picker in the "calendar-tableBox" container
-      $(".calendar-tableBox").empty();
-
-      // Create the new date range picker within the "calendar-tableBox" container
-      $("#dateRangePicker").daterangepicker(
-        {
-          alwaysShowCalendars: true,
-          autoApply: true,
-          inline: true,
-          singleDatePicker: "false" == "true" ? true : false,
-          locale: {
-            format: "YYYY년 MM월 DD일",
-            separator: " - ",
-            applyLabel: "선택",
-            cancelLabel: "취소",
-            fromLabel: "부터",
-            toLabel: "까지",
-            customRangeLabel: "직접 선택",
-            weekLabel: "주",
-            daysOfWeek: ["일", "월", "화", "수", "목", "금", "토"],
-            monthNames: [
-              "1.",
-              "2.",
-              "3.",
-              "4.",
-              "5.",
-              "6.",
-              "7.",
-              "8.",
-              "9.",
-              "10.",
-              "11.",
-              "12.",
-            ],
-            firstDay: 0,
-          },
-          // Append the dateRangePicker calendar to the ".calendar-tableBox" div
-          parentEl: ".calendar-tableBox",
-          minDate: minDate,
-          startDate: minDate,
-          endDate: minDate,
-          separator: "~",
-        },
-        function (start, end, label, state) {
-          let startDate = moment(start.format("YYYY-MM-DD"));
-          let endDate = moment(end.format("YYYY-MM-DD"));
-          $("#searchModalCalendarSelectFlag").val("Y");
-        }
-      );
-      $("#dateRangePicker").data("daterangepicker").show(); // dateRangePicker 캘린더도 보이도록 show() 메서드를 호출합니다.
-    }
-
-    // 웹 페이지 로드 후 실행되는 스크립트
-    document.addEventListener("DOMContentLoaded", function () {
-      fnSetSearchCalendar();
-
-      // "일정 선택" 버튼 클릭 시 date-modal 열기
-      document
-        .querySelector(".date-modal-Open")
-        .addEventListener("click", function () {
-          $(".date-modal").show(); // date-modal 보이도록 show() 메서드를 호출합니다.
-          $("#dateRangePicker").data("daterangepicker").show(); // dateRangePicker 캘린더도 보이도록 show() 메서드를 호출합니다.
-        });
-
-      // "닫기" 버튼 클릭 시 date-modal 닫기
-      document
-        .querySelector(".modal-date-Close")
-        .addEventListener("click", function () {
-          $(".date-modal").hide(); // date-modal 감추도록 hide() 메서드를 호출합니다.
-          $("#dateRangePicker").data("daterangepicker").hide(); // dateRangePicker 캘린더도 감추도록 hide() 메서드를 호출합니다.
-        });
     });
   </script>
   <script src="assets/js/slick.min.js"></script>
