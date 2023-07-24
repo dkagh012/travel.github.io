@@ -233,7 +233,7 @@
           </button>
         </div>
       </div>
-      <div class="modal">
+      <div class="modal" style="display: none">
         <div class="modal-backdrop"></div>
         <div class="modal-SearchBox">
           <div class="modal-content">
@@ -245,10 +245,11 @@
                     <input
                       type="text"
                       class="inp-base"
+                      id="commonSearchPlaceKeyword"
                       maxlength="150"
                       placeholder="검색어를 입력하세요"
                     />
-                    <button class="commonSearch">
+                    <button class="commonSearch" id="iptSearchBtn">
                       <i class="xi-search"></i>
                     </button>
                   </div>
@@ -256,10 +257,10 @@
               </div>
               <div class="tab-btns-wrap">
                 <ul class="tab-btns">
-                  <li class="tab-btn active">
+                  <li class="tab-btn">
                     <button type="button">여행 상품찾기</button>
                   </li>
-                  <li class="tab-btn">
+                  <li class="tab-btn active">
                     <button type="button">여행 취향 맞춤</button>
                   </li>
                 </ul>
@@ -268,89 +269,572 @@
                 <i class="xi-close-thin"></i>
               </button>
             </div>
+            <input
+              type="hidden"
+              id="commonSearchMenuCode"
+              name="commonSearchMenuCode"
+              value=""
+            />
             <div class="modal-body">
+              <div class="modal-find" style="display: none">
+                <form method="post">
+                  <div class="ms-find_container">
+                    <div class="ms-find_header">
+                      <button class="active" type="button">여행</button>
+                      <button type="button">여행</button>
+                      <button type="button">여행</button>
+                      <button type="button">여행</button>
+                      <button type="button">여행</button>
+                      <button type="button">여행</button>
+                    </div>
+                    <div class="ms_find_hash">
+                      <ul style="display: flex">
+                        <li class="show">
+                          <span>지역</span>
+                          <div class="list-arrow">
+                            <ul>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010111'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010112'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010113'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010114'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010115'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010116'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010117'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010118'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010119'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M0101110'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                      </ul>
+                      <ul>
+                        <li class="show">
+                          <span>위치</span>
+                          <div class="list-arrow">
+                            <ul>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010111'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010112'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010113'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010114'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010115'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010116'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010117'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010118'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010119'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M0101110'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                      </ul>
+                      <ul>
+                        <li class="show">
+                          <span>위치</span>
+                          <div class="list-arrow">
+                            <ul>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010111'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010112'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010113'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010114'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010115'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010116'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010117'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010118'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010119'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M0101110'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                        <li class="show">
+                          <span>위치</span>
+                          <div class="list-arrow">
+                            <ul>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010111'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010112'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010113'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010114'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010115'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010116'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010117'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010118'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M010119'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  class=""
+                                  onclick="fnSetCommonSearchMenuCode(this, 'M0101110'); return false;"
+                                >
+                                  <span>비즈니스</span>
+                                  <i class="xi-angle-right-min"></i>
+                                </button>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="ms-find_body">
+                      <button
+                        type="button"
+                        class="defaultBtn btn-type-1 btn-type-2"
+                      >
+                        조건 초기화 <i class="xi-catched"></i>
+                      </button>
+                      <button
+                        type="submit"
+                        class="defaultBtn btn-type-1 btn_myview"
+                        onClick="fnSearchWithDate()"
+                      >
+                        여행상품 검색
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
               <div class="modal-ScrollBox">
-                <div class="ms-container">
-                  <div class="ms-body">
-                    <div class="ms-search">
-                      <div class="tab-wrapper">
-                        <div class="tab-contents">
-                          <div class="tab-content">
-                            <div class="tab-ContentBox">
-                              <div class="tab-ContentTit">
-                                <div>
-                                  <div class="tab-Desc">
-                                    <em>나는</em>
-                                    <div class="tab-select">
-                                      <div>
-                                        <span class="current">누구와</span>
-                                        <i class="xi-angle-down-min"></i>
+                <form action="" method="post">
+                  <input
+                    class="modalMenuList"
+                    style="display: none"
+                    type="text"
+                    value=""
+                    readonly
+                  />
+                  <div class="ms-container">
+                    <div class="ms-body">
+                      <div class="ms-search">
+                        <div class="tab-wrapper">
+                          <div class="tab-contents">
+                            <div class="tab-content">
+                              <div class="tab-ContentBox">
+                                <div class="tab-ContentTit">
+                                  <div>
+                                    <div class="tab-Desc">
+                                      <em>나는</em>
+                                      <div class="tab-select">
+                                        <div>
+                                          <span class="current">누구와</span>
+                                          <i class="xi-angle-down-min"></i>
+                                        </div>
+                                        <ul class="list">
+                                          <li class="bold">누구와</li>
+                                          <li>아이와 함께</li>
+                                          <li>친구와 함께</li>
+                                          <li>연인와 함께</li>
+                                          <li>부모님과 함께</li>
+                                          <li>아이와 함께</li>
+                                          <li>친구와 함께</li>
+                                          <li>연인와 함께</li>
+                                          <li>부모님과 함께</li>
+                                        </ul>
                                       </div>
-                                      <ul class="list">
-                                        <li class="bold">누구와</li>
-                                        <li>아이와 함께</li>
-                                        <li>친구와 함께</li>
-                                        <li>연인와 함께</li>
-                                        <li>부모님과 함께</li>
-                                        <li>아이와 함께</li>
-                                        <li>친구와 함께</li>
-                                        <li>연인와 함께</li>
-                                        <li>부모님과 함께</li>
-                                      </ul>
                                     </div>
-                                  </div>
 
-                                  <div class="tab-Desc">
-                                    <div class="tab-select">
-                                      <div>
-                                        <span class="current">어디서</span>
-                                        <i class="xi-angle-down-min"></i>
+                                    <div class="tab-Desc">
+                                      <div class="tab-select">
+                                        <div>
+                                          <span class="current">어디서</span>
+                                          <i class="xi-angle-down-min"></i>
+                                        </div>
+                                        <ul class="list">
+                                          <li class="bold">어디서</li>
+                                          <li>구미</li>
+                                          <li>안동</li>
+                                          <li>부산</li>
+                                          <li>서울</li>
+                                          <li>구미</li>
+                                          <li>안동</li>
+                                          <li>부산</li>
+                                          <li>서울</li>
+                                        </ul>
                                       </div>
-                                      <ul class="list">
-                                        <li class="bold">어디서</li>
-                                        <li>구미</li>
-                                        <li>안동</li>
-                                        <li>부산</li>
-                                        <li>서울</li>
-                                        <li>구미</li>
-                                        <li>안동</li>
-                                        <li>부산</li>
-                                        <li>서울</li>
-                                      </ul>
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <div class="tab-Desc">
+                                      <div class="tab-select">
+                                        <div>
+                                          <span class="current">무엇을</span>
+                                          <i class="xi-angle-down-min"></i>
+                                        </div>
+                                        <ul class="list">
+                                          <li class="bold">무엇을</li>
+                                          <li>휴식보다는 알찬 관광을</li>
+                                          <li>관광보다는 휴식과 여유를</li>
+                                          <li>액티비티가 특화된여행을</li>
+                                          <li>쇼핑이 특화된 여행을</li>
+                                          <li>휴식보다는 알찬 관광을</li>
+                                          <li>관광보다는 휴식과 여유를</li>
+                                          <li>액티비티가 특화된여행을</li>
+                                          <li>쇼핑이 특화된 여행을</li>
+                                        </ul>
+                                      </div>
+                                      <em>즐기고 싶어요</em>
                                     </div>
                                   </div>
                                 </div>
-                                <div>
-                                  <div class="tab-Desc">
-                                    <div class="tab-select">
-                                      <div>
-                                        <span class="current">무엇을</span>
-                                        <i class="xi-angle-down-min"></i>
-                                      </div>
-                                      <ul class="list">
-                                        <li class="bold">
-                                          휴식보다는 알찬 관광을
-                                        </li>
-                                        <li>관광보다는 휴식과 여유를</li>
-                                        <li>액티비티가 특화된여행을</li>
-                                        <li>쇼핑이 특화된 여행을</li>
-                                        <li>휴식보다는 알찬 관광을</li>
-                                        <li>관광보다는 휴식과 여유를</li>
-                                        <li>액티비티가 특화된여행을</li>
-                                        <li>쇼핑이 특화된 여행을</li>
-                                      </ul>
-                                    </div>
-                                    <em>즐기고 싶어요</em>
-                                  </div>
+                                <div class="tab_ContentBtn">
+                                  <button class="ContentBtn" id="btn_content">
+                                    조건 초기화
+                                  </button>
+                                  <button
+                                    type="submit"
+                                    class="ContentBtn ContentBtnBlack"
+                                    onClick="MenuListSearch()"
+                                  >
+                                    내 취향 여행보기
+                                  </button>
                                 </div>
-                              </div>
-                              <div class="tab_ContentBtn">
-                                <button class="ContentBtn" id="btn_content">
-                                  조건 초기화
-                                </button>
-                                <button class="ContentBtn ContentBtnBlack">
-                                  내 취향 여행보기
-                                </button>
                               </div>
                             </div>
                           </div>
@@ -358,7 +842,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -371,112 +855,116 @@
       </div>
     </header>
     <div class="date-modal" style="display: none">
-      <div class="date-modal-background"></div>
-      <div class="date-modal-main">
-        <div class="date-modal-Box">
-          <div class="date-modal-header">
-            <button type="button" class="modal-date-Close">
-              <i class="xi-close-thin"></i>
-            </button>
-          </div>
-          <div class="date-modal-body">
-            <div class="date-modal-title">
-              <h2>일정이 어떻게 되세요</h2>
+      <form action="">
+        <div class="date-modal-background"></div>
+        <div class="date-modal-main">
+          <div class="date-modal-Box">
+            <div class="date-modal-header">
+              <button type="button" class="modal-date-Close">
+                <i class="xi-close-thin"></i>
+              </button>
             </div>
-            <div class="date-modal-subtitle">
-              <p>출발일 선택</p>
-              <span>(최대 14일까지 선택 가능합니다.)</span>
-            </div>
-            <input type="text" id="dateRangePicker" style="display: none" />
-            <div class="calendar-tableBox"></div>
-            <div class="date-modal-btn">
-              <button
-                class="buttonStyle"
-                type="button"
-                onClick="fnResetSearchCalendar()"
-              >
-                날짜 초기화 <i class="xi-catched"></i>
-              </button>
-              <button class="buttonStyle datebtn_balck" type="button">
-                일정으로 검색
-              </button>
-              <button class="buttonStyle datebtn_balck" type="button">
-                지역과 함께 검색
-              </button>
+            <div class="date-modal-body">
+              <div class="date-modal-title">
+                <h2>일정이 어떻게 되세요</h2>
+              </div>
+              <div class="date-modal-subtitle">
+                <p>출발일 선택</p>
+                <span>(최대 14일까지 선택 가능합니다.)</span>
+              </div>
+              <input
+                type="text"
+                id="dateRangePicker"
+                style="display: none"
+                readonly
+              />
+              <div class="calendar-tableBox"></div>
+              <div class="date-modal-btn">
+                <button
+                  class="buttonStyle"
+                  type="button"
+                  onClick="fnResetSearchCalendar()"
+                >
+                  날짜 초기화 <i class="xi-catched"></i>
+                </button>
+                <button class="buttonStyle datebtn_balck" type="submit">
+                  일정으로 검색
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="modal-length" style="display: none">
-        <div class="date-modal-background"></div>
-        <div class="modal-lengthBox">
-          <div class="modal-length-content">
-            <div class="modal-lengthCenter">
-              <div class="modal-length-header">
-                <button
-                  type="button"
-                  class="btn-md-close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <i class="xi-close-thin"></i>
-                </button>
-              </div>
-              <div class="modal-length-body">
+      </form>
+    </div>
+    <div class="modal-length" id="popup" style="display: none">
+      <div class="date-modal-background"></div>
+      <div class="modal-lengthBox">
+        <div class="modal-length-content">
+          <div class="modal-lengthCenter">
+            <div class="modal-length-header">
+              <button
+                type="button"
+                class="btn-md-close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <i class="xi-close-thin"></i>
+              </button>
+            </div>
+            <div class="modal-length-body">
+              <div
+                id="mCSB_8"
+                class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
+                style="max-height: none"
+                tabindex="0"
+              >
                 <div
-                  id="mCSB_8"
-                  class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside"
-                  style="max-height: none"
-                  tabindex="0"
+                  id="mCSB_8_container"
+                  class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y"
+                  style="position: relative; left: 0px; top: 0px"
+                  dir="ltr"
                 >
-                  <div
-                    id="mCSB_8_container"
-                    class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y"
-                    style="position: relative; left: 0px; top: 0px"
-                    dir="ltr"
-                  >
-                    <div class="body-content" id="_defaultLayerMsgDIV">
-                      최대 14일까지 선택 가능합니다.
-                    </div>
-                  </div>
-                  <div
-                    id="mCSB_8_scrollbar_vertical"
-                    class="mCSB_scrollTools mCSB_8_scrollbar mCS-light mCSB_scrollTools_vertical"
-                    style="display: none"
-                  >
-                    <a href="#" class="mCSB_buttonUp"></a>
-                    <div class="mCSB_draggerContainer">
-                      <div
-                        id="mCSB_8_dragger_vertical"
-                        class="mCSB_dragger"
-                        style="
-                          position: absolute;
-                          min-height: 30px;
-                          height: 0px;
-                          top: 0px;
-                        "
-                      >
-                        <div
-                          class="mCSB_dragger_bar"
-                          style="line-height: 30px"
-                        ></div>
-                      </div>
-                      <div class="mCSB_draggerRail"></div>
-                    </div>
-                    <a href="#" class="mCSB_buttonDown"></a>
+                  <div class="body-content" id="_defaultLayerMsgDIV">
+                    최대 14일까지 선택 가능합니다.
                   </div>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn-type-1 color--black"
-                  data-dismiss="modal"
-                  id="btnModalConfirm"
+                <div
+                  id="mCSB_8_scrollbar_vertical"
+                  class="mCSB_scrollTools mCSB_8_scrollbar mCS-light mCSB_scrollTools_vertical"
+                  style="display: none"
                 >
-                  확인
-                </button>
+                  <a href="#" class="mCSB_buttonUp"></a>
+                  <div class="mCSB_draggerContainer">
+                    <div
+                      id="mCSB_8_dragger_vertical"
+                      class="mCSB_dragger"
+                      style="
+                        position: absolute;
+                        min-height: 30px;
+                        height: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <div
+                        class="mCSB_dragger_bar"
+                        style="line-height: 30px"
+                      ></div>
+                    </div>
+                    <div class="mCSB_draggerRail"></div>
+                  </div>
+                  <a href="#" class="mCSB_buttonDown"></a>
+                </div>
               </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn-type-1 color--black"
+                data-dismiss="modal"
+                id="btnModalConfirm"
+              >
+                확인
+              </button>
             </div>
           </div>
         </div>
@@ -579,8 +1067,12 @@
           <i class="xi-arrow-left"></i>
         </div>
         <div class="main-sc-aside">
-          <a href="#">어디로 떠나세요<i class="xi-arrow-right"></i></a>
-          <button type="button" class="date-modal-Open">열기</button>
+          <button class="SearchFind" href="#">
+            어디로 떠나세요?<i class="xi-arrow-right"></i>
+          </button>
+          <button type="button" class="date-modal-Open">
+            일정이 어떻게 되세요?<i class="xi-arrow-right"></i>
+          </button>
         </div>
       </div>
     </section>
@@ -636,10 +1128,7 @@
                 <i class="xi-angle-down-min"></i>
               </div>
               <ul class="list">
-                <li class="bold">휴식보다는 알찬 관광을</li>
-                <li>관광보다는 휴식과 여유를</li>
-                <li>액티비티가 특화된여행을</li>
-                <li>쇼핑이 특화된 여행을</li>
+                <li class="bold">무엇을</li>
                 <li>휴식보다는 알찬 관광을</li>
                 <li>관광보다는 휴식과 여유를</li>
                 <li>액티비티가 특화된여행을</li>
@@ -880,26 +1369,29 @@
         <h2>테마가 있는 여행이지</h2>
       </div>
       <div class="tab-main">
-        <a class="selected" href="#">#황금연휴</a>
-        <a href="#">#틈새여행</a>
-        <a href="#">#자유여행</a>
-        <a href="#">#지금 뜨는 그곳</a>
-        <a href="#">#프리미엄</a>
+        <a onclick="TMChange('TM1')" class="selected">#황금연휴</a>
+        <a onclick="TMChange('TM2')">#틈새여행</a>
+        <a onclick="TMChange('TM2')">#자유여행</a>
+        <a onclick="TMChange('TM2')">#지금 뜨는 그곳</a>
+        <a onclick="TMChange('TM2')">#프리미엄</a>
       </div>
       <div class="main-tm-wrap">
         <ul class="main-tm-lnb" id="main-thema-lnb">
           <!-- Mobile -->
-
           <li class="active">
-            <a href="#" data-label="#가까워도 이국적인_중국/대만/몽골로">
+            <a
+              onclick="TMChange('TM2')"
+              data-label="#가까워도 이국적인_중국/대만/몽골로"
+            >
               #가까워도 이국적인_중국/대만/몽골로
             </a>
           </li>
-
           <!-- Mobile -->
-
           <li>
-            <a href="#" data-label="#한 번쯤 꿈꿔봤던_유럽으로">
+            <a
+              onclick="TMChange('TM2')"
+              data-label="#한 번쯤 꿈꿔봤던_유럽으로"
+            >
               #한 번쯤 꿈꿔봤던_유럽으로
             </a>
           </li>
@@ -907,7 +1399,10 @@
           <!-- Mobile -->
 
           <li>
-            <a href="#" data-label="#가까운 인기여행지_일본으로">
+            <a
+              onclick="TMChange('TM3')"
+              data-label="#가까운 인기여행지_일본으로"
+            >
               #가까운 인기여행지_일본으로
             </a>
           </li>
@@ -915,7 +1410,10 @@
           <!-- Mobile -->
 
           <li>
-            <a href="#" data-label="#가도 가도 또 가고 싶은_동남아로">
+            <a
+              onclick="TMChange('TM2')"
+              data-label="#가도 가도 또 가고 싶은_동남아로"
+            >
               #가도 가도 또 가고 싶은_동남아로
             </a>
           </li>
@@ -923,7 +1421,10 @@
           <!-- Mobile -->
 
           <li>
-            <a href="#" data-label="#신비하고 청정한_남태평양으로">
+            <a
+              onclick="TMChange('TM2')"
+              data-label="#신비하고 청정한_남태평양으로"
+            >
               #신비하고 청정한_남태평양으로
             </a>
           </li>
@@ -936,7 +1437,199 @@
             </a>
           </li>
         </ul>
-        <div class="swiper tmSwiper">
+        <div class="swiper tmSwiper" id="TM1">
+          <div class="swiper-wrapper theme-list">
+            <div class="swiper-slide theme-item">
+              <a href="#">
+                <img class="item-img" src="assets/images/tm1.jpg" alt="" />
+                <div class="item-info">
+                  <p class="tit">
+                    [자연스럽게] 동양의그랜드캐년
+                    태항산#대협곡#만선산#마사지#리무진 4일/5일
+                  </p>
+                  <p class="cont">
+                    ① 영화 '말할 수 없는 비밀'의 촬영지 단수이 ② 예류, 지우펀,
+                    스펀 천등날리기 포함 ③ 세계 4대박물관 중 하나인
+                    국립고궁박물관 포함 ④ 딘타이펑 딤섬, 타카오샤브샤브 등
+                    다채로운 식단 구성
+                  </p>
+                  <div class="price"><strong>299,000</strong>원~</div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide theme-item">
+              <a href="#">
+                <img class="item-img" src="assets/images/tm2.jpg" alt="" />
+                <div class="item-info">
+                  <p class="tit">
+                    [자연스럽게] 동양의그랜드캐년
+                    태항산#대협곡#만선산#마사지#리무진 4일/5일
+                  </p>
+                  <p class="cont">
+                    ① 영화 '말할 수 없는 비밀'의 촬영지 단수이 ② 예류, 지우펀,
+                    스펀 천등날리기 포함 ③ 세계 4대박물관 중 하나인
+                    국립고궁박물관 포함 ④ 딘타이펑 딤섬, 타카오샤브샤브 등
+                    다채로운 식단 구성
+                  </p>
+                  <div class="price"><strong>299,000</strong>원~</div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide theme-item">
+              <a href="#">
+                <img class="item-img" src="assets/images/tm3.jpg" alt="" />
+                <div class="item-info">
+                  <p class="tit">
+                    [자연스럽게] 동양의그랜드캐년
+                    태항산#대협곡#만선산#마사지#리무진 4일/5일
+                  </p>
+                  <p class="cont">
+                    ① 영화 '말할 수 없는 비밀'의 촬영지 단수이 ② 예류, 지우펀,
+                    스펀 천등날리기 포함 ③ 세계 4대박물관 중 하나인
+                    국립고궁박물관 포함 ④ 딘타이펑 딤섬, 타카오샤브샤브 등
+                    다채로운 식단 구성
+                  </p>
+                  <div class="price"><strong>299,000</strong>원~</div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide theme-item">
+              <a href="#">
+                <img class="item-img" src="assets/images/tm4.jpg" alt="" />
+                <div class="item-info">
+                  <p class="tit">
+                    [자연스럽게] 동양의그랜드캐년
+                    태항산#대협곡#만선산#마사지#리무진 4일/5일
+                  </p>
+                  <p class="cont">
+                    ① 영화 '말할 수 없는 비밀'의 촬영지 단수이 ② 예류, 지우펀,
+                    스펀 천등날리기 포함 ③ 세계 4대박물관 중 하나인
+                    국립고궁박물관 포함 ④ 딘타이펑 딤섬, 타카오샤브샤브 등
+                    다채로운 식단 구성
+                  </p>
+                  <div class="price"><strong>299,000</strong>원~</div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide theme-item">
+              <a href="#">
+                <img class="item-img" src="assets/images/tm5.jpg" alt="" />
+                <div class="item-info">
+                  <p class="tit">
+                    [자연스럽게] 동양의그랜드캐년
+                    태항산#대협곡#만선산#마사지#리무진 4일/5일
+                  </p>
+                  <p class="cont">
+                    ① 영화 '말할 수 없는 비밀'의 촬영지 단수이 ② 예류, 지우펀,
+                    스펀 천등날리기 포함 ③ 세계 4대박물관 중 하나인
+                    국립고궁박물관 포함 ④ 딘타이펑 딤섬, 타카오샤브샤브 등
+                    다채로운 식단 구성
+                  </p>
+                  <div class="price"><strong>299,000</strong>원~</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="swiper-button-prev"><i class="xi-arrow-left"></i></div>
+          <div class="swiper-button-next"><i class="xi-arrow-right"></i></div>
+        </div>
+        <div class="swiper tmSwiper" id="TM2" style="display: none">
+          <div class="swiper-wrapper theme-list">
+            <div class="swiper-slide theme-item">
+              <a href="#">
+                <img class="item-img" src="assets/images/tm1.jpg" alt="" />
+                <div class="item-info">
+                  <p class="tit">
+                    [자연스럽게] 동양의그랜드캐년
+                    태항산#대협곡#만선산#마사지#리무진 4일/5일
+                  </p>
+                  <p class="cont">
+                    ① 영화 '말할 수 없는 비밀'의 촬영지 단수이 ② 예류, 지우펀,
+                    스펀 천등날리기 포함 ③ 세계 4대박물관 중 하나인
+                    국립고궁박물관 포함 ④ 딘타이펑 딤섬, 타카오샤브샤브 등
+                    다채로운 식단 구성
+                  </p>
+                  <div class="price"><strong>299,000</strong>원~</div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide theme-item">
+              <a href="#">
+                <img class="item-img" src="assets/images/tm2.jpg" alt="" />
+                <div class="item-info">
+                  <p class="tit">
+                    [자연스럽게] 동양의그랜드캐년
+                    태항산#대협곡#만선산#마사지#리무진 4일/5일
+                  </p>
+                  <p class="cont">
+                    ① 영화 '말할 수 없는 비밀'의 촬영지 단수이 ② 예류, 지우펀,
+                    스펀 천등날리기 포함 ③ 세계 4대박물관 중 하나인
+                    국립고궁박물관 포함 ④ 딘타이펑 딤섬, 타카오샤브샤브 등
+                    다채로운 식단 구성
+                  </p>
+                  <div class="price"><strong>299,000</strong>원~</div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide theme-item">
+              <a href="#">
+                <img class="item-img" src="assets/images/tm3.jpg" alt="" />
+                <div class="item-info">
+                  <p class="tit">
+                    [자연스럽게] 동양의그랜드캐년
+                    태항산#대협곡#만선산#마사지#리무진 4일/5일
+                  </p>
+                  <p class="cont">
+                    ① 영화 '말할 수 없는 비밀'의 촬영지 단수이 ② 예류, 지우펀,
+                    스펀 천등날리기 포함 ③ 세계 4대박물관 중 하나인
+                    국립고궁박물관 포함 ④ 딘타이펑 딤섬, 타카오샤브샤브 등
+                    다채로운 식단 구성
+                  </p>
+                  <div class="price"><strong>299,000</strong>원~</div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide theme-item">
+              <a href="#">
+                <img class="item-img" src="assets/images/tm4.jpg" alt="" />
+                <div class="item-info">
+                  <p class="tit">
+                    [자연스럽게] 동양의그랜드캐년
+                    태항산#대협곡#만선산#마사지#리무진 4일/5일
+                  </p>
+                  <p class="cont">
+                    ① 영화 '말할 수 없는 비밀'의 촬영지 단수이 ② 예류, 지우펀,
+                    스펀 천등날리기 포함 ③ 세계 4대박물관 중 하나인
+                    국립고궁박물관 포함 ④ 딘타이펑 딤섬, 타카오샤브샤브 등
+                    다채로운 식단 구성
+                  </p>
+                  <div class="price"><strong>299,000</strong>원~</div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide theme-item">
+              <a href="#">
+                <img class="item-img" src="assets/images/tm5.jpg" alt="" />
+                <div class="item-info">
+                  <p class="tit">
+                    [자연스럽게] 동양의그랜드캐년
+                    태항산#대협곡#만선산#마사지#리무진 4일/5일
+                  </p>
+                  <p class="cont">
+                    ① 영화 '말할 수 없는 비밀'의 촬영지 단수이 ② 예류, 지우펀,
+                    스펀 천등날리기 포함 ③ 세계 4대박물관 중 하나인
+                    국립고궁박물관 포함 ④ 딘타이펑 딤섬, 타카오샤브샤브 등
+                    다채로운 식단 구성
+                  </p>
+                  <div class="price"><strong>299,000</strong>원~</div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="swiper-button-prev"><i class="xi-arrow-left"></i></div>
+          <div class="swiper-button-next"><i class="xi-arrow-right"></i></div>
+        </div>
+        <div class="swiper tmSwiper" id="TM3" style="display: none">
           <div class="swiper-wrapper theme-list">
             <div class="swiper-slide theme-item">
               <a href="#">
@@ -1047,7 +1740,10 @@
         <ul class="review_list">
           <li class="review_item">
             <div class="review_img">
-              <img src="assets/images/review1.jpg" alt="" />
+              <div
+                class="reviewImgBox"
+                style="background-image: url(assets/images/review1.jpg)"
+              ></div>
             </div>
             <div class="item-info">
               <div class="user-char">
@@ -1059,7 +1755,10 @@
           </li>
           <li class="review_item">
             <div class="review_img">
-              <img src="assets/images/review2.jpg" alt="" />
+              <div
+                class="reviewImgBox"
+                style="background-image: url(assets/images/review2.jpg)"
+              ></div>
             </div>
             <div class="item-info">
               <div class="user-char">
@@ -1071,7 +1770,10 @@
           </li>
           <li class="review_item">
             <div class="review_img">
-              <img src="assets/images/review3.jpg" alt="" />
+              <div
+                class="reviewImgBox"
+                style="background-image: url(assets/images/review3.jpg)"
+              ></div>
             </div>
             <div class="item-info">
               <div class="user-char">
@@ -1298,6 +2000,79 @@
     type="text/javascript"
     src="assets/js/daterangepicker.min.js"
   ></script>
+  <script src="assets/js/slick.min.js"></script>
+  <script src="assets/js/swiper.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    function TMChange(ChangeName) {
+      let ChangeSwiper = document.querySelector(`#${ChangeName}`);
+      const swiperNone = document.querySelectorAll(".tmSwiper");
+      for (let i = 0; i < swiperNone.length; i++) {
+        swiperNone[i].style.display = "none";
+      }
+      ChangeSwiper.style.display = "block";
+    }
+  </script>
+  <script>
+    const popup = document.querySelector("#popup");
+    function fnSetCommonSearchMenuCode(obj, menuCode) {
+      $("#commonSearchMenuCode").val(menuCode);
+    }
+    function fnCheckedMaxLength(strWord, length) {
+      let result = true;
+      if (strWord) {
+        if (strWord.length > length) result = false;
+      }
+      return result;
+    }
+    $("#iptSearchBtn").on("click", function () {
+      let searchWord = $("#commonSearchPlaceKeyword").val();
+
+      if (!fnCheckedMaxLength(searchWord, 150)) {
+        alert("검색어를 150자 이하로 입력해 주세요.");
+        return;
+      }
+    });
+    function fnSearchWithDate() {
+      //검색키워드, 메뉴코드
+      let keyword = $("#commonSearchPlaceKeyword").val();
+      let menuCode = $("#commonSearchMenuCode").val();
+
+      const Intro = document.querySelector("#_defaultLayerMsgDIV");
+      if (!keyword && !menuCode) {
+        let msg = "검색어를 입력하거나 지역을 선택해 주세요.";
+        Intro.innerHTML = msg;
+        popup.style.display = "block";
+        return;
+      }
+      if (!fnCheckedMaxLength(keyword, 150)) {
+        alert("검색어를 150자 이하로 입력해 주세요.");
+        return;
+      }
+
+      fnSearchWithoutDate();
+    }
+
+    function fnSearchWithoutDate() {
+      let keyword = $("#commonSearchPlaceKeyword").val();
+      let menuCode = $("#commonSearchMenuCode").val();
+
+      if (!keyword && !menuCode) {
+        let msg = "검색어를 입력하거나 지역을 선택해 주세요.";
+        Intro.innerHTML = msg;
+        popup.style.display = "block";
+        return;
+      }
+      if (!fnCheckedMaxLength(keyword, 150)) {
+        alert("검색어를 150자 이하로 입력해 주세요.");
+        return;
+      }
+    }
+    const PopUpBtn = document.querySelector(".modal-footer>button");
+    PopUpBtn.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
+  </script>
   <script>
     // Define minDate with the current date (start of the day)
     const minDate = moment().startOf("day");
@@ -1337,8 +2112,8 @@
           separator: "~",
           singleDatePicker: "false" == "true" ? true : false,
           locale: {
-            format: "YYYY년 MM월 DD일",
-            separator: " - ",
+            format: "YYYY-MM-DD",
+            separator: "~",
             applyLabel: "선택",
             cancelLabel: "취소",
             fromLabel: "부터",
@@ -1362,20 +2137,18 @@
             ],
             firstDay: 0,
           },
-        },
-        function (start, end, label, state) {
-          let startDate = moment(start.format("YYYY-MM-DD"));
-          let endDate = moment(end.format("YYYY-MM-DD"));
-          let diff = endDate.diff(startDate, "days");
-          if (diff > 14) {
-            document.querySelector(".modal-length").style.display = "block";
-            $("#btnModalConfirm").on("click", function () {
-              fnResetSearchCalendar();
-              document.querySelector(".modal-length").style.display = "none";
-            });
-          }
-          // $("#searchModalCalendarSelectFlag").val("Y");
         }
+        // function (start, end, label, state) {
+        //   let diff = end.diff(start, "days");
+        //   if (diff > 14) {
+        //     document.querySelector(".modal-length").style.display = "block";
+        //     $("#btnModalConfirm").on("click", function () {
+        //       fnResetSearchCalendar();
+        //       document.querySelector(".modal-length").style.display = "none";
+        //     });
+        //   }
+        //   // $("#searchModalCalendarSelectFlag").val("Y");
+        // }
       );
       $("#dateRangePicker").data("daterangepicker").show(); // dateRangePicker 캘린더도 보이도록 show() 메서드를 호출합니다.
     }
@@ -1398,8 +2171,18 @@
         .addEventListener("click", function () {
           $(".date-modal").hide(); // date-modal 감추도록 hide() 메서드를 호출합니다.
           $("#dateRangePicker").data("daterangepicker").hide(); // dateRangePicker 캘린더도 감추도록 hide() 메서드를 호출합니다.
+          fnResetCondValue();
         });
     });
+
+    // 검색조건 초기화
+    function fnResetCondValue() {
+      $(".date-modal").hide(); // date-modal 감추도록 hide() 메서드를 호출합니다.
+      $("#dateRangePicker").data("daterangepicker").hide(); // dateRangePicker 캘린더도 감추도록 hide() 메서드를 호출합니다.
+      fnResetSearchCalendar();
+      $("#commonSearchPlaceKeyword").val("");
+      $("#commonSearchMenuCode").val("");
+    }
   </script>
   <script>
     $(document).ready(function () {
@@ -1508,7 +2291,4 @@
       $(".btn-start").addClass("active");
     });
   </script>
-  <script src="assets/js/slick.min.js"></script>
-  <script src="assets/js/swiper.min.js"></script>
-  <script src="assets/js/main.js"></script>
 </html>

@@ -144,6 +144,25 @@
 #js-scroll p font {
   color: var(--colorDarkBlack);
 }
+
+.defaultBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px 30px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.2;
+  border-radius: 2px;
+  text-decoration: none;
+  box-sizing: border-box;
+  letter-spacing: -0.6px;
+  min-height: 50px;
+  background: #fff;
+}
 /* header */
 .header {
   width: 100%;
@@ -340,7 +359,7 @@ body.open_menu .header_container_bg {
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
   outline: 0;
-  display: none;
+  /* display: none; */
 }
 .modal * {
   line-height: 1.5;
@@ -653,6 +672,151 @@ body.open_menu .header_container_bg {
 .ScrollHeader.header .btn_search {
   color: var(--colorDarkBlack);
 }
+.modal-find {
+  width: auto;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 0;
+}
+.ms-find_body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto 60px;
+  gap: 10px;
+}
+.btn-type-1 {
+  flex: unset;
+  width: 270px;
+}
+.btn-type-2 {
+  border: solid 1px #ccc;
+}
+.ms-find_header > * {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #1c1c1c;
+  color: #666666;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 42px;
+  letter-spacing: -0.024em;
+  text-align: center;
+  background: transparent;
+}
+.ms-find_header > *.active {
+  border: 1px solid #1c1c1c;
+  border-bottom: none;
+  color: #1c1c1c;
+  font-weight: 700;
+  transition: color 0.8s ease-out;
+}
+
+.ms-find_header {
+  display: flex;
+}
+.ms_find_hash > ul {
+  display: none;
+  align-items: flex-start;
+  justify-content: flex-start; /* Change to flex-start to align items from the start */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  height: 100%;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  gap: 5px;
+  white-space: nowrap; /* Prevent list items from wrapping to a new line */
+}
+.ms_find_hash > ul > li {
+  padding: 0 8px;
+}
+.ms_find_hash > ul::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+.ms_find_hash > ul > li > span {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 3px 0;
+  font-size: 18px;
+  letter-spacing: -0.072em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.ms_find_hash ul > li.show > span {
+  color: #e53e30;
+  font-weight: 700;
+}
+
+.ms_find_hash ul > li.show > span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background-color: #e53e30;
+  transition: background-color 0.25s ease-in-out;
+}
+.ms_find_hash {
+  height: 279px;
+  position: relative;
+}
+.list-arrow {
+  height: 175px !important;
+  position: absolute;
+  left: 0;
+  top: 70px;
+  width: 100%;
+  min-height: unset;
+  overflow-y: auto;
+}
+
+.list-arrow ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 130px;
+}
+
+.list-arrow ul li {
+  padding: 8px 0;
+  width: calc(100% / 3);
+}
+.list-arrow ul li button {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 205px;
+  font-size: 18px;
+  letter-spacing: -0.054em;
+  font-weight: 500;
+  overflow: hidden;
+  padding-right: 15px;
+  background: transparent;
+  border: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-arrow ul li button span {
+  width: 100%;
+  text-align: left;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.active_menu span {
+  color: #e53e30;
+  font-weight: 700;
+  border-bottom: #e53e30 2px solid;
+}
 /* 메인 스와이퍼 첫번쨰 */
 .mySwiper {
   height: 100% !important;
@@ -710,6 +874,7 @@ body.open_menu .header_container_bg {
   font-family: "Noto Sans KR";
   font-size: 20px;
   color: #fff;
+  line-height: 25px;
   font-weight: 100;
   padding-left: 5px;
   padding-top: 10px;
@@ -775,13 +940,14 @@ body.open_menu .header_container_bg {
   gap: 40px;
 }
 
-.main-sc-aside a {
+.main-sc-aside button {
   flex: 1;
   position: relative;
   min-width: 260px;
   max-width: 344px;
   font-family: "Noto Sans KR";
   font-size: 25px;
+  border: 0;
   border-bottom-color: rgba(255, 255, 255, 1);
   transition-duration: 0.6s;
   color: #fff;
@@ -793,6 +959,7 @@ body.open_menu .header_container_bg {
   justify-content: space-between;
   padding: 0 9px 10px 9px;
   align-items: center;
+  background: transparent;
 }
 /* 메인 스와이퍼 밑 */
 .main-sc {
@@ -908,6 +1075,7 @@ body.open_menu .header_container_bg {
   line-height: 1.3em;
   max-height: 2.6em;
   text-align: left;
+  word-break: break-all;
 }
 
 .main-sc2 .item-info .cont {
@@ -1165,6 +1333,19 @@ body.open_menu .header_container_bg {
   background-size: cover;
 }
 
+.reviewImgBox {
+  width: 100%;
+  border-radius: 10px;
+  background-size: cover;
+}
+.reviewImgBox::before {
+  content: "";
+  display: block;
+  padding-top: 75%;
+}
+.reviewImgBox::before {
+  /* padding-top: 56.25%; */
+}
 .review .review_item {
   flex: none;
   width: calc(100% / 3) !important;
@@ -1195,10 +1376,6 @@ body.open_menu .header_container_bg {
 }
 .review .review_list {
   display: flex;
-}
-.review .review_img {
-  max-height: 300px;
-  height: 100%;
 }
 .review .review_img img {
   height: 100%;
@@ -1769,7 +1946,9 @@ body.open_menu .header_container_bg {
   letter-spacing: 0;
 }
 /* 일정이 어떻게 되세요 페이지 */
-
+.date-modal form {
+  height: 100%;
+}
 .date-modal-background {
   position: absolute;
   top: 0;
@@ -1927,7 +2106,7 @@ body.open_menu .header_container_bg {
 }
 .calendar-table .prev {
   position: absolute;
-  left: 18px;
+  left: -31px;
   top: 50%;
   transform: rotate(135deg);
   border: 1px solid black;
@@ -1937,7 +2116,7 @@ body.open_menu .header_container_bg {
 }
 .calendar-table .next {
   position: absolute;
-  right: 18px;
+  right: -37px;
   top: 50%;
   border: 1px solid black;
   width: 40px;
@@ -2033,4 +2212,32 @@ body.open_menu .header_container_bg {
   color: #fff !important;
   font-size: 16px;
   min-height: 55px;
+}
+
+@media (max-width: 1360px) {
+  .main_sw1 .slogan {
+    position: absolute;
+    left: 50%;
+    bottom: 70%;
+    max-width: 60%;
+    transform: translate(-50%, 50%);
+    overflow: hidden;
+    text-align: center;
+  }
+  .main-sc-aside {
+    left: 50px;
+    right: 50px;
+    justify-content: center;
+  }
+  .main-sc2 {
+    position: relative;
+    padding: 0 10px;
+  }
+  .main-sc2 .swiper-button-next,
+  .main-sc2 .swiper-button-prev {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
 }

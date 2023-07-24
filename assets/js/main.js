@@ -6,12 +6,55 @@ const header = document.querySelector(".header");
 const SearchTab = document.querySelectorAll(".current");
 const list = document.querySelectorAll(".list");
 const modalSearchBox = document.querySelector(".modal-SearchBox");
+const SearchFind = document.querySelector(".SearchFind");
 const modalSearch = document.querySelector(".modal");
 const SearchOpen = document.querySelector(".btn_search");
 const SearchClose = document.querySelector(".btn-md-close");
 const tabBtn = document.querySelectorAll(".tab-btn ");
 const magazineItem = document.querySelectorAll(".magazine-Item ");
 const magazine = document.querySelector(".magazine-banner");
+const findSearchShow = document.querySelectorAll(".ms_find_hash>ul>li");
+const findMenu = document.querySelectorAll(".list-arrow>ul>li>button");
+const FindHeaderButton = document.querySelectorAll(".ms-find_header>button");
+const FindHeaderHash = document.querySelectorAll(".ms_find_hash>ul");
+const tab_main = document.querySelectorAll(".tab-main>a");
+const maintmlnb = document.querySelectorAll(".main-tm-lnb>li");
+const SearchList = document.querySelectorAll(".list");
+const inputField = document.getElementById("commonSearchPlaceKeyword");
+const inputArray = []; // Create an array to store the selected values
+
+console.log(tab_main);
+
+for (let i = 0; i < FindHeaderButton.length; i++) {
+  FindHeaderButton[i].addEventListener("click", () => {
+    FindHeaderHash[i].style.display = "flex";
+    for (let j = 0; j < FindHeaderButton.length; j++) {
+      if (j !== i) {
+        FindHeaderHash[j].style.display = "none";
+      }
+    }
+  });
+}
+for (let i = 0; i < tab_main.length; i++) {
+  tab_main[i].addEventListener("click", () => {
+    tab_main[i].classList.add("selected");
+    for (let j = 0; j < tab_main.length; j++) {
+      if (j !== i) {
+        tab_main[j].classList.remove("selected");
+      }
+    }
+  });
+}
+for (let i = 0; i < maintmlnb.length; i++) {
+  maintmlnb[i].addEventListener("click", () => {
+    maintmlnb[i].classList.add("active");
+    for (let j = 0; j < maintmlnb.length; j++) {
+      if (j !== i) {
+        maintmlnb[j].classList.remove("active");
+      }
+    }
+  });
+}
 
 window.addEventListener("scroll", () => {
   if (window.scrollY >= 66) {
@@ -42,27 +85,61 @@ function changeImage(item) {
     magazine.style.backgroundImage = "url(assets/images/maga3.jpg)";
   }
 }
-
+const tabBtnMenu = document.querySelector(".modal-body>div");
 for (let i = 0; i < tabBtn.length; i++) {
   tabBtn[i].addEventListener("click", () => {
-    console.log("1");
     // 클릭된 요소에 active 클래스 추가
     tabBtn[i].classList.add("active");
-
+    document.querySelectorAll(".modal-body>div")[i].style.display = "block";
     // 클릭되지 않은 다른 버튼에서 active 클래스 제거
     for (let j = 0; j < tabBtn.length; j++) {
       if (j !== i) {
         tabBtn[j].classList.remove("active");
+        document.querySelectorAll(".modal-body>div")[j].style.display = "none";
       }
     }
   });
 }
+for (let i = 0; i < findSearchShow.length; i++) {
+  findSearchShow[i].addEventListener("click", () => {
+    // 클릭된 요소에 active 클래스 추가
+    findSearchShow[i].classList.add("show");
+
+    // 클릭되지 않은 다른 버튼에서 show 클래스 제거
+    for (let j = 0; j < findSearchShow.length; j++) {
+      if (j !== i) {
+        findSearchShow[j].classList.remove("show");
+      }
+    }
+  });
+}
+for (let i = 0; i < findMenu.length; i++) {
+  findMenu[i].addEventListener("click", () => {
+    // 클릭된 요소에 active 클래스 추가
+    findMenu[i].classList.add("active_menu");
+
+    // 클릭되지 않은 다른 버튼에서 active_menu 클래스 제거
+    for (let j = 0; j < findMenu.length; j++) {
+      if (j !== i) {
+        findMenu[j].classList.remove("active_menu");
+      }
+    }
+  });
+}
+SearchFind.addEventListener("click", () => {
+  modalSearch.style.display = "block";
+  tabBtn[0].classList.add("active");
+  document.querySelectorAll(".modal-body>div")[0].style.display = "block";
+  tabBtn[1].classList.remove("active");
+  document.querySelectorAll(".modal-body>div")[1].style.display = "none";
+});
 // 검색버튼 열기
 SearchOpen.addEventListener("click", () => {
   modalSearch.style.display = "block";
 });
 SearchClose.addEventListener("click", () => {
   modalSearch.style.display = "none";
+  fnResetCondValue();
 });
 
 // header 마우스 오버 부분
@@ -153,8 +230,22 @@ for (let i = 0; i < tabSelect.length; i++) {
 
       // 선택한 li 요소에 bold 클래스 추가
       event.target.classList.add("bold");
+      const valueToAdd = event.target.innerHTML;
+      inputArray[i] = valueToAdd;
     }
   });
+}
+function MenuListSearch() {
+  const modalMenuList = document.querySelector(".modalMenuList");
+  const Intro = document.querySelector("#_defaultLayerMsgDIV");
+  const concatenatedString = inputArray.join(", "); // Use ', ' as the separator
+  modalMenuList.value = concatenatedString;
+  if (modalMenuList.value.length < 1) {
+    let msg = "키워드를 선택해주세요.";
+    Intro.innerHTML = msg;
+    popup.style.display = "block";
+    return;
+  }
 }
 
 // 메인 페이지 슬라이더 밑에 다른 취향 보기 이벤트
@@ -224,19 +315,25 @@ var swiper = new Swiper(".mySwiper", {
   },
 });
 var swiper = new Swiper(".tmSwiper", {
-  spaceBetween: 22,
   centeredSlides: false, // 중앙 정렬 비활성화
-  slidesPerView: 3,
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+  breakpoints: {
+    1440: {
+      spaceBetween: 22,
+      slidesPerView: 3,
+    },
+    500: {
+      slidesPerView: 2, //브라우저가 768미만일때
+      spaceBetween: 10,
+    },
+  },
 });
 
 var swiper = new Swiper(".main-sc2-swiper", {
-  spaceBetween: 22,
   centeredSlides: false, // 중앙 정렬 비활성화
-  slidesPerView: 3,
   // autoplay: {
   //   delay: 2500,
   //   disableOnInteraction: false,
@@ -248,5 +345,19 @@ var swiper = new Swiper(".main-sc2-swiper", {
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    1024: {
+      spaceBetween: 22,
+      slidesPerView: 3,
+    },
+    500: {
+      slidesPerView: 2, //브라우저가 768미만일때
+      spaceBetween: 10,
+    },
+    310: {
+      slidesPerView: 1, //브라우저가 768미만일때
+      slidesPerGroup: 1,
+    },
   },
 });
