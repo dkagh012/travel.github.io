@@ -2,6 +2,8 @@ const header_bg = document.querySelector(".header_container_bg");
 const MenuItem = document.querySelectorAll(".gnb_Item");
 const subMenu = document.querySelectorAll(".sub_menu");
 const body = document.querySelector("body");
+const quickMenuToggle = document.querySelector(".btn-toggle");
+const quickWing = document.querySelector(".quick-wing");
 const header = document.querySelector(".header");
 const SearchTab = document.querySelectorAll(".current");
 const list = document.querySelectorAll(".list");
@@ -23,8 +25,21 @@ const SearchList = document.querySelectorAll(".list");
 const inputField = document.getElementById("commonSearchPlaceKeyword");
 const inputArray = []; // Create an array to store the selected values
 
-console.log(tab_main);
+quickMenuToggle.addEventListener("click", () => {
+  const angleRightIcon = quickMenuToggle.querySelector(".xi-angle-right-min");
+  const angleLeftIcon = quickMenuToggle.querySelector(".xi-angle-left-min");
+  const isOpened = quickWing.classList.contains("opened");
 
+  if (isOpened) {
+    angleRightIcon.style.display = "none";
+    angleLeftIcon.style.display = "block";
+  } else {
+    angleLeftIcon.style.display = "none";
+    angleRightIcon.style.display = "block";
+  }
+
+  quickWing.classList.toggle("opened");
+});
 for (let i = 0; i < FindHeaderButton.length; i++) {
   FindHeaderButton[i].addEventListener("click", () => {
     FindHeaderHash[i].style.display = "flex";

@@ -174,7 +174,7 @@
   border-bottom: 1px solid transparent;
   -webkit-transition: height 0.3s, background 0.3s, border 0.3s;
   transition: height 0.3s, background 0.3s, border 0.3s;
-  z-index: 500;
+  z-index: 10;
 }
 .header_container_bg {
   position: absolute;
@@ -338,6 +338,16 @@ body.open_menu .header_container_bg {
   text-decoration: underline;
 }
 .header .btn_search {
+  width: 35px;
+  height: 35px;
+  margin: 42px 0 0 20px;
+  border: 0;
+  font-size: 22px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+.header .MobileMenuOpen {
   width: 35px;
   height: 35px;
   margin: 42px 0 0 20px;
@@ -2213,7 +2223,88 @@ body.open_menu .header_container_bg {
   font-size: 16px;
   min-height: 55px;
 }
+/* 오른쪽 퀵 메뉴 */
+.quick-wing {
+  position: fixed;
+  top: 100px;
+  right: 0;
+  padding: 15px;
+  background-color: #1c1c1c;
+  box-sizing: border-box;
+  width: 90px;
+  z-index: 90;
+  transition: all 0.3s ease-out;
+  top: 80px;
+  transform: translateX(calc(100% + 2px));
+}
+.quick-wing.opened {
+  transform: translateX(0);
+}
+.quick-wing.opened .btn-toggle {
+  left: -20px;
+  width: 20px;
+}
+.quick-wing .btn-toggle {
+  display: block;
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  margin-top: -32.5px;
+  color: transparent;
+  width: 30px;
+  height: 65px;
+  color: white;
+  font-size: 19px;
+  background: #1c1c1c;
+  border-radius: 4px 0 0 4px;
+  transition: all 0.25s ease-in-out;
+}
+.quick-wing .btn-toggle .xi-angle-right-min {
+  display: none;
+}
+.quick-wing a {
+  position: relative;
+  display: block;
+  padding-top: 15px;
+  color: #e1e1e1;
+}
+.quick-wing .count {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-family: "Vitro", sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+  background-color: #f43d38;
+  border-radius: 15px;
+  color: #fff;
+}
+.quick-wing .label {
+  position: relative;
+  display: block;
+  margin-left: -5px;
+  margin-right: -5px;
+  padding-top: 10px;
+  font-size: 12px;
+  color: #7c7c7c;
+  text-align: center;
+  letter-spacing: -0.36px;
+}
+.quickMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.quickMenu p {
+  font-size: 30px;
+}
 @media (max-width: 1360px) {
   .main_sw1 .slogan {
     position: absolute;
@@ -2239,5 +2330,96 @@ body.open_menu .header_container_bg {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 720px) {
+  .gnb_inner {
+    display: none;
+  }
+  .util {
+    display: none;
+  }
+  .main_sw1 .slogan {
+    left: 0;
+    right: 0;
+    max-width: inherit;
+    transform: translate(0, 50%);
+  }
+  .main_slick-list .lg-txt {
+    width: auto;
+    font-size: 34px;
+    white-space: nowrap;
+  }
+
+  .main_slick-list .sm-txt {
+    font-size: 17px;
+    color: #fff;
+    font-weight: normal;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .main-sc-aside {
+    flex-direction: column;
+  }
+  .main-sc-aside button {
+    max-width: 100%;
+    height: 50px;
+    line-height: 50px;
+    padding-bottom: 0;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .quick-wing {
+    display: none;
+  }
+  .footer-app-nav {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background-color: #fff;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+  }
+  .footer-app-logo {
+    position: absolute;
+    left: 50%;
+    top: -15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    color: transparent;
+    transform: translateX(-50%);
+    color: black;
+    border-radius: 100%;
+    box-shadow: 0px 7px 7px 2px rgb(0 0 0 / 16%);
+  }
+  .footer-app-nav ul {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0 10px 0 10px;
+  }
+  .footer-app-nav li {
+    flex: 1;
+    display: flex;
+    height: 100%;
+    align-items: baseline;
+  }
+  .footer-app-nav li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    font-size: 10px;
+    color: #000;
+    position: relative;
+    height: 100%;
+  }
+  .footer-app-nav li a i {
+    font-size: 30px;
+  }
 }
