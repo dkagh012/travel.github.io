@@ -40,16 +40,45 @@ quickMenuToggle.addEventListener("click", () => {
 
   quickWing.classList.toggle("opened");
 });
+
 for (let i = 0; i < FindHeaderButton.length; i++) {
   FindHeaderButton[i].addEventListener("click", () => {
-    FindHeaderHash[i].style.display = "flex";
+    FindHeaderButton[i].classList.add("active");
     for (let j = 0; j < FindHeaderButton.length; j++) {
       if (j !== i) {
-        FindHeaderHash[j].style.display = "none";
+        FindHeaderButton[j].classList.remove("active");
       }
     }
   });
 }
+// for (let i = 0; i < FindHeaderButton.length; i++) {
+//   FindHeaderButton[i].addEventListener("click", () => {
+//     console.log(FindHeaderHash[i]);
+//     FindHeaderHash[i].style.display = "flex";
+//     for (let j = 0; j < FindHeaderButton.length; j++) {
+//       if (j !== i) {
+//         FindHeaderHash[j].style.display = "none";
+//       }
+//     }
+//   });
+// }
+// for (let i = 0; i < FindHeaderButton.length; i++) {
+//   FindHeaderButton[i].addEventListener("click", () => {
+//     if (FindHeaderHash[i]) {
+//       FindHeaderHash[i].style.display = "flex";
+//       for (let j = 0; j < FindHeaderHash.length; j++) {
+//         // changed to FindHeaderHash.length
+//         if (j !== i) {
+//           FindHeaderHash[j].style.display = "none";
+//         }
+//       }
+//     } else {
+//       console.error(
+//         `No corresponding element in FindHeaderHash for index ${i}`
+//       );
+//     }
+//   });
+// }
 for (let i = 0; i < tab_main.length; i++) {
   tab_main[i].addEventListener("click", () => {
     tab_main[i].classList.add("selected");
@@ -151,9 +180,11 @@ SearchFind.addEventListener("click", () => {
 // 검색버튼 열기
 SearchOpen.addEventListener("click", () => {
   modalSearch.style.display = "block";
+  body.classList.add("prevent");
 });
 SearchClose.addEventListener("click", () => {
   modalSearch.style.display = "none";
+  body.classList.remove("prevent");
   fnResetCondValue();
 });
 
@@ -250,19 +281,25 @@ for (let i = 0; i < tabSelect.length; i++) {
     }
   });
 }
-function MenuListSearch() {
+function MenuListSearch(event) {
   const modalMenuList = document.querySelector(".modalMenuList");
   const Intro = document.querySelector("#_defaultLayerMsgDIV");
-  const concatenatedString = inputArray.join(", "); // Use ', ' as the separator
+  const concatenatedString = inputArray.join(", ");
   modalMenuList.value = concatenatedString;
+
   if (modalMenuList.value.length < 1) {
     let msg = "키워드를 선택해주세요.";
     Intro.innerHTML = msg;
     popup.style.display = "block";
+    event.preventDefault(); // 이렇게 직접 event를 사용해서 제출을 막습니다.
     return;
+  } else {
+    $("#commonSearchPlaceKeyword").val("");
+    $("#commonSearchMenuCode").val("");
   }
 }
 
+document.querySelector("#modalMenu").addEventListener("submit", MenuListSearch);
 // 메인 페이지 슬라이더 밑에 다른 취향 보기 이벤트
 function getRandomIndex(length) {
   return Math.floor(Math.random() * length);
@@ -373,6 +410,46 @@ var swiper = new Swiper(".main-sc2-swiper", {
     310: {
       slidesPerView: 1, //브라우저가 768미만일때
       slidesPerGroup: 1,
+    },
+  },
+});
+var swiper = new Swiper(".reviewSwiper", {
+  centeredSlides: false, // 중앙 정렬 비활성화
+  breakpoints: {
+    1024: {
+      centeredSlides: false, // 중앙 정렬 비활성화
+      spaceBetween: 22,
+      slidesPerView: 3,
+    },
+    800: {
+      centeredSlides: false, // 중앙 정렬 비활성화
+      slidesPerView: 2, //브라우저가 768미만일때
+      spaceBetween: 10,
+    },
+    310: {
+      centeredSlides: true, // 중앙 정렬 비활성화
+      slidesPerView: 1, //브라우저가 768미만일때
+      spaceBetween: 10,
+    },
+  },
+});
+var swiper = new Swiper(".magazine_swiper", {
+  centeredSlides: false, // 중앙 정렬 비활성화
+  breakpoints: {
+    1024: {
+      centeredSlides: false, // 중앙 정렬 비활성화
+      spaceBetween: 22,
+      slidesPerView: 3,
+    },
+    800: {
+      centeredSlides: false, // 중앙 정렬 비활성화
+      slidesPerView: 2, //브라우저가 768미만일때
+      spaceBetween: 10,
+    },
+    310: {
+      centeredSlides: true, // 중앙 정렬 비활성화
+      slidesPerView: 1, //브라우저가 768미만일때
+      spaceBetween: 10,
     },
   },
 });
