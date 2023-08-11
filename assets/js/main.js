@@ -24,7 +24,23 @@ const maintmlnb = document.querySelectorAll(".main-tm-lnb>li");
 const SearchList = document.querySelectorAll(".list");
 const inputField = document.getElementById("commonSearchPlaceKeyword");
 const inputArray = []; // Create an array to store the selected values
-
+const MobileMenuOpen = document.querySelector(".MobileMenuOpen");
+const MobileMenuClose = document.querySelector(".MobileMenuClose");
+const MobileMenu = document.querySelector(".MobileTabMenu ");
+// 모바일 메뉴 오픈
+MobileMenuOpen.addEventListener("click", () => {
+  MobileMenu.classList.add("on");
+  MobileMenu.classList.remove("off");
+  body.classList.add("prevent");
+  document.querySelector(".footer-app-nav").style.zIndex = "300";
+});
+MobileMenuClose.addEventListener("click", () => {
+  MobileMenu.classList.add("off");
+  MobileMenu.classList.remove("on");
+  body.classList.remove("prevent");
+  document.querySelector(".footer-app-nav").style.zIndex = "100";
+});
+// 오른쪽 퀵메뉴 오픈
 quickMenuToggle.addEventListener("click", () => {
   const angleRightIcon = quickMenuToggle.querySelector(".xi-angle-right-min");
   const angleLeftIcon = quickMenuToggle.querySelector(".xi-angle-left-min");
