@@ -27,6 +27,13 @@ const inputArray = []; // Create an array to store the selected values
 const MobileMenuOpen = document.querySelector(".MobileMenuOpen");
 const MobileMenuClose = document.querySelector(".MobileMenuClose");
 const MobileMenu = document.querySelector(".MobileTabMenu ");
+const ListMasterAreaOpen = document.querySelector(".list_title .Btn ");
+console.log(ListMasterAreaOpen);
+ListMasterAreaOpen.addEventListener("click", () => {
+  document.querySelector(".master-area").classList.toggle("active");
+  ListMasterAreaOpen.classList.toggle("return");
+});
+
 // 모바일 메뉴 오픈
 MobileMenuOpen.addEventListener("click", () => {
   MobileMenu.classList.add("on");
@@ -56,7 +63,7 @@ quickMenuToggle.addEventListener("click", () => {
 
   quickWing.classList.toggle("opened");
 });
-
+// 검색 안에 여행 관련 이벤트
 for (let i = 0; i < FindHeaderButton.length; i++) {
   FindHeaderButton[i].addEventListener("click", () => {
     FindHeaderButton[i].classList.add("active");
@@ -67,34 +74,23 @@ for (let i = 0; i < FindHeaderButton.length; i++) {
     }
   });
 }
-// for (let i = 0; i < FindHeaderButton.length; i++) {
-//   FindHeaderButton[i].addEventListener("click", () => {
-//     console.log(FindHeaderHash[i]);
-//     FindHeaderHash[i].style.display = "flex";
-//     for (let j = 0; j < FindHeaderButton.length; j++) {
-//       if (j !== i) {
-//         FindHeaderHash[j].style.display = "none";
-//       }
-//     }
-//   });
-// }
-// for (let i = 0; i < FindHeaderButton.length; i++) {
-//   FindHeaderButton[i].addEventListener("click", () => {
-//     if (FindHeaderHash[i]) {
-//       FindHeaderHash[i].style.display = "flex";
-//       for (let j = 0; j < FindHeaderHash.length; j++) {
-//         // changed to FindHeaderHash.length
-//         if (j !== i) {
-//           FindHeaderHash[j].style.display = "none";
-//         }
-//       }
-//     } else {
-//       console.error(
-//         `No corresponding element in FindHeaderHash for index ${i}`
-//       );
-//     }
-//   });
-// }
+for (let i = 0; i < FindHeaderButton.length; i++) {
+  FindHeaderButton[i].addEventListener("click", () => {
+    if (FindHeaderHash[i]) {
+      FindHeaderHash[i].style.display = "flex";
+      for (let j = 0; j < FindHeaderHash.length; j++) {
+        // changed to FindHeaderHash.length
+        if (j !== i) {
+          FindHeaderHash[j].style.display = "none";
+        }
+      }
+    } else {
+      console.error(
+        `No corresponding element in FindHeaderHash for index ${i}`
+      );
+    }
+  });
+}
 for (let i = 0; i < tab_main.length; i++) {
   tab_main[i].addEventListener("click", () => {
     tab_main[i].classList.add("selected");
@@ -186,24 +182,27 @@ for (let i = 0; i < findMenu.length; i++) {
     }
   });
 }
-SearchFind.addEventListener("click", () => {
-  modalSearch.style.display = "block";
-  tabBtn[0].classList.add("active");
-  document.querySelectorAll(".modal-body>div")[0].style.display = "block";
-  tabBtn[1].classList.remove("active");
-  document.querySelectorAll(".modal-body>div")[1].style.display = "none";
-});
-// 검색버튼 열기
-SearchOpen.addEventListener("click", () => {
-  modalSearch.style.display = "block";
-  body.classList.add("prevent");
-});
-SearchClose.addEventListener("click", () => {
-  modalSearch.style.display = "none";
-  body.classList.remove("prevent");
-  fnResetCondValue();
-});
-
+if (SearchFind) {
+  SearchFind.addEventListener("click", () => {
+    modalSearch.style.display = "block";
+    tabBtn[0].classList.add("active");
+    document.querySelectorAll(".modal-body>div")[0].style.display = "block";
+    tabBtn[1].classList.remove("active");
+    document.querySelectorAll(".modal-body>div")[1].style.display = "none";
+  });
+}
+if (SearchOpen) {
+  // 검색버튼 열기
+  SearchOpen.addEventListener("click", () => {
+    modalSearch.style.display = "block";
+    body.classList.add("prevent");
+  });
+  SearchClose.addEventListener("click", () => {
+    modalSearch.style.display = "none";
+    body.classList.remove("prevent");
+    fnResetCondValue();
+  });
+}
 // header 마우스 오버 부분
 for (let i = 0; i < MenuItem.length; i++) {
   MenuItem[i].addEventListener("mouseover", () => {
@@ -389,13 +388,19 @@ var swiper = new Swiper(".tmSwiper", {
     prevEl: ".swiper-button-prev",
   },
   breakpoints: {
-    1440: {
+    1024: {
       spaceBetween: 22,
       slidesPerView: 3,
     },
     500: {
       slidesPerView: 2, //브라우저가 768미만일때
       spaceBetween: 10,
+      slidesPerGroup: 1,
+    },
+    310: {
+      slidesPerView: 1, //브라우저가 768미만일때
+      spaceBetween: 10,
+      slidesPerGroup: 1,
     },
   },
 });

@@ -34,7 +34,7 @@
   color: inherit;
   background: #fff;
   border-radius: 4px;
-  width: 278px;
+  width: 100%;
   padding: 0;
   margin-top: 1px;
   top: 0px;
@@ -202,7 +202,7 @@
   margin: 0;
 }
 .daterangepicker td,
-.daterangepicker th {
+.daterangepicker thead tr:nth-child(2) th {
   text-align: center;
   width: 70px;
   height: 37px;
@@ -337,6 +337,8 @@
   font-family: "Vitro";
   font-weight: bold;
   font-size: 23px;
+  text-align: center;
+  line-height: 40px;
 }
 .daterangepicker td.disabled,
 .daterangepicker option.disabled {
@@ -390,6 +392,12 @@
 .daterangepicker .daterangepicker_input {
   position: relative;
   opacity: 0;
+}
+.date-modal-body {
+  height: calc(100% - 80px);
+  margin: 40px 0;
+  color: #1c1c1c;
+  word-break: keep-all;
 }
 .daterangepicker .daterangepicker_input i {
   position: absolute;
@@ -920,4 +928,21 @@
 .daterangepicker .calendar-table .next span {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
+}
+
+@media (max-width: 1280px) {
+  .daterangepicker td,
+  .daterangepicker thead tr:nth-child(2) th {
+    width: 100px;
+  }
+  .date-modal-body {
+    overflow-y: scroll;
+  }
+}
+@media (max-width: 860px) {
+  .daterangepicker td,
+  .daterangepicker thead tr:nth-child(2) th {
+    width: calc(100% / 7);
+    font-size: 12px;
+  }
 }
