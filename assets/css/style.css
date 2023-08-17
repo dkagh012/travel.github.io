@@ -187,7 +187,8 @@
 }
 .fontBlack .gnb_List > .gnb_Item > a,
 .fontBlack .util a,
-.fontBlack .btn_search {
+.fontBlack .btn_search,
+.fontBlack .MobileMenuOpen {
   color: #000 !important;
 }
 .fontBlack .gnb_inner {
@@ -214,8 +215,11 @@ body.open_menu .header_container_bg {
 .Logo {
   left: 60px;
   position: absolute;
-  top: 50px;
+  top: 0;
   z-index: 2;
+  height: 100px;
+  display: flex;
+  align-items: center;
 }
 .header_inner {
   height: 100%;
@@ -1525,6 +1529,7 @@ body.open_menu .header_container_bg {
 }
 .main-sc4 {
   padding: 0 75px 150px;
+  border-top: solid 1px #1c1c1c;
 }
 .reviewSwiper .swiper-button-next,
 .reviewSwiper .swiper-button-prev {
@@ -2520,7 +2525,7 @@ body.open_menu .header_container_bg {
 .wrap {
   margin: 0 auto;
   max-width: 1480px;
-  padding: 170px 0 110px;
+  padding: 170px 20px 110px;
   min-height: 400px;
   box-sizing: border-box;
 }
@@ -2754,6 +2759,7 @@ body.open_menu .header_container_bg {
 .FIlerSortClose {
   position: absolute;
   top: 20px;
+  display: none;
   right: 20px;
 }
 .fl_hdr .FilterSort ul li + li::before {
@@ -2773,8 +2779,6 @@ body.open_menu .header_container_bg {
   /* flex-wrap: wrap; */
   overflow-x: scroll;
   width: calc(100% - 542px);
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
   scroll-behavior: smooth;
 }
 
@@ -2859,10 +2863,12 @@ body.open_menu .header_container_bg {
   position: relative;
   font-size: 14px;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 .ListView .masterList > ul > li > a > .item-info > .period > dl > dd {
   font-weight: 500;
+  margin-left: 1rem;
 }
 .ListView .color-point-1 {
   color: #006f80 !important;
@@ -3052,7 +3058,7 @@ body.open_menu .header_container_bg {
 }
 
 .Filter .FilterSearch {
-  border-color: #1c1c1c;
+  border-color: #ccc;
 }
 .Filter .FilterReset {
   background-color: #1c1c1c;
@@ -3079,14 +3085,6 @@ body.open_menu .header_container_bg {
 }
 .FilterInfo .calendar-table .prev {
   left: -45px !important;
-}
-
-body {
-  -ms-overflow-style: none;
-}
-
-::-webkit-scrollbar {
-  display: none;
 }
 
 @media (max-width: 1360px) {
@@ -3483,6 +3481,8 @@ body {
     font-size: 12px;
     align-items: center;
     height: 38px;
+    border: 1px solid #ccc;
+    padding: 0 13px;
   }
   .fl_btn .FilterListReset {
     font-size: 12px;
@@ -3498,7 +3498,7 @@ body {
     font-size: 10px;
   }
   .fl_hdr .FilterSort {
-    max-width: 110px;
+    max-width: 84px;
   }
   .fl_hdr .filter_List {
     width: 100%;
@@ -3534,6 +3534,53 @@ body {
   }
   .ListView .masterList > ul > li > a > .item-info {
     padding: 15px 15px 70px;
+  }
+  .ListView .masterList > ul > li > a > .item-info > .dtl-view {
+    right: 15px;
+    bottom: 15px;
+  }
+  .ListView .masterList > ul > li > a > .item-info > .dtl-view > button {
+    width: 130px;
+    font-size: 14px;
+    padding: 10px;
+    min-height: 40px;
+  }
+  .ListView .masterList > ul > li > a > .item-info > .price {
+    left: 15px;
+    bottom: 20px;
+    right: auto;
+    top: auto;
+  }
+  .ListView .masterList > ul > li > a > .item-info > .No {
+    top: 319px;
+    right: 15px;
+    font-size: 12px;
+  }
+  .ListView .masterList > ul > li > a > .item-info > .price > strong {
+    font-size: 18px;
+  }
+  .ListView .masterList > ul > li > a > .item-info > .price > em {
+    font-size: 11px;
+  }
+  .ListView .masterList > ul > li > a > .item-info > .flight > li {
+    font-size: 12px;
+    margin-right: 15px;
+  }
+  .ListView .masterList > ul > li > a > .item-info > .tit > span {
+    font-size: 16px;
+    line-height: 23px;
+    font-weight: 500;
+    margin-top: 6px;
+  }
+  .ListView .masterList > ul > li > a > .item-info > .cont > span {
+    font-size: 12px;
+    font-weight: 100;
+  }
+  .ListView .masterList > ul > li > a > .item-info > .period > dl > dd {
+    font-size: 14px;
+  }
+  .FIlerSortClose {
+    display: blcok;
   }
 }
 @media (max-width: 860px) {
@@ -3893,6 +3940,28 @@ body {
     font-size: 14px;
     line-height: 20px;
   }
+  /* 필터 관련 페이지 */
+  .fl_btn .xi-angle-down-min {
+    display: none;
+  }
+  .FilterBtn {
+    flex-direction: column;
+  }
+  .Filter {
+    padding: 30px 20px 40px;
+    position: absolute;
+    bottom: 0;
+    border-radius: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .FilterClose {
+    right: 20px;
+    font-size: 20px;
+  }
+  .date-modal-main {
+    padding: 0;
+  }
 }
 @media (max-width: 600px) {
   .ms-find_body {
@@ -3982,5 +4051,25 @@ body {
   }
   .main-notice-list .notice-list-item dt {
     font-size: 12px;
+  }
+  /* 필터 관련 페이지 */
+  .fl_btn .FilterListReset {
+    margin-left: 5px;
+    height: 30px;
+  }
+  .masterList .fl_hdr .fl_btn .FilterOpen {
+    height: 30px;
+  }
+  .FilterSortOpen {
+    height: 30px;
+  }
+  .ListView .masterList > ul > li > a > .item-info > .period > dl > dt {
+    font-size: 12px;
+  }
+  .ListView .masterList > ul > li > a > .item-info > .period > dl > dd {
+    font-size: 12px;
+  }
+  .ListView .masterList > ul > li > a > .item-info > .flight > li {
+    margin-right: 10px;
   }
 }

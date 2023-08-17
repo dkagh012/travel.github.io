@@ -36,42 +36,46 @@ const FilterClose = document.querySelector(".FilterClose");
 const FilterSortOpen = document.querySelector(".FilterSortOpen");
 const FIlerSortClose = document.querySelector(".FIlerSortClose");
 // 필터관련 작업
-FilterSortOpen.addEventListener("click", () => {
-  document.querySelector(".FilterSort").classList.add("open");
-  body.classList.add("prevent");
-});
-FIlerSortClose.addEventListener("click", () => {
-  document.querySelector(".FilterSort").classList.remove("open");
-  body.classList.remove("prevent");
-});
-
-FilterOpen.addEventListener("click", () => {
-  FilterMenu.classList.remove("hide");
-});
-FilterClose.addEventListener("click", () => {
-  FilterMenu.classList.add("hide");
-});
-
-document.querySelector("#FilterReset").addEventListener("click", () => {
-  const checkboxes = document.querySelectorAll(
-    ".FilterInfo .inp-check > input"
-  );
-  checkboxes.forEach((checkbox) => {
-    checkbox.checked = false;
+if (FilterSortOpen) {
+  FilterSortOpen.addEventListener("click", () => {
+    document.querySelector(".FilterSort").classList.add("open");
+    body.classList.add("prevent");
   });
-});
-
-for (let i = 0; i < FilterItem.length; i++) {
-  FilterItem[i].addEventListener("click", () => {
-    FilterInfo[i].classList.toggle("hide");
+  FIlerSortClose.addEventListener("click", () => {
+    document.querySelector(".FilterSort").classList.remove("open");
+    body.classList.remove("prevent");
   });
 }
-
-if (ListMasterAreaOpen) {
-  ListMasterAreaOpen.addEventListener("click", () => {
-    document.querySelector(".master-area").classList.toggle("active");
-    ListMasterAreaOpen.classList.toggle("return");
+if (FilterOpen) {
+  FilterOpen.addEventListener("click", () => {
+    FilterMenu.classList.remove("hide");
   });
+  FilterClose.addEventListener("click", () => {
+    FilterMenu.classList.add("hide");
+  });
+}
+if (document.querySelector("#FilterReset")) {
+  document.querySelector("#FilterReset").addEventListener("click", () => {
+    const checkboxes = document.querySelectorAll(
+      ".FilterInfo .inp-check > input"
+    );
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+  });
+
+  for (let i = 0; i < FilterItem.length; i++) {
+    FilterItem[i].addEventListener("click", () => {
+      FilterInfo[i].classList.toggle("hide");
+    });
+  }
+
+  if (ListMasterAreaOpen) {
+    ListMasterAreaOpen.addEventListener("click", () => {
+      document.querySelector(".master-area").classList.toggle("active");
+      ListMasterAreaOpen.classList.toggle("return");
+    });
+  }
 }
 // 모바일 메뉴 오픈
 MobileMenuOpen.addEventListener("click", () => {
@@ -403,6 +407,16 @@ document.getElementById("btn_content").addEventListener("click", function () {
     });
   }
 });
+document
+  .getElementById("msfindbodyReset")
+  .addEventListener("click", function () {
+    for (let i = 0; i < findMenu.length; i++) {
+      if (findMenu[i].className === "active_menu") {
+        findMenu[i].classList.remove("active_menu");
+        document.getElementById("commonSearchMenuCode").value = "";
+      }
+    }
+  });
 // swiper
 var swiper = new Swiper(".mySwiper", {
   spaceBetween: 30,
