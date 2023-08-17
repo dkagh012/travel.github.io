@@ -1932,45 +1932,7 @@
         </div>
       </div>
     </header>
-    <div class="date-modal" style="display: none">
-      <!-- <form action=""> -->
-      <div class="date-modal-background"></div>
-      <div class="date-modal-main">
-        <div class="date-modal-Box">
-          <div class="date-modal-header">
-            <h4>어디로 떠나세요?</h4>
-            <button type="button" class="modal-date-Close">
-              <i class="xi-close-thin"></i>
-            </button>
-          </div>
-          <div class="date-modal-body">
-            <div class="date-modal-title">
-              <h2>일정이 어떻게 되세요</h2>
-            </div>
-            <input
-              type="text"
-              id="dateRangePicker"
-              style="display: none"
-              readonly
-            />
-            <div class="calendar-tableBox"></div>
-            <div class="date-modal-btn">
-              <button
-                class="buttonStyle"
-                type="button"
-                onClick="fnResetSearchCalendar()"
-              >
-                날짜 초기화 <i class="xi-catched"></i>
-              </button>
-              <button class="buttonStyle datebtn_balck" type="submit">
-                일정으로 검색
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- </form> -->
-    </div>
+    <!-- 키워드 팝업  -->
     <div class="modal-length" id="popup" style="display: none">
       <div class="date-modal-background"></div>
       <div class="modal-lengthBox">
@@ -2047,7 +2009,7 @@
       <div class="ListView">
         <div class="list_title">
           <h2>
-            도쿄<button class="Btn"><i class="xi-angle-down-min"></i></button>
+            <button class="Btn">도쿄<i class="xi-angle-down-min"></i></button>
           </h2>
           <div class="master-area">
             <ul>
@@ -2059,6 +2021,520 @@
               <li><a href="">오키나와</a></li>
             </ul>
           </div>
+        </div>
+        <div class="date-modal FilterMenu hide">
+          <div class="date-modal-background"></div>
+          <div class="date-modal-main">
+            <form class="Filter" action="">
+              <button type="button" class="FilterClose">
+                <i class="xi-close-thin"></i>
+              </button>
+              <ul class="FilterList">
+                <li>
+                  <div class="FilterItem">
+                    출발일 <i class="xi-angle-down-min"></i>
+                  </div>
+                  <div class="FilterInfo hide">
+                    <input
+                      type="text"
+                      id="FilterdateRangePicker"
+                      style="display: none"
+                      readonly
+                    />
+                    <div class="calendar-tableBox"></div>
+                  </div>
+                </li>
+                <li>
+                  <div class="FilterItem">
+                    출발요일 <i class="xi-angle-down-min"></i>
+                  </div>
+                  <div class="FilterInfo hide">
+                    <label class="inp-check">
+                      <input type="checkbox" value="1" />
+                      <span class="label">월요일</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="2" />
+                      <span class="label">화요일</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="3" />
+                      <span class="label">수요일</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="4" />
+                      <span class="label">목요일</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="5" />
+                      <span class="label">금요일</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="6" />
+                      <span class="label">토요일</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="7" />
+                      <span class="label">일요일</span>
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="FilterItem">
+                    출발시간 <i class="xi-angle-down-min"></i>
+                  </div>
+                  <div class="FilterInfo hide">
+                    <label class="inp-check">
+                      <input type="checkbox" value="1" />
+                      <span class="label">00시~06시</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="2" />
+                      <span class="label">06시~12시</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="3" />
+                      <span class="label"> 12시~18시</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="4" />
+                      <span class="label">18시~00시</span>
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="FilterItem">
+                    여행기간 <i class="xi-angle-down-min"></i>
+                  </div>
+                  <div class="FilterInfo hide">
+                    <label class="inp-check">
+                      <input type="checkbox" value="1" />
+                      <span class="label">4일 이내</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="2" />
+                      <span class="label"> 5~8일 </span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="3" />
+                      <span class="label"> 9~10일</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="4" />
+                      <span class="label"> 11~16일</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="4" />
+                      <span class="label"> 17일 이상</span>
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="FilterItem">
+                    상품가격<i class="xi-angle-down-min"></i>
+                  </div>
+                  <div class="FilterInfo hide">
+                    <label class="inp-check">
+                      <input type="checkbox" value="1" />
+                      <span class="label">0 ~ 34만원</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="2" />
+                      <span class="label">34만원 ~ 64만원 </span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="3" />
+                      <span class="label">64만원 ~ 94만원</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="4" />
+                      <span class="label">94만원 ~ 124만원</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="4" />
+                      <span class="label"> 124만원 ~ 154만원</span>
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="FilterItem">
+                    숙박시설 <i class="xi-angle-down-min"></i>
+                  </div>
+                  <div class="FilterInfo hide">
+                    <label class="inp-check">
+                      <input type="checkbox" value="1" />
+                      <span class="label">3성급</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="2" />
+                      <span class="label">4성급</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="3" />
+                      <span class="label">5성급</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="4" />
+                      <span class="label">기타</span>
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="FilterItem">
+                    항공사 <i class="xi-angle-down-min"></i>
+                  </div>
+                  <div class="FilterInfo hide">
+                    <label class="inp-check">
+                      <input type="checkbox" value="1" />
+                      <span class="label">아시아나항공</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="2" />
+                      <span class="label">티웨이항공 </span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="3" />
+                      <span class="label">진에어</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="3" />
+                      <span class="label">제주항공</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="3" />
+                      <span class="label"> 스쿠트항공</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="4" />
+                      <span class="label">기타</span>
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="FilterItem">
+                    패키지옵션 <i class="xi-angle-down-min"></i>
+                  </div>
+                  <div class="FilterInfo hide">
+                    <label class="inp-check">
+                      <input type="checkbox" value="1" />
+                      <span class="label">노쇼핑</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="2" />
+                      <span class="label">노팁 </span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="3" />
+                      <span class="label"> 노옵션</span>
+                    </label>
+                    <label class="inp-check">
+                      <input type="checkbox" value="3" />
+                      <span class="label">슬림 쇼핑</span>
+                    </label>
+                  </div>
+                </li>
+              </ul>
+              <div class="FilterBtn">
+                <button class="FilterSearch" id="FilterSearch">적용</button>
+                <button type="button" class="FilterReset" id="FilterReset">
+                  초기화
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="masterList">
+          <div class="fl_hdr">
+            <div class="fl_btn">
+              <button type="button" class="FilterOpen">
+                <i class="xi-list-dot"></i>필터<i class="xi-angle-down-min"></i>
+              </button>
+              <button type="button" class="FilterListReset">필터 초기화</button>
+            </div>
+            <div class="filter_List">
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+              <button class="filter_Item">
+                2022-08-22 ~ 2022-09-21 <i class="xi-close-thin"></i>
+              </button>
+            </div>
+            <div class="FilterSort">
+              <div class="FilterSortOpen">
+                추천 상품순<i class="xi-angle-up-min"></i>
+              </div>
+              <ul class="">
+                <div class="FIlerSortClose"><i class="xi-close-thin"></i></div>
+                <li><a href="#" class="active">추천 상품순</a></li>
+                <li><a href="#">낮은 가격순</a></li>
+                <li><a href="#">높은 가격순</a></li>
+              </ul>
+            </div>
+          </div>
+          <ul>
+            <li>
+              <a href="">
+                <div class="item-img">
+                  <img src="/assets/images/film1.jpg" alt="" />
+                  <button><i class="xi-heart"></i></button>
+                </div>
+                <div class="item-info">
+                  <div class="label">
+                    <span class="label-state in shopping">노쇼핑</span>
+                    <span class="label-state in tip">노팁</span>
+                    <span class="label-state in option">노옵션</span>
+                  </div>
+                  <div class="tit">
+                    <span
+                      >[두근두근 에어텔] 대만 4성급 에어텔 #여행자보험 #조식포함
+                      3일/4일</span
+                    >
+                  </div>
+                  <div class="cont">
+                    <span
+                      >이제 여행계획만 준비하세요. ① 여행자보험 가입 ② 접근성이
+                      좋은 시내4성급 3박(2인1실 기준) ③ 조식포함</span
+                    >
+                  </div>
+                  <div class="period">
+                    <dl>
+                      <dt><i class="xi-calendar"></i>여행기간</dt>
+                      <dd>
+                        3일4일/<span class="color-point-1"
+                          >일, 월, 화, 수, 목, 금, 토 출발</span
+                        >
+                      </dd>
+                    </dl>
+                  </div>
+                  <ul class="flight">
+                    <li><img src="/assets/images/7C.gif" alt="" />제주항공</li>
+                    <li><img src="/assets/images/LJ.gif" alt="" />진에어</li>
+                    <li>
+                      <img src="/assets/images/TR.gif" alt="" />스쿠트항공
+                    </li>
+                    <li>
+                      <img src="/assets/images/TW.gif" alt="" />티웨이항공
+                    </li>
+                  </ul>
+                  <div class="No">상품번호 CTA001</div>
+                  <div class="price"><strong>479.000</strong><em>원~</em></div>
+                  <div class="dtl-view">
+                    <button>자세히보기<i class="xi-angle-down-min"></i></button>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <div class="item-img">
+                  <img src="/assets/images/film1.jpg" alt="" />
+                  <button><i class="xi-heart"></i></button>
+                </div>
+                <div class="item-info">
+                  <div class="label">
+                    <span class="label-state in shopping">노쇼핑</span>
+                    <span class="label-state in tip">노팁</span>
+                    <span class="label-state in option">노옵션</span>
+                  </div>
+                  <div class="tit">
+                    <span
+                      >[두근두근 에어텔] 대만 4성급 에어텔 #여행자보험 #조식포함
+                      3일/4일</span
+                    >
+                  </div>
+                  <div class="cont">
+                    <span
+                      >이제 여행계획만 준비하세요. ① 여행자보험 가입 ② 접근성이
+                      좋은 시내4성급 3박(2인1실 기준) ③ 조식포함</span
+                    >
+                  </div>
+                  <div class="period">
+                    <dl>
+                      <dt><i class="xi-calendar"></i>여행기간</dt>
+                      <dd>
+                        3일4일/<span class="color-point-1"
+                          >일, 월, 화, 수, 목, 금, 토 출발</span
+                        >
+                      </dd>
+                    </dl>
+                  </div>
+                  <ul class="flight">
+                    <li><img src="/assets/images/7C.gif" alt="" />제주항공</li>
+                    <li><img src="/assets/images/LJ.gif" alt="" />진에어</li>
+                    <li>
+                      <img src="/assets/images/TR.gif" alt="" />스쿠트항공
+                    </li>
+                    <li>
+                      <img src="/assets/images/TW.gif" alt="" />티웨이항공
+                    </li>
+                  </ul>
+                  <div class="No">상품번호 CTA001</div>
+                  <div class="price"><strong>479.000</strong><em>원~</em></div>
+                  <div class="dtl-view">
+                    <button>자세히보기<i class="xi-angle-down-min"></i></button>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <div class="item-img">
+                  <img src="/assets/images/film1.jpg" alt="" />
+                  <button><i class="xi-heart"></i></button>
+                </div>
+                <div class="item-info">
+                  <div class="label">
+                    <span class="label-state in shopping">노쇼핑</span>
+                    <span class="label-state in tip">노팁</span>
+                    <span class="label-state in option">노옵션</span>
+                  </div>
+                  <div class="tit">
+                    <span
+                      >[두근두근 에어텔] 대만 4성급 에어텔 #여행자보험 #조식포함
+                      3일/4일</span
+                    >
+                  </div>
+                  <div class="cont">
+                    <span
+                      >이제 여행계획만 준비하세요. ① 여행자보험 가입 ② 접근성이
+                      좋은 시내4성급 3박(2인1실 기준) ③ 조식포함</span
+                    >
+                  </div>
+                  <div class="period">
+                    <dl>
+                      <dt><i class="xi-calendar"></i>여행기간</dt>
+                      <dd>
+                        3일4일/<span class="color-point-1"
+                          >일, 월, 화, 수, 목, 금, 토 출발</span
+                        >
+                      </dd>
+                    </dl>
+                  </div>
+                  <ul class="flight">
+                    <li><img src="/assets/images/7C.gif" alt="" />제주항공</li>
+                    <li><img src="/assets/images/LJ.gif" alt="" />진에어</li>
+                    <li>
+                      <img src="/assets/images/TR.gif" alt="" />스쿠트항공
+                    </li>
+                    <li>
+                      <img src="/assets/images/TW.gif" alt="" />티웨이항공
+                    </li>
+                  </ul>
+                  <div class="No">상품번호 CTA001</div>
+                  <div class="price"><strong>479.000</strong><em>원~</em></div>
+                  <div class="dtl-view">
+                    <button>자세히보기<i class="xi-angle-down-min"></i></button>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <div class="item-img">
+                  <img src="/assets/images/film1.jpg" alt="" />
+                  <button><i class="xi-heart"></i></button>
+                </div>
+                <div class="item-info">
+                  <div class="label">
+                    <span class="label-state in shopping">노쇼핑</span>
+                    <span class="label-state in tip">노팁</span>
+                    <span class="label-state in option">노옵션</span>
+                  </div>
+                  <div class="tit">
+                    <span
+                      >[두근두근 에어텔] 대만 4성급 에어텔 #여행자보험 #조식포함
+                      3일/4일</span
+                    >
+                  </div>
+                  <div class="cont">
+                    <span
+                      >이제 여행계획만 준비하세요. ① 여행자보험 가입 ② 접근성이
+                      좋은 시내4성급 3박(2인1실 기준) ③ 조식포함</span
+                    >
+                  </div>
+                  <div class="period">
+                    <dl>
+                      <dt><i class="xi-calendar"></i>여행기간</dt>
+                      <dd>
+                        3일4일/<span class="color-point-1"
+                          >일, 월, 화, 수, 목, 금, 토 출발</span
+                        >
+                      </dd>
+                    </dl>
+                  </div>
+                  <ul class="flight">
+                    <li><img src="/assets/images/7C.gif" alt="" />제주항공</li>
+                    <li><img src="/assets/images/LJ.gif" alt="" />진에어</li>
+                    <li>
+                      <img src="/assets/images/TR.gif" alt="" />스쿠트항공
+                    </li>
+                    <li>
+                      <img src="/assets/images/TW.gif" alt="" />티웨이항공
+                    </li>
+                  </ul>
+                  <div class="No">상품번호 CTA001</div>
+                  <div class="price"><strong>479.000</strong><em>원~</em></div>
+                  <div class="dtl-view">
+                    <button>자세히보기<i class="xi-angle-down-min"></i></button>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -2199,174 +2675,8 @@
     type="text/javascript"
     src="assets/js/daterangepicker.min.js"
   ></script>
+
   <script src="assets/js/slick.min.js"></script>
   <script src="assets/js/swiper.min.js"></script>
   <script src="assets/js/main.js"></script>
-  <script>
-    function TMChange(ChangeName) {
-      let ChangeSwiper = document.querySelector(`#${ChangeName}`);
-      const swiperNone = document.querySelectorAll(".tmSwiper");
-      for (let i = 0; i < swiperNone.length; i++) {
-        swiperNone[i].style.display = "none";
-      }
-      ChangeSwiper.style.display = "block";
-    }
-  </script>
-  <script>
-    const popup = document.querySelector("#popup");
-    function fnSetCommonSearchMenuCode(obj, menuCode) {
-      $("#commonSearchMenuCode").val(menuCode);
-    }
-    function fnCheckedMaxLength(strWord, length) {
-      let result = true;
-      if (strWord) {
-        if (strWord.length > length) result = false;
-      }
-      return result;
-    }
-    function fnSearchBtn(event) {
-      let searchWord = $("#commonSearchPlaceKeyword").val();
-      console.log(searchWord.length < 1);
-      const Intro = document.querySelector("#_defaultLayerMsgDIV");
-      let msg = "검색어를 입력해주세요.";
-      if (searchWord.length < 1) {
-        Intro.innerHTML = msg;
-        popup.style.display = "block";
-        event.preventDefault();
-        return;
-      } else {
-        $("#commonSearchMenuCode").val("");
-        $("#modalMenuList").val("");
-      }
-    }
-    document.querySelector("#Search").addEventListener("submit", fnSearchBtn);
-    function fnSearchWithDate(event) {
-      //검색키워드, 메뉴코드
-      let keyword = $("#commonSearchPlaceKeyword").val();
-      let menuCode = $("#commonSearchMenuCode").val();
-      const Intro = document.querySelector("#_defaultLayerMsgDIV");
-      if (!keyword && !menuCode) {
-        let msg = "검색어를 입력하거나 지역을 선택해 주세요.";
-        Intro.innerHTML = msg;
-        popup.style.display = "block";
-        event.preventDefault();
-        return;
-      } else {
-        $("#commonSearchPlaceKeyword").val("");
-        $("#modalMenuList").val("");
-      }
-    }
-
-    const PopUpBtn = document.querySelector(".modal-footer>button");
-    PopUpBtn.addEventListener("click", () => {
-      popup.style.display = "none";
-    });
-  </script>
-  <script>
-    $(document).ready(function () {
-      var slider = $(".slider");
-      var progressBar = $(".progress-bar");
-      var autoplayInterval;
-      var isAutoplay = true;
-
-      slider.slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        centerMode: true,
-        variableWidth: true,
-        infinite: true,
-        speed: 3000,
-        autoplay: true,
-        autoplaySpeed: 0,
-        cssEase: "linear",
-        focusOnSelect: true,
-        responsive: [
-          {
-            breakpoint: 768,
-            settings: {
-              slidesToShow: 1,
-            },
-          },
-        ],
-      });
-
-      var totalSlides = slider.slick("getSlick").slideCount;
-      var currentSlide = slider.slick("slickCurrentSlide") + 1;
-      function updatePagination() {
-        $(".slider-pagination").html(
-          "<button class='page-btn current'>" +
-            currentSlide +
-            "</button> / " +
-            totalSlides
-        );
-      }
-
-      function updateProgress() {
-        var progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
-        progressBar.css("width", progress + "%");
-      }
-
-      function startAutoplay() {
-        slider.slick("slickPlay");
-        autoplayInterval = setInterval(function () {
-          slider.slick("slickNext");
-        }, 2000);
-        isAutoplay = true;
-        $(".btn-start").addClass("active");
-        $(".btn-stop").removeClass("active");
-      }
-
-      function stopAutoplay() {
-        slider.slick("slickPause");
-        clearInterval(autoplayInterval);
-        isAutoplay = false;
-        $(".btn-stop").addClass("active");
-        $(".btn-start").removeClass("active");
-      }
-
-      function toggleAutoplay() {
-        if (isAutoplay) {
-          stopAutoplay();
-        } else {
-          startAutoplay();
-        }
-      }
-
-      updatePagination();
-      updateProgress();
-
-      slider.on("beforeChange", function (event, slick, current, next) {
-        currentSlide = next + 1;
-        updatePagination();
-      });
-
-      slider.on("afterChange", function (event, slick, current) {
-        currentSlide = current + 1;
-        updateProgress();
-      });
-
-      $(".btn-prev").click(function () {
-        slider.slick("slickPrev");
-      });
-
-      $(".btn-next").click(function () {
-        slider.slick("slickNext");
-      });
-
-      $(".btn-stop").click(function () {
-        stopAutoplay();
-        $(".btn-stop").addClass("active");
-        $(".btn-start").removeClass("active");
-      });
-
-      $(".btn-start").click(function () {
-        startAutoplay();
-        $(".btn-start").addClass("active");
-        $(".btn-stop").removeClass("active");
-      });
-
-      startAutoplay();
-      $(".btn-start").addClass("active");
-    });
-  </script>
 </html>

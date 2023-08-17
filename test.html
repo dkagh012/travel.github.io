@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>How to create Single Calendar for Range selection in DateRangePicker</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+</head>
+<body>
+    <h1>How to create Single Calendar for Range selection in DateRangePicker</h1>
+    <input type="text" name="regervation" id="regervation" placeholder="Please select regervation date!"/>
+    <div id="displayRegervation"></div>
+</body>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        $(function() {
+            $('#regervation').daterangepicker({
+                "autoapply": true,
+                "linkedCalendars": false,
+            }, 
+            function(start, end, label) {
+                $('#displayRegervation').text('Registration date is: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+            });
+            $('.drp-calendar.right').hide();
+            $('.drp-calendar.left').addClass('single');
+
+            $('.calendar-table').on('DOMSubtreeModified', function() {
+                var el = $(".prev.available").parent().children().last();
+                if (el.hasClass('next available')) {
+                    return;
+                }
+                el.addClass('next available');
+                el.append('<span></span>');
+            });
+        });
+    </script>
+</html>

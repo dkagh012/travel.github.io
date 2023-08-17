@@ -102,8 +102,11 @@
 .background {
   background-color: #f7f7f7;
 }
-.return {
+.return i {
   transform: rotate(180deg);
+}
+.hide {
+  display: none !important;
 }
 /* 탑 버튼 */
 
@@ -2516,8 +2519,34 @@ body.open_menu .header_container_bg {
 /* List 페이지 */
 .wrap {
   margin: 0 auto;
+  max-width: 1480px;
   padding: 170px 0 110px;
   min-height: 400px;
+  box-sizing: border-box;
+}
+.label-state.option {
+  color: #50b4a5 !important;
+  border-color: #50b4a5 !important;
+}
+.label-state.tip {
+  color: #a776ca !important;
+  border-color: #a776ca !important;
+}
+.label-state.shopping {
+  color: #de9b94 !important;
+  border-color: #de9b94 !important;
+}
+.label-state {
+  display: inline-block;
+  color: #666;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: -0.36px;
+  padding: 3px 5px 4px;
+  border-radius: 2px;
+  border: solid 1px #666;
+  text-align: center;
   box-sizing: border-box;
 }
 .ListView .list_title {
@@ -2590,6 +2619,476 @@ body.open_menu .header_container_bg {
   text-decoration-color: #e53e30;
   text-decoration-thickness: 3px;
 }
+.masterList .fl_hdr {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 12px;
+}
+.masterList .fl_hdr .fl_btn {
+  max-width: 210px;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+.masterList .fl_hdr .fl_btn .FilterOpen {
+  font-size: 16px;
+  font-weight: bold;
+  border: 0;
+  background: transparent;
+  letter-spacing: -0.48px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.fl_btn .xi-angle-down-min {
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.filter_List .filter_Item {
+  margin-right: 4px;
+  display: inline-block;
+  height: 38px;
+  line-height: 38px;
+  padding-left: 15px;
+  background: #f3f3f3;
+  white-space: nowrap;
+  border: 0;
+  font-size: 13px;
+}
+.filter_List .filter_Item i {
+  padding-left: 15px;
+}
+.fl_btn .FilterListReset {
+  border: 1px solid #ccc;
+  display: inline-block;
+  height: 38px;
+  background: #fff;
+  line-height: 30px;
+  padding: 0 10px;
+  margin-left: 10px;
+}
+.fl_hdr .FilterSort ul {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}
+.fl_hdr .FilterSort {
+  width: 100%;
+  max-width: 332px;
+}
+.FilterSortOpen {
+  display: none;
+  height: 100%;
+  align-items: center;
+}
+.fl_hdr .open::before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 300;
+  background: #000;
+  opacity: 0.5;
+}
+.fl_hdr .open ul {
+  height: auto;
+  border: 0;
+  display: block;
+  max-height: 265px;
+  overflow: auto;
+  padding: 45px 0 0;
+  padding: 45px 0 calc(env(safe-area-inset-bottom) + 15px);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: fixed;
+  left: 0;
+  top: initial !important;
+  bottom: 0;
+  z-index: 301;
+  min-width: 100%;
+  background: #fff;
+}
+.fl_hdr .open ul li {
+  font-weight: 400;
+  height: 50px;
+  line-height: 50px;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.fl_hdr .open ul li a {
+  padding: 0 25px;
+  width: 100%;
+}
+.fl_hdr .open ul li a:hover {
+  background: #e5e5e5;
+  padding: 0 25px;
+  font-weight: 300;
+  width: 100%;
+}
+.fl_hdr .open ul li a.active {
+  background: #e5e5e5;
+  padding: 0 25px;
+  font-weight: 300;
+  width: 100%;
+}
+.fl_hdr .FilterSort ul li a {
+  font-size: 16px;
+  color: #666;
+  font-weight: 500;
+  letter-spacing: -0.48px;
+}
+.fl_hdr .FilterSort ul li a.active {
+  color: black;
+}
+.FIlerSortClose {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.fl_hdr .FilterSort ul li + li::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 16px;
+  background: #ccc;
+  vertical-align: -2px;
+  margin: 0 20px;
+}
+.fl_hdr .open ul li + li::before {
+  display: none;
+}
+.fl_hdr .filter_List {
+  display: flex;
+  /* flex-wrap: wrap; */
+  overflow-x: scroll;
+  width: calc(100% - 542px);
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  scroll-behavior: smooth;
+}
+
+.ListView .masterList {
+  padding-top: 20px;
+}
+.ListView .masterList > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ListView .masterList > ul > li > a {
+  position: relative;
+  display: flex;
+  border: solid 1px #ccc;
+  border-radius: 10px;
+}
+.ListView .masterList > ul > li > a > .item-img > img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+.ListView .masterList > ul > li > a > .item-img > button {
+  border: 0;
+  background: transparent;
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  background: none;
+  width: 30px;
+  height: 30px;
+  color: #fff;
+}
+.ListView .masterList > ul > li > a > .item-img > button > i {
+  color: white;
+  font-size: 34px;
+}
+.ListView .masterList > ul > li > a > .item-info {
+  flex: 1;
+  padding: 30px 250px 30px 40px;
+}
+.ListView .masterList > ul > li > a > .item-info > .label {
+  padding-bottom: 15px;
+  height: 36px;
+}
+.ListView .masterList > ul > li > a > .item-info > .tit > span {
+  font-size: 18px;
+  line-height: 26px;
+  color: #1c1c1c;
+  letter-spacing: -0.72px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-weight: bold;
+}
+
+.ListView .masterList > ul > li > a > .item-info > .cont > span {
+  font-size: 14px;
+  line-height: 20px;
+  color: #999;
+  letter-spacing: -0.42px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-top: 10px;
+}
+
+.ListView .masterList > ul > li > a > .item-info > .period {
+  position: relative;
+  margin-top: 15px;
+}
+.ListView .masterList > ul > li > a > .item-info > .period > dl {
+  display: flex;
+  position: relative;
+}
+.ListView .masterList > ul > li > a > .item-info > .period > dl > dt {
+  position: relative;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.ListView .masterList > ul > li > a > .item-info > .period > dl > dd {
+  font-weight: 500;
+}
+.ListView .color-point-1 {
+  color: #006f80 !important;
+}
+.ListView .masterList > ul > li > a > .item-info > .flight {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.ListView .masterList > ul > li > a > .item-info > .flight > li {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+.ListView .masterList > ul > li > a > .item-info > .flight > li > img {
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+}
+.ListView .masterList > ul > li > a > .item-info > .No {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.48px;
+  position: absolute;
+  right: 30px;
+  top: 32px;
+}
+.ListView .masterList > ul > li > a > .item-info > .price {
+  position: absolute;
+  right: 30px;
+  top: 70px;
+  text-align: right;
+}
+.ListView .masterList > ul > li > a > .item-info > .price > strong {
+  font-family: "Vitro";
+  font-size: 26px;
+  color: #1c1c1c;
+  font-weight: bold;
+}
+.ListView .masterList > ul > li > a > .item-info > .price > em {
+  font-size: 16px;
+  color: #1c1c1c;
+}
+.ListView .masterList > ul > li > a > .item-info > .dtl-view {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+}
+.ListView .masterList > ul > li > a > .item-info > .dtl-view > button {
+  width: 210px;
+  background: #1c1c1c !important;
+  border: 0 !important;
+  color: #fff !important;
+  font-size: 16px;
+  min-height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px 30px;
+  font-weight: 500;
+  line-height: 1.2;
+  border-radius: 2px;
+  text-decoration: none;
+  box-sizing: border-box;
+  letter-spacing: -0.6px;
+  background: #fff;
+  gap: 5px;
+}
+.Filter {
+  max-width: 920px;
+  background-color: #fff;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: 0;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  padding: 50px 50px;
+  max-height: calc(100% - 20px);
+  border-radius: 8px;
+  height: auto !important;
+  position: relative;
+  overflow-y: scroll;
+}
+.FilterClose {
+  position: absolute;
+  border: 0;
+  background: transparent;
+  right: 30px;
+  top: 20px;
+  font-size: 30px;
+}
+.ListView .FilterList {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.ListView .FilterList li .FilterItem {
+  position: relative;
+  height: 70px;
+  line-height: 70px;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: solid 1px #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.FilterInfo {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 11px;
+  padding-bottom: 30px;
+}
+.FilterInfo > .inp-check:nth-child(4n + 1) {
+  margin-left: 0;
+}
+.FilterInfo > .inp-check {
+  width: calc((100% - 24px) / 4);
+  margin-left: 8px;
+  margin-top: 9px;
+}
+.FilterInfo .inp-check {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+.FilterInfo .inp-check > input {
+  position: absolute;
+  left: -999999px;
+  width: 0;
+  height: 0;
+  opacity: 0.0001%;
+}
+.FilterInfo .inp-check > .label {
+  position: relative;
+  font-size: 15px;
+  font-weight: normal;
+  letter-spacing: -0.45px;
+  display: flex;
+  line-height: 22px;
+}
+.FilterInfo .inp-check > .label {
+  background: #f3f3f3;
+  box-sizing: border-box;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 13px;
+  display: block;
+}
+.FilterInfo .inp-check > input:checked + .label {
+  border: solid 1px #1c1c1c;
+  background: #fff;
+  line-height: 28px;
+}
+.FilterBtn {
+  padding-top: 30px;
+  display: flex;
+  gap: 10px;
+}
+.FilterBtn button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  padding: 10px 30px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.2;
+  border-radius: 2px;
+  text-decoration: none;
+  box-sizing: border-box;
+  letter-spacing: -0.6px;
+  min-height: 50px;
+  background: #fff;
+  min-height: 50px;
+  font-size: 16px;
+}
+
+.Filter .FilterSearch {
+  border-color: #1c1c1c;
+}
+.Filter .FilterReset {
+  background-color: #1c1c1c;
+  color: white;
+}
+.FilterInfo .calendar-tableBox {
+  width: 100%;
+}
+.FilterInfo .calendar-tableBox > div {
+  flex-direction: column !important;
+}
+.FilterInfo .daterangepicker .drp-calendar {
+  width: 100%;
+}
+.FilterInfo .daterangepicker td,
+.FilterInfo .daterangepicker thead tr:nth-child(2) th {
+  width: calc(100% / 7);
+}
+.daterangepicker table thead tr:first-child {
+  padding-bottom: 1rem;
+}
+.FilterInfo .calendar-table .next {
+  right: -45px !important;
+}
+.FilterInfo .calendar-table .prev {
+  left: -45px !important;
+}
+
+body {
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 @media (max-width: 1360px) {
   .main_sw1 .slogan {
     position: absolute;
@@ -2628,6 +3127,9 @@ body.open_menu .header_container_bg {
   }
   .daterangepicker .calendar-table {
     border: 0 !important;
+  }
+  .FilterInfo .daterangepicker .calendar-table {
+    border: 1px solid #e5e5e5 !important;
   }
   .calendar-table .prev {
     right: 0;
@@ -2975,6 +3477,63 @@ body.open_menu .header_container_bg {
   .footer {
     height: auto;
     padding-bottom: 2rem;
+  }
+  /* 필터 관련 css */
+  .masterList .fl_hdr .fl_btn .FilterOpen {
+    font-size: 12px;
+    align-items: center;
+    height: 38px;
+  }
+  .fl_btn .FilterListReset {
+    font-size: 12px;
+  }
+  .masterList .fl_hdr .fl_btn {
+    max-width: 182px;
+    align-items: flex-start;
+  }
+  .fl_hdr .FilterSort ul li a {
+    font-size: 12px;
+  }
+  .filter_List .filter_Item {
+    font-size: 10px;
+  }
+  .fl_hdr .FilterSort {
+    max-width: 110px;
+  }
+  .fl_hdr .filter_List {
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+  }
+  .FilterSortOpen {
+    display: flex;
+    font-size: 12px;
+    gap: 5px;
+    align-items: center;
+    height: 38px;
+  }
+  .FilterSortOpen i {
+    font-size: 20px;
+  }
+  .fl_hdr .FilterSort ul {
+    display: none;
+  }
+  .fl_hdr .FilterSort.open ul {
+    display: block;
+  }
+  .masterList .fl_hdr {
+    height: 100px;
+    position: relative;
+  }
+  .ListView .masterList > ul > li > a {
+    flex-direction: column;
+  }
+  .ListView .masterList > ul > li > a > .item-img > img {
+    width: 100%;
+    object-fit: cover;
+  }
+  .ListView .masterList > ul > li > a > .item-info {
+    padding: 15px 15px 70px;
   }
 }
 @media (max-width: 860px) {
