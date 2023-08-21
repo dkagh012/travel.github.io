@@ -2815,7 +2815,6 @@ body.open_menu .header_container_bg {
 .fl_hdr .filter_List {
   display: flex;
   /* flex-wrap: wrap; */
-  overflow-x: scroll;
   width: calc(100% - 542px);
   scroll-behavior: smooth;
 }

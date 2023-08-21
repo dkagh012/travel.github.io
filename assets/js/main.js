@@ -265,6 +265,10 @@ if (SearchOpen) {
     body.classList.remove("prevent");
     fnResetCondValue();
   });
+  document.querySelector(".modal-backdrop").addEventListener("click", () => {
+    modalSearch.style.display = "none";
+    fnResetCondValue();
+  });
 }
 // header 마우스 오버 부분
 for (let i = 0; i < MenuItem.length; i++) {
