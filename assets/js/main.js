@@ -35,6 +35,22 @@ const FilterOpen = document.querySelector(".FilterOpen");
 const FilterClose = document.querySelector(".FilterClose");
 const FilterSortOpen = document.querySelector(".FilterSortOpen");
 const FIlerSortClose = document.querySelector(".FIlerSortClose");
+const MobileMenuListOpen = document.querySelectorAll(".item-box .tit");
+const MobileMenuItem = document.querySelectorAll(".item-box ul");
+
+console.log(MobileMenuItem);
+for (let i = 0; i < MobileMenuListOpen.length; i++) {
+  MobileMenuListOpen[i].addEventListener("click", () => {
+    MobileMenuItem[i].classList.toggle("hide");
+    document
+      .querySelectorAll(".item-box .tit .xi-minus-min")
+      [i].classList.toggle("hide");
+    document
+      .querySelectorAll(".item-box .tit .xi-plus-min ")
+      [i].classList.toggle("hide");
+  });
+}
+
 // 필터관련 작업
 if (FilterSortOpen) {
   FilterSortOpen.addEventListener("click", () => {
@@ -110,8 +126,12 @@ quickMenuToggle.addEventListener("click", () => {
 for (let i = 0; i < FindHeaderButton.length; i++) {
   FindHeaderButton[i].addEventListener("click", () => {
     FindHeaderButton[i].classList.add("active");
+    FindHeaderHash[i].style.display = "flex";
+    document.querySelector("#commonSearchMenuCode").value = "";
+    FindHeaderHash[i].querySelectorAll("li")[0].classList.add("show");
     for (let j = 0; j < FindHeaderButton.length; j++) {
       if (j !== i) {
+        FindHeaderHash[i].style.display = "none";
         FindHeaderButton[j].classList.remove("active");
       }
     }
@@ -266,23 +286,32 @@ for (let i = 0; i < MenuItem.length; i++) {
 document.addEventListener("click", (event) => {
   // 클릭된 요소가 SearchTab 또는 그 자식 요소인 경우에만 처리
   if (
-    event.target.classList.contains("current") ||
-    event.target.closest(".current")
+    event.target.classList.contains("tab-select") ||
+    event.target.closest(".tab-select")
   ) {
-    const clickedSearchTab = event.target.closest(".current");
-    const clickedIndex = Array.from(SearchTab).indexOf(clickedSearchTab);
-
+    const clickedSearchTab = event.target.closest(".tab-select");
+    const clickedIndex = Array.from(tabSelect).indexOf(clickedSearchTab);
+    console.log(clickedIndex);
     // 클릭한 SearchTab에 해당하는 list 요소를 toggle
     if (list[clickedIndex].style.display === "block") {
       list[clickedIndex].style.display = "none";
+      document.querySelectorAll(".tab-select .date-modal-background")[
+        clickedIndex
+      ].style.display = "none";
     } else {
       // 이전에 켜져 있던 list 요소를 none으로 설정
       for (let i = 0; i < list.length; i++) {
         if (i !== clickedIndex) {
           list[i].style.display = "none";
+          document.querySelectorAll(".tab-select .date-modal-background")[
+            i
+          ].style.display = "none";
         }
       }
       // 클릭한 SearchTab에 해당하는 list 요소를 block으로 설정
+      document.querySelectorAll(".tab-select .date-modal-background")[
+        clickedIndex
+      ].style.display = "block";
       list[clickedIndex].style.display = "block";
     }
   } else {
