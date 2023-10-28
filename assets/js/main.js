@@ -493,6 +493,7 @@ var swiper = new Swiper(".tmSwiper", {
 
 var swiper = new Swiper(".main-sc2-swiper", {
   centeredSlides: false, // 중앙 정렬 비활성화
+  loop: true,
   // autoplay: {
   //   delay: 2500,
   //   disableOnInteraction: false,
