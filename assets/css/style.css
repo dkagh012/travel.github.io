@@ -27,12 +27,12 @@
 /* font */
 @font-face {
   font-family: "Vitro";
-  src: url("/assets/css/fonts/Vitro_100.otf") format("truetype"); /* Replace 'path/to' with the actual path to your font file */
+  src: url(".css/fonts/Vitro_100.otf") format("truetype"); /* Replace 'path/to' with the actual path to your font file */
   font-weight: 100;
 }
 @font-face {
   font-family: "Vitro";
-  src: url("/assets/css/fonts/vitro.ttf") format("truetype"); /* Replace 'path/to' with the actual path to your font file */
+  src: url("../css/fonts/vitro.ttf") format("truetype"); /* Replace 'path/to' with the actual path to your font file */
   font-weight: bold;
 }
 @font-face {
@@ -41,11 +41,10 @@
   font-weight: 100;
   src: local("Noto Sans Light"), local("NotoSans-Light"), url();
   src: local("Noto Sans Light"), local("NotoSans-Light"),
-    url(/assets/css/fonts/NotoSans-Light.eot);
-  src: url(/assets/css/fonts/NotoSans-Light.eot?#iefix)
-      format("embedded-opentype"),
-    url(/assets/css/fonts/NotoSans-Light.woff2) format("woff2"),
-    url(/assets/css/fonts/NotoSans-Light.woff) format("woff");
+    url(../css/fonts/NotoSans-Light.eot);
+  src: url(../css/fonts/NotoSans-Light.eot?#iefix) format("embedded-opentype"),
+    url(../css/fonts/NotoSans-Light.woff2) format("woff2"),
+    url(../css/fonts/NotoSans-Light.woff) format("woff");
 }
 
 @font-face {
@@ -53,11 +52,10 @@
   font-style: normal;
   font-weight: 300;
   src: local("Noto Sans Regular"), local("NotoSans-Regular"),
-    url(/assets/css/fonts/NotoSans-Regular.eot);
-  src: url(/assets/css/fonts/NotoSans-Regular.eot?#iefix)
-      format("embedded-opentype"),
-    url(/assets/css/fonts/NotoSans-Regular.woff2) format("woff2"),
-    url(/assets/css/fonts/NotoSans-Regular.woff) format("woff");
+    url(../css/fonts/NotoSans-Regular.eot);
+  src: url(../css/fonts/NotoSans-Regular.eot?#iefix) format("embedded-opentype"),
+    url(../css/fonts/NotoSans-Regular.woff2) format("woff2"),
+    url(../css/fonts/NotoSans-Regular.woff) format("woff");
 }
 
 @font-face {
@@ -65,11 +63,10 @@
   font-style: normal;
   font-weight: 500;
   src: local("Noto Sans Medium"), local("NotoSans-Medium"),
-    url(/assets/css/fonts/NotoSans-Medium.eot);
-  src: url(/assets/css/fonts/NotoSans-Medium.eot?#iefix)
-      format("embedded-opentype"),
-    url(/assets/css/fonts/NotoSans-Medium.woff2) format("woff2"),
-    url(/assets/css/fonts/NotoSans-Medium.woff) format("woff");
+    url(../css/fonts/NotoSans-Medium.eot);
+  src: url(../css/fonts/NotoSans-Medium.eot?#iefix) format("embedded-opentype"),
+    url(../css/fonts/NotoSans-Medium.woff2) format("woff2"),
+    url(../css/fonts/NotoSans-Medium.woff) format("woff");
 }
 
 @font-face {
@@ -77,11 +74,10 @@
   font-style: normal;
   font-weight: 700;
   src: local("Noto Sans Bold"), local("NotoSans-Bold"),
-    url(/assets/css/fonts/NotoSans-Bold.eot);
-  src: url(/assets/css/fonts/NotoSans-Bold.eot?#iefix)
-      format("embedded-opentype"),
-    url(/assets/css/fonts/NotoSans-Bold.woff2) format("woff2"),
-    url(/assets/css/fonts/NotoSans-Bold.woff) format("woff");
+    url(../css/fonts/NotoSans-Bold.eot);
+  src: url(../css/fonts/NotoSans-Bold.eot?#iefix) format("embedded-opentype"),
+    url(../css/fonts/NotoSans-Bold.woff2) format("woff2"),
+    url(../css/fonts/NotoSans-Bold.woff) format("woff");
 }
 @keyframes rightArrow {
   0% {
